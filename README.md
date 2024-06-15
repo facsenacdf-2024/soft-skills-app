@@ -1,24 +1,43 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Iniciando
 
-First, run the development server:
+Primeiro, clonando o repositório:
+
+No terminal de seu VSCode ou Windows Power Shell digite o comando abaixo:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+git clone https://github.com/aplicativos-soft-skills/app.git
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Em seguida, aba a pasta (app) que foi criada.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Execute o seguinte comando para instalação dos pacotes node, no terminal.
+
+```bash
+
+npm i
+
+```
+
+Após a instalação, digite o comando abaixo e depois abra-o em seu navegador.
+
+```bash
+
+npm run dev
+
+```
+
+Link [http://localhost:3000](http://localhost:3000) para abrir em seu navegador
+
+
+
+
+
+
 
 ## Learn More
 
