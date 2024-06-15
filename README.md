@@ -11,8 +11,7 @@ No terminal de seu VSCode ou Windows Power Shell digite o comando abaixo:
 git clone https://github.com/aplicativos-soft-skills/app.git
 
 ```
-
-
+\
 Em seguida, aba a pasta (app) que foi criada.
 
 Execute o seguinte comando para instalação dos pacotes node, no terminal.
@@ -22,7 +21,7 @@ Execute o seguinte comando para instalação dos pacotes node, no terminal.
 npm i
 
 ```
-
+\
 Após a instalação, digite o comando abaixo e depois abra-o em seu navegador.
 
 ```bash
@@ -30,13 +29,8 @@ Após a instalação, digite o comando abaixo e depois abra-o em seu navegador.
 npm run dev
 
 ```
-
-Link [http://localhost:3000](http://localhost:3000) para abrir em seu navegador
-
-
-
-
-
+\
+Link [http://localhost:3000](http://localhost:3000) para abrir em seu navegador.
 
 
 ## Learn More
