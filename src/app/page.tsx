@@ -1,6 +1,6 @@
 'use client';
 
-import Anchor from "./components/anchor";
+import Anchor from "../components/anchor";
 
 export default function Home() {
   return (

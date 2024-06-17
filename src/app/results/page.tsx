@@ -1,6 +1,6 @@
 import React from 'react'
 import { ArrowLeft } from 'lucide-react'
-import Anchor from '../components/anchor'
+import Anchor from '../../components/anchor'
 
 const Results = () => {
   return (
