@@ -4,12 +4,12 @@
 Abra o terminal na pasta em que deseja clonar o repositório e digite:
 
 ```bash
-git clone https://github.com/aplicativos-soft-skills/app
+git clone https://github.com/senac-volunteers/soft-skill-app
 ```
 Em seguida, vá para o diretório app que foi criada com o comando:
 
 ```bash
-cd ./app
+cd ./soft-skills-app
 ```
 
 Então execute o seguinte comando para instalar todas as dependências do projeto:
