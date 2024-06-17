@@ -4,7 +4,7 @@
 Abra o terminal na pasta em que deseja clonar o repositório e digite:
 
 ```bash
-git clone https://github.com/senac-volunteers/soft-skill-app
+git clone https://github.com/senac-volunteers/soft-skills-app
 ```
 Em seguida, vá para o diretório app que foi criada com o comando:
 
