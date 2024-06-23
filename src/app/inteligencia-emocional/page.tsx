@@ -1,6 +1,6 @@
 'use client';
 import { ArrowLeft } from "lucide-react";
-import Button from "../../components/button";
+import Anchor from "@/components/anchor";
 
 export default function InteligenciaEmocional() {
   return (
@@ -21,10 +21,9 @@ export default function InteligenciaEmocional() {
         <p>
           Vamos começar?
         </p>
-
-        <a href="/results" className="text-xs text-blue-500">TEMP: ir para pág. resultados</a>
+        
       </div>
-      <Button title="Começar" func={() => { }} className="my-20 w-fit mx-auto block" />
+      <Anchor link="/formularios" title="Começar" className="my-44 w-fit mx-auto block" />
       <div className="max-w-xs mx-auto mt-32">
         <a href="/" className="flex items-center gap-2 text-sm w-fit">
           <ArrowLeft width={20}/>
