@@ -12,17 +12,17 @@ export default function perguntas() {
     const [count, setCount] = useState(0) //Recupera a ultima questão
     const [point, setPoint] = useState(0) //Recupera a pontuação final
 
-    return (
-        <div>
-            <div className="w-full bg-blue-800 py-5 px-5">
-                <h1 className="font-medium text-white">Autoavaliação de Soft Skills</h1>
-            </div>
+  return (
+    <div>
+      <div className="w-full bg-blue-800 py-5 px-5">
+        <h1 className="font-medium text-white">Autoavaliação de Soft Skills</h1>
+      </div>
 
-            <div className="max-w-xs mx-auto my-14 space-y-5 text-center">
+      <div className="max-w-xs mx-auto my-14 space-y-5 text-center">
 
-                <p>
-                    As perguntas estarão dispostas e serão alternadas, <b>neste mesmo campo</b>, a cada vez que o usuário retornar uma resposta, após 10 perguntas respondidas o questionário termina.
-                </p>
+        <p>
+          As perguntas estarão dispostas e serão alternadas, <b>neste mesmo campo</b>, a cada vez que o usuário retornar uma resposta, após 10 perguntas respondidas o questionário termina.
+        </p>
 
                 <Button // a cada "sim" pontuação perde 1
                     title="Sim"
@@ -45,22 +45,22 @@ export default function perguntas() {
                     }}
                 />
 
-            </div>
-            <Anchor link="/formularios" title="Começar" className="my-44 w-fit mx-auto block" />
-            <div className="max-w-xs mx-auto mt-32">
-                <a href="/" className="flex items-center gap-2 text-sm w-fit">
-                    <ArrowLeft width={20} />
-                    <span>Menu Principal</span>
-                </a>
-            </div>
+      </div>
+      <Anchor link="/formularios" title="Começar" className="my-44 w-fit mx-auto block" />
+      <div className="max-w-xs mx-auto mt-32">
+        <a href="/" className="flex items-center gap-2 text-sm w-fit">
+          <ArrowLeft width={20} />
+          <span>Menu Principal</span>
+        </a>
+      </div>
 
-            {count && (
-                <>
-                {redirect(`/results?VT=${point}`)}
-                </> //redireciona e envia VT para '/results' após question = 10
-            )}
+      {count && (
+        <>
+          {redirect(`/results?VT=${point}`)}
+        </> //redireciona e envia VT para '/results' após question = 10
+      )}
 
-        </div>
-    )
+    </div>
+  )
 
 }
