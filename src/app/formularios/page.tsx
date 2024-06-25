@@ -9,8 +9,8 @@ export default function perguntas() {
 
     let VT = 10 //Valor total pontos
     let question = 1 //Questão inicial
-    let [count, setCount] = useState() //Recupera a ultima questão
-    let [point, setPoint] = useState() //Recupera a pontuação final
+    const [count, setCount] = useState(0) //Recupera a ultima questão
+    const [point, setPoint] = useState(0) //Recupera a pontuação final
 
     return (
         <div>
@@ -30,8 +30,8 @@ export default function perguntas() {
                         VT--//-1 ponto
                         question++//atualiza questão atual
                         
-                        question != 10 ? setCount("") : setCount(question)
-                        question != 10 ? setPoint("") : setPoint(VT)
+                        question != 10 ? setCount(0) : setCount(question)
+                        question != 10 ? setPoint(0) : setPoint(VT)
                     }}
                 />
                 <Button // a cada "não" pontuação permanece a mesma
@@ -40,8 +40,8 @@ export default function perguntas() {
                         VT = VT//+0 pontos
                         question++//atualiza questão atual
                     
-                        question != 10 ? setCount("") : setCount(question)
-                        question != 10 ? setPoint("") : setPoint(VT)
+                        question != 10 ? setCount(0) : setCount(question)
+                        question != 10 ? setPoint(0) : setPoint(VT)
                     }}
                 />
 

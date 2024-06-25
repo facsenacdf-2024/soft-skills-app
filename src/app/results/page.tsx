@@ -6,7 +6,6 @@ import { usePathname, useSearchParams} from 'next/navigation'
 
 function Results() {
 
-  const pathname = usePathname() //acessa o pathname da URL
   const searchParams = useSearchParams() //acessa os parametros da URL
 
   const VT = searchParams.get('VT') ? searchParams.get('VT') : 0 //Recupera VT
