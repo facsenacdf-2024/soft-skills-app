@@ -1,8 +1,16 @@
+'use client'
 import React from 'react'
 import { ArrowLeft } from 'lucide-react'
 import Anchor from '../../components/anchor'
+import { usePathname, useSearchParams} from 'next/navigation'
 
-const Results = () => {
+function Results() {
+
+  const pathname = usePathname() //acessa o pathname da URL
+  const searchParams = useSearchParams() //acessa os parametros da URL
+
+  const VT = searchParams.get('VT') ? searchParams.get('VT') : 0 //Recupera VT
+
   return (
     <>
     <div className="w-full bg-blue-800 py-5 px-5">
@@ -11,10 +19,10 @@ const Results = () => {
 
     <div className="max-w-xs mx-auto my-14 space-y-5 text-left">
       <h1 className='font-semibold'>
-        Seu score no teste foi de 7 pontos. Quanto mais próximo de 10 melhor é sua Inteligência Emocional!
+        Seu score no teste foi de {VT} pontos. Quanto mais próximo de 10 melhor é sua Inteligência Emocional!
       </h1>
       <h2 className='font-semibold'>
-        Saiba mais sobre  Inteligência Emocional
+        Saiba mais sobre Inteligência Emocional
       </h2>
       <p>
         Inteligência emocional abrange o reconhecimento e controle das
