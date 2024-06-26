@@ -1,16 +1,16 @@
 'use client'
-import { ArrowLeft } from "lucide-react";
 import Anchor from "@/components/anchor";
-import Button from "@/components/button"
+import Button from "@/components/button";
+import { ArrowLeft } from "lucide-react";
 import { redirect } from "next/navigation";
 import { useState } from "react";
 
-export default function perguntas() {
+export default function Perguntas() {
+  let VT = 10 // Valor total pontos
+  let question = 1 // Questão inicial
 
-    let VT = 10 //Valor total pontos
-    let question = 1 //Questão inicial
-    const [count, setCount] = useState(0) //Recupera a ultima questão
-    const [point, setPoint] = useState(0) //Recupera a pontuação final
+  const [count, setCount] = useState<number>(0) // Recupera a ultima questão
+  const [point, setPoint] = useState<number>(0) // Recupera a pontuação final
 
   return (
     <div>
@@ -19,31 +19,31 @@ export default function perguntas() {
       </div>
 
       <div className="max-w-xs mx-auto my-14 space-y-5 text-center">
-
         <p>
-          As perguntas estarão dispostas e serão alternadas, <b>neste mesmo campo</b>, a cada vez que o usuário retornar uma resposta, após 10 perguntas respondidas o questionário termina.
+          As perguntas estarão dispostas e serão alternadas, <b>neste mesmo campo</b>,
+          a cada vez que o usuário retornar uma resposta, após 10 perguntas respondidas
+          o questionário termina.
         </p>
 
-                <Button // a cada "sim" pontuação perde 1
-                    title="Sim"
-                    func={() => {
-                        VT--//-1 ponto
-                        question++//atualiza questão atual
-                        
-                        question != 10 ? setCount(0) : setCount(question)
-                        question != 10 ? setPoint(0) : setPoint(VT)
-                    }}
-                />
-                <Button // a cada "não" pontuação permanece a mesma
-                    title="Não"
-                    func={() => {
-                        VT = VT//+0 pontos
-                        question++//atualiza questão atual
-                    
-                        question != 10 ? setCount(0) : setCount(question)
-                        question != 10 ? setPoint(0) : setPoint(VT)
-                    }}
-                />
+        <Button // a cada "sim" pontuação perde 1
+          title="Sim"
+          func={() => {
+            VT-- // -1 ponto
+            question++// atualiza questão atual
+
+            question != 10 ? setCount(0) : setCount(question)
+            question != 10 ? setPoint(0) : setPoint(VT)
+          }}
+        />
+        <Button // a cada "não" pontuação permanece a mesma
+          title="Não"
+          func={() => {
+            question++ // atualiza questão atual
+
+            question != 10 ? setCount(0) : setCount(question)
+            question != 10 ? setPoint(0) : setPoint(VT)
+          }}
+        />
 
       </div>
       <Anchor link="/formularios" title="Começar" className="my-44 w-fit mx-auto block" />
@@ -54,10 +54,10 @@ export default function perguntas() {
         </a>
       </div>
 
-      {count && (
+      {count > 0 && (
         <>
           {redirect(`/results?VT=${point}`)}
-        </> //redireciona e envia VT para '/results' após question = 10
+        </> // redireciona e envia VT para '/results' após question = 10
       )}
 
     </div>
