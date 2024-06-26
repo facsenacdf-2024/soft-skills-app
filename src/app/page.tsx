@@ -1,7 +1,3 @@
-'use client';
-
-import Anchor from "../components/anchor";
-
 export default function Home() {
   return (
     <main>
@@ -14,7 +10,7 @@ export default function Home() {
       </div>
 
       <section className="max-w-xs mx-auto my-7">
-        <p className="text-center"> 
+        <p className="text-center">
           Bem-Vindo(a) ao Aplicativo de Autoavaliação de Soft Skills!
           Nós disponibilizamos questionários de autoavaliação para
           ajudá-lo(a) a desenvolver suas habilidades interpessoais.
