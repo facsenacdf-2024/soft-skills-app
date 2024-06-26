@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
 import { ArrowLeft } from 'lucide-react'
-import Anchor from '../../components/anchor'
-import { usePathname, useSearchParams} from 'next/navigation'
+import { useSearchParams} from 'next/navigation'
+import Anchor from '@/components/anchor'
 
 function Results() {
 
