@@ -3,60 +3,84 @@ import Anchor from "@/components/anchor";
 import Button from "@/components/button";
 import { ArrowLeft } from "lucide-react";
 import { redirect } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Questionario from "./questions.json"; // importando o json com as perguntas
+
+const questions = Questionario.map((c: any) => {
+  return (
+    <div className="box" key={c.id}>
+      <p>{c.perg}</p>
+    </div>
+  )
+})
 
 export default function Perguntas() {
-  let VT = 10 // Valor total pontos
-  let question = 1 // Questão inicial
+  const [cont, setCont] = useState<number>(0)
+  const [aux, setAux] = useState<number>(0)
+  const [pontos, setPontos] = useState<number>(10)
 
-  const [count, setCount] = useState<number>(0) // Recupera a ultima questão
-  const [point, setPoint] = useState<number>(0) // Recupera a pontuação final
+  useEffect(() => {
+
+  }, [aux, cont, pontos])
+
+  function nextQuestion() {
+    let a = aux
+    a++
+    setAux(a)
+  }
+
+  function scoreQuestion() {
+    let c = cont
+    c++
+    setCont(c)
+  }
+
+  function subtrairPontos() {
+    let p = pontos
+    p--
+    setPontos(p)
+  }
 
   return (
-    <div>
+    <div className="h-screen">
       <div className="w-full bg-blue-800 py-5 px-5">
         <h1 className="font-medium text-white">Autoavaliação de Soft Skills</h1>
       </div>
 
-      <div className="max-w-xs mx-auto my-14 space-y-5 text-center">
-        <p>
-          As perguntas estarão dispostas e serão alternadas, <b>neste mesmo campo</b>,
-          a cada vez que o usuário retornar uma resposta, após 10 perguntas respondidas
-          o questionário termina.
-        </p>
+      <div className="max-w-xs mx-auto my-14 space-y-5 text-center h-80">
+        {questions[aux]}
 
-        <Button // a cada "sim" pontuação perde 1
-          title="Sim"
-          func={() => {
-            VT-- // -1 ponto
-            question++// atualiza questão atual
-
-            question != 10 ? setCount(0) : setCount(question)
-            question != 10 ? setPoint(0) : setPoint(VT)
-          }}
-        />
-        <Button // a cada "não" pontuação permanece a mesma
-          title="Não"
-          func={() => {
-            question++ // atualiza questão atual
-
-            question != 10 ? setCount(0) : setCount(question)
-            question != 10 ? setPoint(0) : setPoint(VT)
-          }}
-        />
+        <div className="flex bottom-0 justify-around">
+          <Button // a cada "sim" pontuação perde 1
+            title="Sim"
+            func={() => {
+              nextQuestion()
+              scoreQuestion()
+              subtrairPontos()
+            }}
+          />
+          <Button // a cada "não" pontuação permanece a mesma
+            title="Não"
+            func={() => {
+              nextQuestion()
+              scoreQuestion()
+            }}
+          />
+        </div>
 
       </div>
+
       <Anchor link="/formularios" title="Começar" className="my-44 w-fit mx-auto block" />
-      <div className="max-w-xs mx-auto mt-32">
+      <div className="max-w-xs mx-auto bottom-0">
         <a href="/" className="flex items-center gap-2 text-sm w-fit">
           <ArrowLeft width={20} />
           <span>Menu Principal</span>
         </a>
       </div>
 
-      {count > 0 && (
+      {cont >= 10 && (
         <>
-          {redirect(`/results?VT=${point}`)}
+          {redirect(`/results?VT=${pontos}`)}
         </> // redireciona e envia VT para '/results' após question = 10
       )}
 
