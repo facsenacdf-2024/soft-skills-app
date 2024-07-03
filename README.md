@@ -1,3 +1,8 @@
+## Projeto
+Link para o projeto contendo as tasks - [Soft Skill Check Development](https://github.com/orgs/senac-volunteers/projects/1)
+
+![](https://i.imgur.com/z0WdIc9.png)
+
 ## Iniciando
 
 ### Clonando o repositório
