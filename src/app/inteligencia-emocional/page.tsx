@@ -21,7 +21,7 @@ export default function InteligenciaEmocional() {
 
       </div>
 
-      <Anchor title="Começar" link="/formularios" className="w-full text-center mx-auto block my-20" />
+      <Anchor title="Começar" link="/formularios" className="max-w-xs w-full text-center mx-auto block my-20" />
     </>
   )
 }
