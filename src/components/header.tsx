@@ -11,7 +11,7 @@ const Header = (props: Props) => {
         <button> {/* Este botão não faz nada por enquanto */}
           <Menu className="text-neutral-50 size-9" />
         </button>
-        <span className="text-neutral-50 font-medium text-lg">{props.page}</span>
+        <h1 className="text-neutral-50 font-medium text-lg">{props.page}</h1>
       </div>
     </div>
   )
