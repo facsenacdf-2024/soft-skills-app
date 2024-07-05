@@ -1,45 +1,45 @@
 [
-    {
-      "title": "Inteligência Emocional"
-    },
-    {
-      "id": 1,
-      "question": "Muitas vezes tenho dificuldade tomar decisões."
-    },
-    {
-      "id": 2,
-      "question": "Tenho dificuldade de participar de atividades sociais, em grupo de colegas ou pessoas."
-    },
-    {
-      "id": 3,
-      "question": "O meu humor muda muito, vivenciando momentos de alegria, raiva ou preocupação durante o dia."
-    },
-    {
-      "id": 4,
-      "question": "Tenho dificuldade em expressar meus sentimentos e emoções, ficando irritado(a) por isso."
-    },
-    {
-      "id": 5,
-      "question": "Me penalizo pelas falhas que comento."
-    },
-    {
-      "id": 6,
-      "question": "Tenho dificuldade em expressar meus sentimentos emocionais, muitas vezes ficando irritado(a) sem saber por quê."
-    },
-    {
-      "id": 7,
-      "question": "Me sinto inseguro(a) diante de outras pessoas estranhas e não consigo me comunicar bem."
-    },
-    {
-      "id": 8,
-      "question": "Tenho dificuldades em agir quando me sinto pressionando."
-    },
-    {
-      "id": 9,
-      "question": "Sou uma pessoa fácil de desistir frente a um novo desafio ou quando me sinto pressionado(a)."
-    },
-    {
-      "id": 10,
-      "question": "Tenho pouco controle sobre meus sentimentos, perdendo a calma e o equilíbrio diante de situações difíceis ou indesejadas."
-    }
-  ]
+  {
+    "title": "Inteligência Emocional"
+  },
+  {
+    "id": 1,
+    "question": "Muitas vezes tenho dificuldade tomar decisões."
+  },
+  {
+    "id": 2,
+    "question": "Tenho dificuldade de participar de atividades sociais, em grupo de colegas ou pessoas."
+  },
+  {
+    "id": 3,
+    "question": "O meu humor muda muito, vivenciando momentos de alegria, raiva ou preocupação durante o dia."
+  },
+  {
+    "id": 4,
+    "question": "Tenho dificuldade em expressar meus sentimentos e emoções, ficando irritado(a) por isso."
+  },
+  {
+    "id": 5,
+    "question": "Me penalizo pelas falhas que cometo."
+  },
+  {
+    "id": 6,
+    "question": "Tenho dificuldade em expressar meus sentimentos emocionais, muitas vezes ficando irritado(a) sem saber por quê."
+  },
+  {
+    "id": 7,
+    "question": "Me sinto inseguro(a) diante de outras pessoas estranhas e não consigo me comunicar bem."
+  },
+  {
+    "id": 8,
+    "question": "Tenho dificuldades em agir quando me sinto pressionado(a)."
+  },
+  {
+    "id": 9,
+    "question": "Sou uma pessoa fácil de desistir frente a um novo desafio ou quando me sinto pressionado(a)."
+  },
+  {
+    "id": 10,
+    "question": "Tenho pouco controle sobre meus sentimentos, perdendo a calma e o equilíbrio diante de situações difíceis ou indesejadas."
+  }
+]
