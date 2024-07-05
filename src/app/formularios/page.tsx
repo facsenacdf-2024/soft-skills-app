@@ -17,6 +17,7 @@ export default function Perguntas() {
   const [cont, setCont] = useState<number>(0)
   const [aux, setAux] = useState<number>(1)
   const [pontos, setPontos] = useState<number>(10)
+  const title = quiz[0].title
 
   useEffect(() => {}, [aux, cont, pontos])
 
@@ -40,7 +41,7 @@ export default function Perguntas() {
 
   return (
     <>
-      <Header page={''} /> 
+      <Header page={title!} /> 
 
       <div className="max-w-xs mx-auto my-14 text-center">
         {questions[aux]}
