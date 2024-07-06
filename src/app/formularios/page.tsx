@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { useState, useEffect } from "react";
 import quiz from "../questions.json"; // importando o json com as perguntas
 import Header from "@/components/header";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const questions = quiz.map((c: any) => {
   return (
@@ -19,29 +20,66 @@ export default function Perguntas() {
   const [pontos, setPontos] = useState<number>(10)
   const title = quiz[0].title
 
-  useEffect(() => {}, [aux, cont, pontos])
+  // let resposta: boolean = quiz[aux].resp //armazena o valor da resposta
+
+  // console.log(`Questão inicial: ${aux}`);// consoles para debug de questões
+  // console.log(`valor resp: ${quiz[aux].resp}`);
+
+  useEffect(() => { }, [aux, cont, pontos])
 
   function nextQuestion() {
     let a = aux
-    a++
-    setAux(a)
+
+    if (aux < 10) {
+      a++ //avança uma questão
+      setAux(a)
+    }
+  }
+
+  function currentQuestion(act: number) {
+    let a = aux
+    if (act == 1 && aux < 10) {
+      a++ //avança uma questão
+      setAux(a)
+    }
+
+    if (act == 0 && aux > 1) {
+      a-- //volta uma questão
+      setAux(a)
+    }
   }
 
   function scoreQuestion() {
-    let c = cont
-    c++
-    setCont(c)
+
+    if (quiz[aux].resp == null) {//N contabiliza questões já respondidas
+      let c = cont
+      c++
+      setCont(c)
+    }
+
   }
 
   function subtrairPontos() {
     let p = pontos
     p--
+    quiz[aux].resp = true //valor para 'sim'
     setPontos(p)
+  }
+
+  function permanecerPontos() {
+    if (quiz[aux].resp == true) { //caso a quiz[aux].resp seja alterada, equilibra a pontuação
+      let p = pontos
+      p++ 
+      setPontos(p)
+    }
+
+    quiz[aux].resp = false //valor para 'não'
+  
   }
 
   return (
     <>
-      <Header page={title!} /> 
+      <Header page={title!} />
 
       <div className="max-w-xs mx-auto my-14 text-center">
         {questions[aux]}
@@ -50,16 +88,17 @@ export default function Perguntas() {
           <Button // a cada "sim" pontuação perde 1
             title="Sim"
             func={() => {
-              nextQuestion()
               scoreQuestion()
               subtrairPontos()
+              nextQuestion() //Após todos os valores pendentes serem atribuídos aciona a função nextQuestion 
             }}
           />
           <Button // a cada "não" pontuação permanece a mesma
             title="Não"
             func={() => {
-              nextQuestion()
               scoreQuestion()
+              permanecerPontos()
+              nextQuestion()
             }}
           />
         </div>
@@ -67,6 +106,26 @@ export default function Perguntas() {
           <div className="bg-blue-800 h-2 rounded-full duration-300" style={{ width: `${cont * 10}%` }}></div>
         </div>
       </div>
+
+      <div className="max-w-xs mx-auto mt-64 flex justify-between">
+        <Button
+          title={<ChevronLeft size={60} strokeWidth={4} />}
+          func={() => {
+            currentQuestion(0)
+          }}
+          className="rounded-2xl w-20 flex justify-center"
+        />
+
+        <Button
+          title={<ChevronRight size={60} strokeWidth={4} />}
+          func={() => {
+            currentQuestion(1)
+          }}
+          className="rounded-2xl w-20 flex justify-center"
+        />
+
+      </div>
+
 
       {cont >= 10 && (
         <>
