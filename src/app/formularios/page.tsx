@@ -20,10 +20,10 @@ export default function Perguntas() {
   const [pontos, setPontos] = useState<number>(10)
   const title = quiz[0].title
 
-  // let resposta: boolean = quiz[aux].resp //armazena o valor da resposta
+  // let resposta = quiz[aux].resp //armazena o valor da resposta
 
-  // console.log(`Questão inicial: ${aux}`);// consoles para debug de questões
-  // console.log(`valor resp: ${quiz[aux].resp}`);
+  console.log(`Questão inicial: ${aux}`);// consoles para debug de questões
+  console.log(`valor resp: ${quiz[aux].resp}`);
 
   useEffect(() => { }, [aux, cont, pontos])
 
@@ -51,7 +51,7 @@ export default function Perguntas() {
 
   function scoreQuestion() {
 
-    if (quiz[aux].resp == null) {//N contabiliza questões já respondidas
+    if (quiz[aux].resp == 0) {//N contabiliza questões já respondidas
       let c = cont
       c++
       setCont(c)
@@ -62,18 +62,18 @@ export default function Perguntas() {
   function subtrairPontos() {
     let p = pontos
     p--
-    quiz[aux].resp = true //valor para 'sim'
+    quiz[aux].resp = 1 //valor para 'sim'
     setPontos(p)
   }
 
   function permanecerPontos() {
-    if (quiz[aux].resp == true) { //caso a quiz[aux].resp seja alterada, equilibra a pontuação
+    if (quiz[aux].resp == 1) { //caso a quiz[aux].resp seja alterada, equilibra a pontuação
       let p = pontos
       p++ 
       setPontos(p)
     }
 
-    quiz[aux].resp = false //valor para 'não'
+    quiz[aux].resp = 2 //valor para 'não'
   
   }
 
