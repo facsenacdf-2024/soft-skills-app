@@ -5,51 +5,61 @@
     {
       "id": 1,
       "question": "Muitas vezes tenho dificuldade tomar decisões.",
-      "resp": 0
+      "resp": 0,
+      "styl": ""
     },
     {
       "id": 2,
       "question": "Tenho dificuldade de participar de atividades sociais, em grupo de colegas ou pessoas.",
-      "resp": 0
+      "resp": 0,
+      "styl": ""
     },
     {
       "id": 3,
       "question": "O meu humor muda muito, vivenciando momentos de alegria, raiva ou preocupação durante o dia.",
-      "resp": 0
+      "resp": 0,
+      "styl": ""
     },
     {
       "id": 4,
       "question": "Tenho dificuldade em expressar meus sentimentos e emoções, ficando irritado(a) por isso.",
-      "resp": 0
+      "resp": 0,
+      "styl": ""
     },
     {
       "id": 5,
       "question": "Me penalizo pelas falhas que comento.",
-      "resp": 0
+      "resp": 0,
+      "styl": ""
     },
     {
       "id": 6,
       "question": "Tenho dificuldade em expressar meus sentimentos emocionais, muitas vezes ficando irritado(a) sem saber por quê.",
-      "resp": 0
+      "resp": 0,
+      "styl": ""
     },
     {
       "id": 7,
       "question": "Me sinto inseguro(a) diante de outras pessoas estranhas e não consigo me comunicar bem.",
-      "resp": 0
+      "resp": 0,
+      "styl": ""
     },
     {
       "id": 8,
       "question": "Tenho dificuldades em agir quando me sinto pressionando.",
-      "resp": 0
+      "resp": 0,
+      "styl": ""
     },
     {
       "id": 9,
       "question": "Sou uma pessoa fácil de desistir frente a um novo desafio ou quando me sinto pressionado(a).",
-      "resp": 0
+      "resp": 0,
+      "styl": ""
     },
     {
       "id": 10,
       "question": "Tenho pouco controle sobre meus sentimentos, perdendo a calma e o equilíbrio diante de situações difíceis ou indesejadas.",
-      "resp": 0
+      "resp": 0,
+      "styl": ""
     }
   ]
