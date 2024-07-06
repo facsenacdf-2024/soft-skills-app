@@ -22,8 +22,8 @@ export default function Perguntas() {
 
   // let resposta = quiz[aux].resp //armazena o valor da resposta
 
-  console.log(`Questão inicial: ${aux}`);// consoles para debug de questões
-  console.log(`valor resp: ${quiz[aux].resp}`);
+  // console.log(`Questão inicial: ${aux}`);// consoles para debug de questões
+  // console.log(`valor resp: ${quiz[aux].resp}`);
 
   useEffect(() => { }, [aux, cont, pontos])
 
