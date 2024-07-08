@@ -18,21 +18,13 @@ export default function Perguntas() {
   const [cont, setCont] = useState<number>(0)
   const [aux, setAux] = useState<number>(1)
   const [pontos, setPontos] = useState<number>(10)
-  const [selec, setSelec] = useState<string | undefined>("") //retorna condição para className da resposta de resposta já respondia
   const title = quiz[0].title
 
-  // let resposta = quiz[aux].resp //armazena o valor da resposta
-
-  console.log(`Questão inicial: ${aux}`);// consoles para debug de questões
+  // console.log(`Questão inicial: ${aux}`);// consoles para debug de questões
   // console.log(`valor resp: ${quiz[aux].resp}`);
-  console.log(`valor styl: ${quiz[aux].styl}`);
   // console.log(typeof(quiz[aux].styl));
   
-  console.log(`valor selec: ${selec}`);
-  
-
-  useEffect(() => { }, [aux, selec, cont, pontos])
-
+  useEffect(() => { }, [aux, cont, pontos])
 
   function nextQuestion() {
     let a = aux
@@ -45,8 +37,6 @@ export default function Perguntas() {
 
   function currentQuestion(act: number) {
     let a = aux    
-
-    setSelec(quiz[aux].styl)//atribui valor do json ao state 'selec'
 
     if (act == 1 && aux < 10) {
       a++ //avança uma questão 
@@ -84,17 +74,6 @@ export default function Perguntas() {
     }
 
     quiz[aux].resp = 2 //valor para 'não'
-  
-  }
-
-  function selecionado(){ //atribui no json uma referencia para estilizar resposta
-    if(quiz[aux].resp == 1){
-      quiz[aux].styl = 'sim'
-    }
-    
-    if (quiz[aux].resp == 2){
-      quiz[aux].styl = 'nao'
-    }
   }
 
   return (
@@ -110,20 +89,18 @@ export default function Perguntas() {
             func={() => {
               scoreQuestion()
               subtrairPontos()
-              selecionado()
               nextQuestion() //Após todos os valores pendentes serem atribuídos aciona a função nextQuestion 
             }}
-            className={selec == 'sim'? '!bg-blue-800 !text-white' : ' '}
+            className={quiz[aux].resp == 1? '!bg-blue-800 !text-white' : ' '}
           />
           <Button // a cada "não" pontuação permanece a mesma
             title="Não"
             func={() => {
               scoreQuestion()
               permanecerPontos()
-              selecionado()
               nextQuestion()
             }}
-            className={selec == 'nao' ? '!bg-blue-800 !text-white' : ' '}
+            className={quiz[aux].resp == 2 ? '!bg-blue-800 !text-white' : ' '}
           />
         </div>
         <div className="w-full h-2 bg-blue-100 rounded-full">
