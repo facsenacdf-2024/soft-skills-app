@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Button from "@/components/button";
 import Header from "@/components/header";
 import quizzes from "../../../quizzes.json";
@@ -10,7 +10,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 NOTA: Em algumas partes do código é possível notar
 que utiliza-se do total das questões - 1 como em
 
-function nextQuestion() { if (count < quiz?.questions.length - 1) setCount(count + 1) }
+function nextQuestion() { if (count < quizLength - 1) setCount(count + 1) }
 
 Isso é porque o array começa em 0 e por isso é
 preciso usar o total de questões - 1
@@ -18,23 +18,25 @@ preciso usar o total de questões - 1
 
 export default function Page({ params }: Readonly<{ params: { slug: string } }>) {
   const quiz: Quiz = quizzes.find(quiz => quiz.slug === params.slug)! // Busca o quiz pelo slug
+  const quizLength = quiz.questions.length
+
   const router = useRouter()
 
   // Numero da questão, deve começar em 0
   const [count, setCount] = useState<number>(0)
 
   // Pontos iniciais equivalente ao total de perguntas
-  const [points, setPoints] = useState<number>(quiz?.questions.length)
+  const [points, setPoints] = useState<number>(quizLength)
 
   if (!quiz) {
-    return redirect('/')
+    return router.push('/')
   }
 
-  if (count > quiz?.questions.length - 1) {
-    return redirect('/quiz/' + quiz.slug + '/resultados')
+  if (count > quizLength - 1) {
+    return router.push('/quiz/' + quiz.slug + '/resultados')
   }
 
-  function nextQuestion() { if (count < quiz?.questions.length - 1) setCount(count + 1) }
+  function nextQuestion() { if (count < quizLength - 1) setCount(count + 1) }
 
   function subtractPoints() {
     quiz.questions[count].selected = 1 // Marca a questão selecionada como "Sim"
@@ -43,7 +45,7 @@ export default function Page({ params }: Readonly<{ params: { slug: string } }>)
 
   function navigateQuestion(value: number) {
     if (count > 0 && value < 0) setCount(count - 1) // Retorna para a questão anterior
-    if (count < quiz?.questions.length - 1 && value > 0) setCount(count + 1) // Avança para a próxima questão
+    if (count < quizLength - 1 && value > 0) setCount(count + 1) // Avança para a próxima questão
   }
 
   function adjustPoints() {
@@ -105,10 +107,10 @@ export default function Page({ params }: Readonly<{ params: { slug: string } }>)
         <div className="w-full h-2 bg-blue-100 rounded-full">
           <div className="bg-blue-800 h-2 rounded-full duration-300"
             // Calcula o percentual de completude das questões do valor total de questões
-            style={{ width: `${(100 * count + 100) / quiz.questions.length}%` }}>
+            style={{ width: `${(100 * count + 100) / quizLength}%` }}>
           </div>
           <Button title={'Confirmar respostas'} func={persistPoints}
-            className={count === quiz.questions.length - 1 && quiz.questions[count].selected != 0 ? `w-full mt-10` : 'hidden'}
+            className={count === quizLength - 1 && quiz.questions[count].selected != 0 ? `w-full mt-10` : 'hidden'}
           />
         </div>
 
