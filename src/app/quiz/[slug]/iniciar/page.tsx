@@ -83,7 +83,7 @@ export default function Page({ params }: Readonly<{ params: { slug: string } }>)
 
       <div className="max-w-xs mx-auto my-14 text-center">
         <p className="h-20">
-          {quiz.questions[count].question}
+          {quiz.questions[count].id + '. ' + quiz.questions[count].question}
         </p>
 
         <div className="flex justify-evenly items-center my-20">
