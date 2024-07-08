@@ -1,3 +1,4 @@
+'use client'
 import { Menu } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
@@ -10,18 +11,21 @@ const Header = (props: Props) => {
   const menuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // fechar o menu apertando ESC
+    // Fechar o menu apertando ESC
     const handleKeyDown = (e: KeyboardEvent) => { if (e.key === "Escape") setShow(false); }
 
     document.addEventListener("keydown", handleKeyDown)
-    return () => document.removeEventListener("keydown", handleKeyDown) // Remover o evento quando o componente é desmontado
+    // Remover o evento quando o componente é desmontado
+    return () => document.removeEventListener("keydown", handleKeyDown) 
   }, []);
 
   useEffect(() => {
+    // Fechar menu ao clicar fora
     const handleClickOutside = (e: any) => { if (!menuRef.current?.contains(e.target as Node)) setShow(false); }
 
     document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside) // Remover o evento quando o componente é desmontado
+    // Remover o evento quando o componente é desmontado
+    return () => document.removeEventListener("mousedown", handleClickOutside)
   })
 
   return (
@@ -41,7 +45,7 @@ const Header = (props: Props) => {
           <a href="/" className="text-neutral-50 text-lg py-1 w-full hover:underline underline-offset-2">
             Início
           </a>
-          <a href="/inteligencia-emocional" className="text-neutral-50 text-lg py-1 w-full hover:underline underline-offset-2">
+          <a href="/quiz/inteligencia-emocional" className="text-neutral-50 text-lg py-1 w-full hover:underline underline-offset-2">
             Inteligência Emocional
           </a>
         </div>
