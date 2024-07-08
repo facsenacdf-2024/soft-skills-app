@@ -9,43 +9,63 @@
     "questions": [
       {
         "id": 1,
-        "question": "Muitas vezes tenho dificuldade tomar decisões."
+        "question": "Muitas vezes tenho dificuldade tomar decisões.",
+        "selected": 0,
+        "options": []
       },
       {
         "id": 2,
-        "question": "Tenho dificuldade de participar de atividades sociais, em grupo de colegas ou pessoas."
+        "question": "Tenho dificuldade de participar de atividades sociais, em grupo de colegas ou pessoas.",
+        "selected": 0,
+        "options": []
       },
       {
         "id": 3,
-        "question": "O meu humor muda muito, vivenciando momentos de alegria, raiva ou preocupação durante o dia."
+        "question": "O meu humor muda muito, vivenciando momentos de alegria, raiva ou preocupação durante o dia.",
+        "selected": 0,
+        "options": []
       },
       {
         "id": 4,
-        "question": "Tenho dificuldade em expressar meus sentimentos e emoções, ficando irritado(a) por isso."
+        "question": "Tenho dificuldade em expressar meus sentimentos e emoções, ficando irritado(a) por isso.",
+        "selected": 0,
+        "options": []
       },
       {
         "id": 5,
-        "question": "Me penalizo pelas falhas que cometo."
+        "question": "Me penalizo pelas falhas que cometo.",
+        "selected": 0,
+        "options": []
       },
       {
         "id": 6,
-        "question": "Tenho dificuldade em expressar meus sentimentos emocionais, muitas vezes ficando irritado(a) sem saber por quê."
+        "question": "Tenho dificuldade em expressar meus sentimentos emocionais, muitas vezes ficando irritado(a) sem saber por quê.",
+        "selected": 0,
+        "options": []
       },
       {
         "id": 7,
-        "question": "Me sinto inseguro(a) diante de outras pessoas estranhas e não consigo me comunicar bem."
+        "question": "Me sinto inseguro(a) diante de outras pessoas estranhas e não consigo me comunicar bem.",
+        "selected": 0,
+        "options": []
       },
       {
         "id": 8,
-        "question": "Tenho dificuldades em agir quando me sinto pressionado(a)."
+        "question": "Tenho dificuldades em agir quando me sinto pressionado(a).",
+        "selected": 0,
+        "options": []
       },
       {
         "id": 9,
-        "question": "Sou uma pessoa fácil de desistir frente a um novo desafio ou quando me sinto pressionado(a)."
+        "question": "Sou uma pessoa fácil de desistir frente a um novo desafio ou quando me sinto pressionado(a).",
+        "selected": 0,
+        "options": []
       },
       {
         "id": 10,
-        "question": "Tenho pouco controle sobre meus sentimentos, perdendo a calma e o equilíbrio diante de situações difíceis ou indesejadas."
+        "question": "Tenho pouco controle sobre meus sentimentos, perdendo a calma e o equilíbrio diante de situações difíceis ou indesejadas.",
+        "selected": 0,
+        "options": []
       }
     ]
   },
@@ -60,28 +80,34 @@
       {
         "id": 1,
         "question": "lorem ipsum...",
+        "selected": 0,
         "options": [
           {
             "id": 1,
-            "option": "option 1"
+            "option": "option 1",
+            "selected": 0
           },
           {
             "id": 2,
-            "option": "option 2"
+            "option": "option 2",
+            "selected": 0
           }
         ]
       },
       {
         "id": 2,
         "question": "lorem ipsum...",
+        "selected": 0,
         "options": [
           {
             "id": 1,
-            "option": "option 1"
+            "option": "option 1",
+            "selected": 0
           },
           {
             "id": 2,
-            "option": "option 2"
+            "option": "option 2",
+            "selected": 0
           }
         ]
       }
