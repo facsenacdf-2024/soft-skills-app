@@ -21,6 +21,7 @@ export default function Page({
 }: Readonly<{ params: { slug: string } }>) {
   const quiz: Quiz = quizzes.find((quiz) => quiz.slug === params.slug)!; // Busca o quiz pelo slug
   const quizLength = quiz.questions.length;
+  const allQuestionsSelected = quiz.questions.every(question => question.selected !== 0);
 
   const router = useRouter();
 
@@ -126,7 +127,8 @@ export default function Page({
               title={"Confirmar respostas"}
               func={persistPoints}
               className={
-                questionID === quizLength - 1 && quiz.questions[questionID].selected != 0
+                // Se todas as questões tiverem sido respondidas, mostrar o botão
+                allQuestionsSelected
                   ? `w-9/12 mt-10`
                   : "hidden"
               }
