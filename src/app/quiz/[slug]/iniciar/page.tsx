@@ -41,8 +41,8 @@ export default function Page({
   }
 
   function subtractPoints() {
+    if (points > 0 && quiz.questions[questionID].selected != 1) setPoints(points - 1);
     quiz.questions[questionID].selected = 1; // Marca a questão selecionada como "Sim"
-    if (points > 0) setPoints(points - 1);
   }
 
   function navigateQuestion(value: number) {
