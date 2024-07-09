@@ -10,7 +10,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 NOTA: Em algumas partes do código é possível notar
 que utiliza-se do total das questões - 1 como em
 
-function nextQuestion() { if (count < quizLength - 1) setCount(count + 1) }
+function nextQuestion() { if (questionID < quizLength - 1) setQuestionID(questionID + 1) }
 
 Isso é porque o array começa em 0 e por isso é
 preciso usar o total de questões - 1
@@ -25,40 +25,37 @@ export default function Page({
   const router = useRouter();
 
   // Numero da questão, deve começar em 0
-  const [count, setCount] = useState<number>(0);
+  const [questionID, setQuestionID] = useState<number>(0);
 
   // Pontos iniciais equivalente ao total de perguntas
   const [points, setPoints] = useState<number>(quizLength);
 
+  // Se o quiz não for encontrado no JSON, redireciona para a página inicial
   if (!quiz) {
     return router.push("/");
   }
 
-  if (count > quizLength - 1) {
-    return router.push("/quiz/" + quiz.slug + "/resultados");
-  }
-
   function nextQuestion() {
-    if (count < quizLength - 1) setCount(count + 1);
+    if (questionID < quizLength - 1) setQuestionID(questionID + 1);
   }
 
   function subtractPoints() {
-    quiz.questions[count].selected = 1; // Marca a questão selecionada como "Sim"
-    setPoints(points - 1);
+    quiz.questions[questionID].selected = 1; // Marca a questão selecionada como "Sim"
+    if (points > 0) setPoints(points - 1);
   }
 
   function navigateQuestion(value: number) {
-    if (count > 0 && value < 0) setCount(count - 1); // Retorna para a questão anterior
-    if (count < quizLength - 1 && value > 0) setCount(count + 1); // Avança para a próxima questão
+    if (questionID > 0 && value < 0) setQuestionID(questionID - 1); // Retorna para a questão anterior
+    if (questionID < quizLength - 1 && value > 0) setQuestionID(questionID + 1); // Avança para a próxima questão
   }
 
   function adjustPoints() {
-    if (quiz.questions[count].selected == 1) {
+    if (quiz.questions[questionID].selected == 1) {
       // Se a questão foi selecionada "Sim"
       setPoints(points + 1);
     }
 
-    quiz.questions[count].selected = 2;
+    quiz.questions[questionID].selected = 2;
   }
 
   function storePoints() {
@@ -91,12 +88,12 @@ export default function Page({
       <section className="w-full">
         <div className="mx-3 md:mx-auto md:w-[520px] text-center text-xl lg:text-2xl">
           <p className="h-20 mt-10">
-            {quiz.questions[count].id + ". " + quiz.questions[count].question}
+            {quiz.questions[questionID].id + ". " + quiz.questions[questionID].question}
           </p>
           <div className="flex justify-evenly items-center my-20">
             <Button
               className={
-                quiz.questions[count].selected === 1
+                quiz.questions[questionID].selected === 1
                   ? "!bg-blue-800 !text-white"
                   : " "
               }
@@ -108,7 +105,7 @@ export default function Page({
             />
             <Button
               className={
-                quiz.questions[count].selected === 2
+                quiz.questions[questionID].selected === 2
                   ? "!bg-blue-800 !text-white"
                   : " "
               }
@@ -123,13 +120,13 @@ export default function Page({
             <div
               className="bg-blue-800 h-2 rounded-full duration-300"
               // Calcula o percentual de completude das questões do valor total de questões
-              style={{ width: `${(100 * count + 100) / quizLength}%` }}
+              style={{ width: `${(100 * questionID + 100) / quizLength}%` }}
             ></div>
             <Button
               title={"Confirmar respostas"}
               func={persistPoints}
               className={
-                count === quizLength - 1 && quiz.questions[count].selected != 0
+                questionID === quizLength - 1 && quiz.questions[questionID].selected != 0
                   ? `w-9/12 mt-10`
                   : "hidden"
               }
