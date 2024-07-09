@@ -17,9 +17,9 @@ export default function Page({
       <Header page={quiz.title} />
 
       <section className="w-full">
-        <div className="grid grid-flow-row-dense grid-cols-5 md:mx-8 gap-2 lg:gap-16 xl:gap-20">
+        <div className="sm:grid grid-flow-row-dense grid-cols-5 md:mx-8 gap-2 lg:gap-16 xl:gap-20">
           <div className="col-span-2 md:max-w-xs text-xl md:text-sm lg:text-xl">
-            <div className="md:h-[280px] md:py-16">
+            <div className="md:h-[280px] md:py-16 max-sm:w-[320px] max-sm:mx-auto mt-10">
               <p>
                 Essa{" "}
                 <span className="font-semibold text-blue-800">
@@ -27,7 +27,9 @@ export default function Page({
                 </span>{" "}
                 levará em torno de {quiz.duration} minutos.
               </p>
+              <br />
               <p>{quiz.description}</p>
+              <br />
               <p className="text-base text-neutral-500">
                 Suas respostas serão mantidas em sigilo.
               </p>
@@ -40,8 +42,8 @@ export default function Page({
               />
             </div>
           </div>
-          <div className="banner col-span-3">
-            <div className="img bg-contain bg-center bg-no-repeat"></div>
+          <div className="banner col-span-3 mt-10">
+            <div className="img bg-contain bg-center bg-no-repeat max-sm:hidden"></div>
           </div>
         </div>
       </section>
