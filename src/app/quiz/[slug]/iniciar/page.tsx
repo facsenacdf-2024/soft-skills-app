@@ -10,7 +10,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 NOTA: Em algumas partes do código é possível notar
 que utiliza-se do total das questões - 1 como em
 
-function nextQuestion() { if (questionID < quizLength - 1) setQuestionID(questionID + 1) }
+function nextQuestion() {
+  if (questionID < quizLength - 1) setQuestionID(questionID + 1)
+}
 
 Isso é porque o array começa em 0 e por isso é
 preciso usar o total de questões - 1
@@ -21,7 +23,6 @@ export default function Page({
 }: Readonly<{ params: { slug: string } }>) {
   const quiz: Quiz = quizzes.find((quiz) => quiz.slug === params.slug)!; // Busca o quiz pelo slug
   const quizLength = quiz.questions.length;
-  const allQuestionsSelected = quiz.questions.every(question => question.selected !== 0);
 
   const router = useRouter();
 
@@ -30,6 +31,9 @@ export default function Page({
 
   // Pontos iniciais equivalente ao total de perguntas
   const [points, setPoints] = useState<number>(quizLength);
+
+  const [selectedQuestions, setSelectedQuestions] = useState<number[]>(Array(quizLength).fill(0));
+  const allQuestionsSelected = selectedQuestions.every(selectedValue => selectedValue != 0);
 
   // Se o quiz não for encontrado no JSON, redireciona para a página inicial
   if (!quiz) {
@@ -41,8 +45,10 @@ export default function Page({
   }
 
   function subtractPoints() {
-    if (points > 0 && quiz.questions[questionID].selected != 1) setPoints(points - 1);
-    quiz.questions[questionID].selected = 1; // Marca a questão selecionada como "Sim"
+    if (points > 0 && selectedQuestions[questionID] != 1) setPoints(points - 1);
+    const newSelectedQuestions = [...selectedQuestions];
+    newSelectedQuestions[questionID] = 1; // Marcar questão selecionada como "Sim" 
+    setSelectedQuestions(newSelectedQuestions);
 
     nextQuestion();
   }
@@ -53,12 +59,14 @@ export default function Page({
   }
 
   function adjustPoints() {
-    if (quiz.questions[questionID].selected == 1) {
+    if (selectedQuestions[questionID] === 1) {
       // Se a questão foi selecionada "Sim"
       setPoints(points + 1);
     }
 
-    quiz.questions[questionID].selected = 2;
+    const newSelectedQuestions = [...selectedQuestions];
+    newSelectedQuestions[questionID] = 2; // Marcar questão selecionada como "Não" 
+    setSelectedQuestions(newSelectedQuestions);
 
     nextQuestion();
   }
@@ -93,12 +101,12 @@ export default function Page({
       <section className="w-full">
         <div className="mx-3 md:mx-auto md:w-[520px] text-center text-xl lg:text-2xl">
           <p className="h-20 mt-10">
-            {quiz.questions[questionID].id + ". " + quiz.questions[questionID].question}
+            {(questionID + 1) + ". " + quiz.questions[questionID].question}
           </p>
           <div className="flex justify-evenly items-center my-20">
             <Button
               className={
-                quiz.questions[questionID].selected === 1
+                selectedQuestions[questionID] === 1
                   ? "!bg-blue-800 !text-white"
                   : " "
               }
@@ -107,7 +115,7 @@ export default function Page({
             />
             <Button
               className={
-                quiz.questions[questionID].selected === 2
+                selectedQuestions[questionID] === 2
                   ? "!bg-blue-800 !text-white"
                   : " "
               }
