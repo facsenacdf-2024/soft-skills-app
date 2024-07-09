@@ -1,5 +1,5 @@
 interface Props {
-  title: string,
+  title: string | JSX.Element,
   className?: string,
   type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'],
   func?: () => void

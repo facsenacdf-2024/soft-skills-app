@@ -18,7 +18,7 @@ export default function Home() {
           ajudá-lo(a) a desenvolver suas habilidades interpessoais.
         </p>
 
-        <Anchor link="/inteligencia-emocional" title="Iniciar" className="my-44 w-fit mx-auto block" />
+        <Anchor link="/quiz/inteligencia-emocional" title="Iniciar" className="my-44 w-fit mx-auto block" />
       </section>
     </main>
   );
