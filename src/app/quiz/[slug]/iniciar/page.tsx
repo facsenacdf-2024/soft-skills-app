@@ -43,6 +43,8 @@ export default function Page({
   function subtractPoints() {
     if (points > 0 && quiz.questions[questionID].selected != 1) setPoints(points - 1);
     quiz.questions[questionID].selected = 1; // Marca a questão selecionada como "Sim"
+
+    nextQuestion();
   }
 
   function navigateQuestion(value: number) {
@@ -57,6 +59,8 @@ export default function Page({
     }
 
     quiz.questions[questionID].selected = 2;
+
+    nextQuestion();
   }
 
   function storePoints() {
@@ -99,10 +103,7 @@ export default function Page({
                   : " "
               }
               title="Sim"
-              func={() => {
-                nextQuestion();
-                subtractPoints(); // Diminui os pontos a cada "Sim"
-              }}
+              func={subtractPoints}
             />
             <Button
               className={
@@ -111,10 +112,7 @@ export default function Page({
                   : " "
               }
               title="Não"
-              func={() => {
-                nextQuestion();
-                adjustPoints();
-              }}
+              func={adjustPoints}
             />
           </div>
           <div className="w-full h-2 bg-blue-100 rounded-full">
@@ -125,13 +123,13 @@ export default function Page({
             ></div>
             <Button
               title={"Confirmar respostas"}
-              func={persistPoints}
               className={
                 // Se todas as questões tiverem sido respondidas, mostrar o botão
                 allQuestionsSelected
                   ? `w-9/12 mt-10`
                   : "hidden"
               }
+              func={persistPoints}
             />
           </div>
           <div className="max-w-xs mx-auto mt-64 flex justify-between">
