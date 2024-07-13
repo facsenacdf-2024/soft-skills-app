@@ -2,6 +2,8 @@ import Anchor from "@/components/anchor";
 import Header from "@/components/header";
 import quizzes from "../../quizzes.json";
 import { redirect } from "next/navigation";
+import Image from "next/image";
+import banner from "../../../image/hero-soft-skill.webp";
 
 export default function Page({
   params,
@@ -42,8 +44,8 @@ export default function Page({
               />
             </div>
           </div>
-          <div className="banner col-span-3 mt-10">
-            <div className="img bg-contain bg-center bg-no-repeat max-sm:hidden"></div>
+          <div className="col-span-3 mt-10">
+            <Image className="max-sm:hidden mx-auto w-3/4" src={banner} alt="" />
           </div>
         </div>
       </section>
