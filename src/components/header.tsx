@@ -1,56 +1,116 @@
 'use client'
-import { Menu } from "lucide-react"
-import { useEffect, useRef, useState } from "react"
+import { Brain, Building2, ChevronDown } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
 
-type Props = {
-  page: string
-}
-
-const Header = (props: Props) => {
-  const [show, setShow] = useState(false)
-  const menuRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    // Fechar o menu apertando ESC
-    const handleKeyDown = (e: KeyboardEvent) => { if (e.key === "Escape") setShow(false); }
-
-    document.addEventListener("keydown", handleKeyDown)
-    // Remover o evento quando o componente é desmontado
-    return () => document.removeEventListener("keydown", handleKeyDown) 
-  }, []);
-
-  useEffect(() => {
-    // Fechar menu ao clicar fora
-    const handleClickOutside = (e: any) => { if (!menuRef.current?.contains(e.target as Node)) setShow(false); }
-
-    document.addEventListener("mousedown", handleClickOutside)
-    // Remover o evento quando o componente é desmontado
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  })
-
+const Header = () => {
   return (
-    <>
-      <div className="w-full bg-blue-800 py-4 sticky top-0">
-        <div className="px-5 flex gap-5 items-center">
-          <button onClick={() => setShow(!show)}>
-            <Menu className="text-neutral-50 size-9" />
-          </button>
-          <h1 className="text-neutral-50 font-medium text-lg">{props.page}</h1>
-        </div>
+    <header className="fixed top-0 left-1/2 -translate-x-1/2 max-w-xl w-full z-50">
+      {/* Desktop menu */}
+      <div
+        className="
+        bg-white/20 backdrop-blur border m-6 py-2 pl-4 pr-3 rounded-full 
+          hidden sm:flex justify-between items-center w-full mx-auto
+        ">
+        <Link href={"/"}>
+          <Image src="/logo.svg" width={36} height={36} alt="Logo" className="size-9" />
+        </Link>
+        <ul className="flex gap-2 font-medium text-sm">
+          <li className="group">
+            <div className="flex items-center gap-1 px-3 py-1.5 hover:bg-neutral-50 rounded-md cursor-pointer">
+              <p>Quiz</p>
+              <ChevronDown className="size-4 translate-y-0.5 group-hover:rotate-180 duration-300" />
+            </div>
+            <div
+              className="
+                absolute mt-3 w-max rounded-md bg-purple-50 border border-purple-100 p-5 space-y-3 -translate-x-7 translate-y-3 invisible opacity-0
+                group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible duration-300
+              ">
+              <h3 className="font-medium text-violet-700">Quizzes disponíveis</h3>
+              <hr className="border-purple-100" />
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-center gap-2">
+                  <Link href="/quiz/inteligencia-emocional"
+                    className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-violet-600 hover:bg-purple-100">
+                    <Brain className="size-4" />
+                    <span>Inteligência Emocional</span>
+                  </Link>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Link href="/quiz/inteligencia-emocional"
+                    className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-violet-600 hover:bg-purple-100">
+                    <Building2 className="size-4" />
+                    <span>Tipos de Liderança</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <Link href={"/sobre"}
+              className="px-3 py-1.5 block hover:bg-neutral-100 rounded-md cursor-pointer">
+              Sobre
+            </Link>
+          </li>
+          <li>
+            <Link href={"/login"}
+              className="px-6 py-2 ml-4 block bg-violet-500 text-white hover:bg-violet-400 rounded-full cursor-pointer">
+              Entrar
+            </Link>
+          </li>
+        </ul>
       </div>
 
-      <div ref={menuRef} className={`h-screen max-w-60 w-full fixed top-0 left-0 bg-blue-800 z-50 duration-500
-          ${show ? 'translate-x-0' : '-translate-x-full'}`}>
-        <div className="flex flex-col justify-center items-start px-5 my-20 divide-y divide-orange-400">
-          <a href="/" className="text-neutral-50 text-lg py-1 w-full hover:underline underline-offset-2">
+      {/* Mobile menu */}
+      <div className="sm:hidden inline group absolute top-0 right-0">
+        <div className="bg-white border rounded-md p-2 m-4 w-fit">
+          <Image src="/logo.svg" width={48} height={48} alt="Logo" className="min-w-12" />
+        </div>
+        <div
+          className="
+            absolute w-max rounded-md bg-purple-50 border border-purple-100 p-5 space-y-3 -translate-x-0 translate-y-0 invisible opacity-0
+            group-hover:opacity-100 group-hover:-translate-x-2/3 group-hover:visible duration-300 group-hover:z-50
+          ">
+          <Link href={"/"}
+            className="font-medium text-violet-700 block">
             Início
-          </a>
-          <a href="/quiz/inteligencia-emocional" className="text-neutral-50 text-lg py-1 w-full hover:underline underline-offset-2">
-            Inteligência Emocional
-          </a>
+          </Link>
+
+          <hr className="border-purple-100" />
+
+          <Link href={"/sobre"}
+            className="font-medium text-violet-700 block">
+            Sobre
+          </Link>
+
+          <hr className="border-purple-100" />
+
+          <h3 className="font-medium text-violet-700">Quizzes disponíveis</h3>
+          <ul className="space-y-2 text-sm">
+            <li className="flex items-center gap-2">
+              <Link href="/quiz/inteligencia-emocional"
+                className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-violet-600 hover:bg-purple-100">
+                <Brain className="size-4" />
+                <span>Inteligência Emocional</span>
+              </Link>
+            </li>
+            <li className="flex items-center gap-2">
+              <Link href="/quiz/inteligencia-emocional"
+                className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-violet-600 hover:bg-purple-100">
+                <Building2 className="size-4" />
+                <span>Tipos de Liderança</span>
+              </Link>
+            </li>
+          </ul>
+
+
+          <Link href={"/login"}
+            className="px-6 py-2 ml-4 !mt-8 text-center block bg-purple-500 text-white hover:bg-purple-400 rounded-full cursor-pointer">
+            Entrar
+          </Link>
         </div>
       </div>
-    </>
+    </header >
   )
 }
 
