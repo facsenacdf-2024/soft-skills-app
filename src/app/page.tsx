@@ -1,25 +1,80 @@
-import Anchor from "@/components/anchor";
+import Github from "@/assets/icons/github";
+import Header from "@/components/header";
+import { Brain, Building2 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main>
-      <div className="max-w-xs mx-auto my-10">
-        <h1 className="font-semibold text-center">Faculdade de Tecnologia e Inovação SENAC DF</h1>
-      </div>
+    <>
+      <Header />
+      <main className="py-36">
+        <div className="fixed inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e_100%)]"></div>
+        <div className="max-w-xs sm:max-w-2xl mx-auto">
+          <div className="text-center space-y-7 mb-72 sm:mt-20">
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-violet-500">
+              Soft Skills Check
+            </h1>
+            <p className="text-lg sm:text-xl text-neutral-500 font-medium">
+              Questionários de autoavaliação para te ajudar a desenvolver suas habilidades interpessoais
+            </p>
+          </div>
+          <div className="px-6 py-4 pb-7 mb-20 bg-white border rounded-lg space-y-4 relative">
+            <Image src={'/mountain.svg'} width={350} height={350} alt="Soft Skills Check" className="w-80 absolute top-0 right-0 -translate-y-full -z-10"/>
+            <div className="flex items-center gap-3">
+              <h2 className="font-semibold text-xl text-violet-500">Destaques</h2>
+              <hr className="w-full border-purple-100" />
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Link href={"/quiz/inteligencia-emocional"}
+                className="bg-purple-50 border block border-purple-100 rounded-md w-full hover:bg-purple-100 duration-300">
+                <div className="flex items-center gap-2 text-violet-600 px-4 py-2.5">
+                  <Brain className="size-4" />
+                  <h3 className="min-w-max">
+                    Inteligência Emocional
+                  </h3>
+                </div>
 
-      <div className="bg-blue-800 w-full py-4">
-        <h1 className="text-center text-2xl italic font-medium text-white">Soft Skills Check</h1>
-      </div>
+                <hr className="border-purple-100" />
 
-      <section className="max-w-xs mx-auto my-7">
-        <p className="text-center">
-          Bem-Vindo(a) ao Aplicativo de Autoavaliação de Soft Skills!
-          Nós disponibilizamos questionários de autoavaliação para
-          ajudá-lo(a) a desenvolver suas habilidades interpessoais.
-        </p>
+                <p className="text-sm px-4 py-2.5 text-neutral-600 h-36 overflow-y-auto">
+                  Inteligência emocional é um conceito em psicologia que descreve a capacidade de
+                  reconhecer e avaliar os seus próprios sentimentos e os dos outros, assim como a
+                  capacidade de lidar com eles.
+                </p>
+                <p className="text-sm text-end text-violet-400 px-4 py-2.5">2min</p>
+              </Link>
+              <Link href={"/quiz/tipos-de-lideranca"}
+                className="bg-purple-50 border block border-purple-100 rounded-md w-full hover:bg-purple-100 duration-300">
+                <div className="flex items-center gap-2 text-violet-600 px-4 py-2.5">
+                  <Building2 className="size-4" />
+                  <h3>
+                    Tipos de Liderança
+                  </h3>
+                </div>
 
-        <Anchor link="/quiz/inteligencia-emocional" title="Iniciar" className="my-44 w-fit mx-auto block" />
-      </section>
-    </main>
+                <hr className="border-purple-100" />
+
+                <p className="text-sm px-4 py-2.5 text-neutral-600 h-36 overflow-y-auto">
+                  Existem várias abordagens de liderança amplamente reconhecidas, mas de acordo com o
+                  autor Carl Lindberg, os estilos mais clássicos de liderança são: democrática, liberal
+                  e autocrática. Assim, o estilo democrático enfatiza a participação, o liberal permite
+                  autonomia e o autocrático centraliza o poder decisório.
+                </p>
+                <p className="text-sm text-end text-violet-400 px-4 py-2.5">2min</p>
+              </Link>
+            </div>
+          </div>
+
+          <div className="bg-white border rounded-full py-3 px-8 text-neutral-500 text-xs text-center sm:text-sm w-full mb-10">
+            <p>&copy; 2024 Soft Skills Check</p>
+          </div>
+          <Link href={'https://github.com/senac-volunteers/soft-skills-app'} target="_blank" referrerPolicy="no-referrer"
+            className="w-fit block mx-auto">
+            <Github className="size-5 text-neutral-700" />
+          </Link>
+        </div>
+      </main>
+    </>
   );
 }
