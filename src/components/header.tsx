@@ -37,11 +37,12 @@ const Header = () => {
                   </Link>
                 </li>
                 <li className="flex items-center gap-2">
+                  {/* TODO: Adicionar quando for criado a autoavaliação de Lideranca
                   <Link href="/quiz/tipos-de-lideranca"
                     className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-violet-600 hover:bg-violet-100">
                     <Building2 className="size-4" />
                     <span>Tipos de Liderança</span>
-                  </Link>
+                  </Link> */}
                 </li>
               </ul>
             </div>
@@ -53,10 +54,11 @@ const Header = () => {
             </Link>
           </li>
           <li>
+            {/* TODO: Adicionar quando for criado o login
             <Link href={"/login"}
               className="px-6 py-2 ml-4 block bg-violet-500 text-white hover:bg-violet-600 rounded-full cursor-pointer">
               Entrar
-            </Link>
+            </Link> */}
           </li>
         </ul>
       </div>
@@ -94,20 +96,22 @@ const Header = () => {
                 <span>Inteligência Emocional</span>
               </Link>
             </li>
+            {/* TODO: Adicionar quando for criado a autoavaliação de Lideranca
             <li className="flex items-center gap-2">
               <Link href="/quiz/tipos-de-lideranca"
                 className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-violet-600 hover:bg-violet-100">
                 <Building2 className="size-4" />
                 <span>Tipos de Liderança</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
 
 
+          {/* TODO: Adicionar quando for criado o login
           <Link href={"/login"}
             className="px-6 py-2 ml-4 !mt-8 text-center block bg-violet-500 text-white hover:bg-violet-600 rounded-full cursor-pointer">
             Entrar
-          </Link>
+          </Link> */}
         </div>
       </div>
     </header >

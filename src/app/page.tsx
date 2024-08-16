@@ -25,7 +25,7 @@ export default function Home() {
               <h2 className="font-semibold text-xl text-violet-500">Destaques</h2>
               <hr className="w-full border-violet-100" />
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link href={"/quiz/inteligencia-emocional"}
                 className="bg-violet-50 border block border-violet-100 rounded-md w-full hover:bg-violet-100 duration-300">
                 <div className="flex items-center gap-2 text-violet-600 px-4 py-2.5">
@@ -44,6 +44,8 @@ export default function Home() {
                 </p>
                 <p className="text-sm text-end text-violet-400 px-4 py-2.5">2min</p>
               </Link>
+              {/* TODO: Adicionar quando for criado a autoavaliação de Lideranca
+
               <Link href={"/quiz/tipos-de-lideranca"}
                 className="bg-violet-50 border block border-violet-100 rounded-md w-full hover:bg-violet-100 duration-300">
                 <div className="flex items-center gap-2 text-violet-600 px-4 py-2.5">
@@ -62,7 +64,7 @@ export default function Home() {
                   autonomia e o autocrático centraliza o poder decisório.
                 </p>
                 <p className="text-sm text-end text-violet-400 px-4 py-2.5">2min</p>
-              </Link>
+              </Link> */}
             </div>
           </div>
 
