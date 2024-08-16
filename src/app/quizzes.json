@@ -68,49 +68,5 @@
         "options": []
       }
     ]
-  },
-  {
-    "id": 2,
-    "title": "Tipos de Liderança",
-    "description": "lore impsum...",
-    "slug": "tipos-de-lideranca",
-    "duration": 5,
-    "type": 2,
-    "questions": [
-      {
-        "id": 1,
-        "question": "lorem ipsum...",
-        "selected": 0,
-        "options": [
-          {
-            "id": 1,
-            "option": "option 1",
-            "selected": 0
-          },
-          {
-            "id": 2,
-            "option": "option 2",
-            "selected": 0
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "question": "lorem ipsum...",
-        "selected": 0,
-        "options": [
-          {
-            "id": 1,
-            "option": "option 1",
-            "selected": 0
-          },
-          {
-            "id": 2,
-            "option": "option 2",
-            "selected": 0
-          }
-        ]
-      }
-    ]
   }
 ]
