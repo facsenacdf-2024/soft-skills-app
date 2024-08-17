@@ -111,13 +111,13 @@ export default function Client({
               className="bg-violet-500 hover:bg-violet-600 text-white font-medium py-2 px-7 min-w-32 mx-auto block my-5 w-fit rounded-full">
               Enviar feedback
             </button>
-            {!success &&  // Sucesso
+            {!success && message &&  // Sucesso
               <p className="text-red-600 bg-red-100 font-medium py-2.5 px-5 rounded-md flex items-center justify-between">
                 {message}
                 <TriangleAlert className="size-4" />
               </p>
             }
-            {success &&  // Erro
+            {success && message &&  // Erro
               <p className="text-green-600 bg-green-100 font-medium py-2.5 px-5 rounded-md flex items-center justify-between">
                 {message}
                 <Check className="size-4" />
