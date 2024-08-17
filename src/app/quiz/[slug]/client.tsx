@@ -16,6 +16,28 @@ export default function Client({
       setHasResults(true)
     }
   }, [])
+
+  
+  //Obs.: Por algum motivo o servidor não está renderizando esta página de resultados para mim, portanto não consigo prosseguir com a devida precisão
+  //Inclusive o subtítulo Autoavaliação estava com um erro ortográfico e nem essa alteração renderizou 
+  function recoverFeedback(){//Recupera os valores respondidos no quesionário
+    let feedback = [];
+    if(localStorage.finalFeedback){
+      feedback = JSON.parse(localStorage.finalFeedback)
+
+      //Baseado no valor de cada feedback ele retorna alguma informação
+      //A princípio armazenado em options no json
+      feedback.forEach((resp:Number, id:any,) => { 
+        if(resp === 1){
+          console.log(quiz.questions[id].options[0]);
+        } else {
+          console.log(quiz.questions[id].options[1]);
+        }
+      });
+    }
+  }
+  recoverFeedback()
+
   return (
     <>
       <Header />
@@ -26,7 +48,7 @@ export default function Client({
           <div className="space-y-7">
             <div>
               <h1 className="text-3xl font-bold text-violet-500 w-max ">{quiz.title}</h1>
-              <h2 className="text-2xl font-semibold text-neutral-400">Autoavalição</h2>
+              <h2 className="text-2xl font-semibold text-neutral-400">Autoavaliação</h2>
             </div>
             <hr />
             <div className="max-w-sm space-y-4 text-neutral-800">
