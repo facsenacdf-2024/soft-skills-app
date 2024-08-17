@@ -4,7 +4,7 @@ import Anchor from "@/components/anchor";
 import Header from "@/components/header";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Check, TriangleAlert, Undo2 } from "lucide-react";
+import { Check, Loader2, TriangleAlert, Undo2 } from "lucide-react";
 import { sendResults } from "@/actions/results.action";
 import { sendResultsSchema, SendResultsValues } from "@/lib/validation";
 import { Form, FormField, FormItem, FormMessage, FormControl } from "@/components/ui/form";
@@ -18,6 +18,7 @@ export default function Client({
   const [points, setPoints] = useState<number>(0);
   const [success, setSuccess] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const form = useForm({
     resolver: zodResolver(sendResultsSchema),
@@ -25,11 +26,14 @@ export default function Client({
   });
 
   async function onSubmit(data: SendResultsValues) {
+    setLoading(true);
     try {
       const resp = await sendResults(data.email, points);
+      setLoading(false);
       setSuccess(resp.success);
       setMessage(resp.message);
     } catch (error: any) {
+      setLoading(false);
       setSuccess(false);
       setMessage('Algo deu errado. Tente novamente mais tarde.');
     }
@@ -111,16 +115,19 @@ export default function Client({
               className="bg-violet-500 hover:bg-violet-600 text-white font-medium py-2 px-7 min-w-32 mx-auto block my-5 w-fit rounded-full">
               Enviar feedback
             </button>
-            {!success && message &&  // Sucesso
-              <p className="text-red-600 bg-red-100 font-medium py-2.5 px-5 rounded-md flex items-center justify-between">
+            {loading &&
+              <div className="border-4 border-violet-500 border-r-transparent rounded-full size-9 mx-auto animate-spin"></div>
+            }
+            {!success && message && // Erro
+              <p className="text-red-600 bg-red-100 font-medium py-2.5 px-5 rounded-md flex items-center justify-between flex-wrap">
                 {message}
-                <TriangleAlert className="size-4" />
+                <TriangleAlert className="size-4 min-w-4" />
               </p>
             }
-            {success && message &&  // Erro
-              <p className="text-green-600 bg-green-100 font-medium py-2.5 px-5 rounded-md flex items-center justify-between">
+            {success && message && // Sucesso
+              <p className="text-green-600 bg-green-100 font-medium py-2.5 px-5 rounded-md flex items-center justify-between flex-wrap">
                 {message}
-                <Check className="size-4" />
+                <Check className="size-4 min-w-4" />
               </p>
             }
           </form>
