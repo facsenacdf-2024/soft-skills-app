@@ -4,7 +4,7 @@ import Anchor from "@/components/anchor";
 import Header from "@/components/header";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Check, Loader2, TriangleAlert, Undo2 } from "lucide-react";
+import { Check, TriangleAlert, Undo2 } from "lucide-react";
 import { sendResults } from "@/actions/results.action";
 import { sendResultsSchema, SendResultsValues } from "@/lib/validation";
 import { Form, FormField, FormItem, FormMessage, FormControl } from "@/components/ui/form";
@@ -106,6 +106,7 @@ export default function Client({
                   <FormMessage />
                   <FormControl >
                     <Input
+                      className="focus-visible:ring-violet-500"
                       type="email"
                       placeholder="Insira seu email aqui"
                       {...field}

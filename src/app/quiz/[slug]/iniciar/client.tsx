@@ -19,7 +19,7 @@ preciso usar o total de questões - 1
 
 export default function Client({
   quiz,
-}: Readonly<{quiz: Quiz}>) {
+}: Readonly<{ quiz: Quiz }>) {
   const quizLength = quiz.questions.length;
 
   const router = useRouter();
