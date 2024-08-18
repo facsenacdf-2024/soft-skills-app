@@ -10,12 +10,12 @@ interface ResponseData {
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export const sendResults = async (email: string, userPoints: number): Promise<ResponseData> => {
+export const sendResults = async (email: string, quizTitle: string, points: number, totalPoints: number): Promise<ResponseData> => {
   const { data, error } = await resend.emails.send({
     from: 'Não Responda <no-reply@softskillscheck.app.br>',
     to: email,
     subject: 'Seus resultados no Soft Skills Check',
-    react: ResultsEmail({ points: userPoints }),
+    react: ResultsEmail({ quizTitle, points, totalPoints }),
   });
 
   if (error) {

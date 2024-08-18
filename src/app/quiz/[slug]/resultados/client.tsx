@@ -26,9 +26,12 @@ export default function Client({
   });
 
   async function onSubmit(data: SendResultsValues) {
+    // Quantidade de questões, que é o total de pontos
+    const totalPoints = quiz.questions.length;
     setLoading(true);
+
     try {
-      const resp = await sendResults(data.email, points);
+      const resp = await sendResults(data.email, quiz.title, points, totalPoints);
       setLoading(false);
       setSuccess(resp.success);
       setMessage(resp.message);
