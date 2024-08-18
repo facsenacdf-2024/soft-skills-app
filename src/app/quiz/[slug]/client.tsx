@@ -17,27 +17,6 @@ export default function Client({
     }
   }, [])
 
-  
-  //Obs.: Por algum motivo o servidor não está renderizando esta página de resultados para mim, portanto não consigo prosseguir com a devida precisão
-  //Inclusive o subtítulo Autoavaliação estava com um erro ortográfico e nem essa alteração renderizou 
-  function recoverFeedback(){//Recupera os valores respondidos no quesionário
-    let feedback = [];
-    if(localStorage.finalFeedback){
-      feedback = JSON.parse(localStorage.finalFeedback)
-
-      //Baseado no valor de cada feedback ele retorna alguma informação
-      //A princípio armazenado em options no json
-      feedback.forEach((resp:Number, id:any,) => { 
-        if(resp === 1){
-          console.log(quiz.questions[id].options[0]);
-        } else {
-          console.log(quiz.questions[id].options[1]);
-        }
-      });
-    }
-  }
-  recoverFeedback()
-
   return (
     <>
       <Header />

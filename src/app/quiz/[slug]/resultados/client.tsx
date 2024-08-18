@@ -30,6 +30,24 @@ export default function Client({
     }
   }, [quiz?.id, quiz?.slug]);
 
+  function recoverFeedback(){//Recupera os valores respondidos no quesionário
+    let feedback = [];
+    if(localStorage.finalFeedback){
+      feedback = JSON.parse(localStorage.finalFeedback)
+
+      //Baseado no valor de cada feedback ele retorna alguma informação
+      //A princípio armazenado em options no json
+      feedback.forEach((resp:Number, id:any) => { 
+        if(resp === 1){
+          console.log(quizzes[0].questions[id].about[0]);
+        } else {
+          console.log(quizzes[0].questions[id].about[1]);
+        }
+      });
+    }
+  }
+  recoverFeedback()
+
   return (
     <>
       <Header />
@@ -38,7 +56,7 @@ export default function Client({
         <div className="">
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-violet-500 w-max ">{quiz.title}</h1>
-            <h2 className="text-2xl font-semibold text-neutral-400">Autoavalição</h2>
+            <h2 className="text-2xl font-semibold text-neutral-400">Autoavaliação</h2>
           </div>
           <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
           <p className="text-sm font-medium text-neutral-600">
