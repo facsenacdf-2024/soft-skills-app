@@ -19,7 +19,7 @@ export default function Client({
       
       //Baseado no valor de cada feedback ele retorna alguma informação
       //A princípio armazenado em options no json
-      feedback.forEach((resp: Number, id: any) => {
+      feedback.forEach((resp: number, id: any) => {
         if (resp === 1) {
           console.log(quizzes[0].questions[id].about[0]);
         } else {
