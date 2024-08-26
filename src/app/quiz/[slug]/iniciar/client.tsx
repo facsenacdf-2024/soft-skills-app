@@ -81,9 +81,16 @@ export default function Client({
     localStorage.setItem("lastPoints", JSON.stringify(storedResults));
   }
 
+  function storeFeedback(){
+    //Armazena valor das respostas obtidas durante o questionário -> resgatar em resultados para conversão correspondente
+    let feedbacks = selectedQuestions;
+    localStorage.setItem("finalFeedback",JSON.stringify(feedbacks))
+  }
+
   // Ao terminar o quiz, salva os pontos e redireciona para o resultado
   function persistPoints() {
     storePoints();
+    storeFeedback();
     router.push(`/quiz/${quiz.slug}/resultados`);
   }
 

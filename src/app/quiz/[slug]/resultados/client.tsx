@@ -46,6 +46,23 @@ export default function Client({
     setMessage('') // Limpar mensagem ao alterar email
   }, [form.watch("email")]);
 
+  function recoverFeedback() {
+    let feedback = [];
+    if (localStorage.finalFeedback) {
+      feedback = JSON.parse(localStorage.finalFeedback)
+      
+      //Baseado no valor de cada feedback ele retorna alguma informação
+      //A princípio armazenado em options no json
+      feedback.forEach((resp: number, id: any) => {
+        if (resp === 1) {
+          console.log(quizzes[0].questions[id].about[0]);
+        } else {
+          console.log(quizzes[0].questions[id].about[1]);
+        }
+      });
+    }
+  }
+
   useEffect(() => {
     const lastPoints = localStorage.getItem("lastPoints");
     if (!lastPoints) {
@@ -62,6 +79,8 @@ export default function Client({
     } else {
       return redirect("/quiz/" + quiz?.slug + "/iniciar");
     }
+
+    recoverFeedback();
   }, [quiz?.id, quiz?.slug]);
 
   return (
