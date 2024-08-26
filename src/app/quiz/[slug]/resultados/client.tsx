@@ -19,6 +19,7 @@ export default function Client({
   const [success, setSuccess] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [feedbacks, setFeedbacks] = useState<{ [key: string]: string | number }[]>([]);
 
   const form = useForm({
     resolver: zodResolver(sendResultsSchema),
@@ -31,7 +32,7 @@ export default function Client({
     setLoading(true);
 
     try {
-      const resp = await sendResults(data.email, quiz.title, points, totalPoints);
+      const resp = await sendResults(data.email, quiz.title, points, totalPoints, feedbacks);
       setLoading(false);
       setSuccess(resp.success);
       setMessage(resp.message);
@@ -42,26 +43,36 @@ export default function Client({
     }
   }
 
-  useEffect(() => {
-    setMessage('') // Limpar mensagem ao alterar email
-  }, [form.watch("email")]);
-
   function recoverFeedback() {
     let feedback = [];
     if (localStorage.finalFeedback) {
       feedback = JSON.parse(localStorage.finalFeedback)
-      
+
       //Baseado no valor de cada feedback ele retorna alguma informação
       //A princípio armazenado em options no json
       feedback.forEach((resp: number, id: any) => {
-        if (resp === 1) {
-          console.log(quizzes[0].questions[id].about[0]);
-        } else {
-          console.log(quizzes[0].questions[id].about[1]);
-        }
+        const questionId = quiz.questions[id].id;
+        const questionTitle = quiz.questions[id].question;
+        const questionFeedback =
+          resp === 1
+            ? quiz.questions[id].feedback[0] // Sim
+            : quiz.questions[id].feedback[1]; // Não
+
+        setFeedbacks(prevFeedbacks => [
+          ...prevFeedbacks,
+          {
+            ['questionId']: questionId,
+            ['questionTitle']: questionTitle,
+            ['questionFeedback']: questionFeedback
+          },
+        ]);
       });
     }
   }
+
+  useEffect(() => {
+    setMessage('') // Limpar mensagem ao alterar email
+  }, [form.watch("email")]);
 
   useEffect(() => {
     const lastPoints = localStorage.getItem("lastPoints");

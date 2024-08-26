@@ -14,6 +14,7 @@ interface EmailTemplateProps {
   quizTitle: string,
   points: number,
   totalPoints: number,
+  feedbacks: { [key: string]: string | number }[],
 }
 
 export const ResultsEmail = (props: Readonly<EmailTemplateProps>) => {
@@ -48,42 +49,16 @@ export const ResultsEmail = (props: Readonly<EmailTemplateProps>) => {
             <Heading mb={0} as="h3" style={subtitle}>
               Feedback
             </Heading>
-            <Heading as="h4" style={{ color: "#525252", marginBottom: "-10px" }}>
-              1. Muitas vezes tenho dificuldade tomar decisões.
-            </Heading>
-            <Text>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi
-              nesciunt, voluptas odit voluptatem exercitationem harum eaque tenetur
-              ratione quia labore, non suscipit dolores explicabo deleniti
-              incidunt molestiae ut laborum placeat eligendi!
-            </Text>
-            <Heading as="h4" style={{ color: "#525252", marginBottom: "-10px" }}>
-              4. Tenho dificuldade em expressar meus sentimentos e emoções, ficando irritado(a) por isso.
-            </Heading>
-            <Text>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi
-              nesciunt, voluptas odit voluptatem exercitationem harum eaque tenetur
-              ratione quia labore, non suscipit dolores explicabo deleniti
-              incidunt molestiae ut laborum placeat eligendi!
-            </Text>
-            <Heading as="h4" style={{ color: "#525252", marginBottom: "-10px" }}>
-              5. Me penalizo pelas falhas que cometo.
-            </Heading>
-            <Text>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi
-              nesciunt, voluptas odit voluptatem exercitationem harum eaque tenetur
-              ratione quia labore, non suscipit dolores explicabo deleniti
-              incidunt molestiae ut laborum placeat eligendi!
-            </Text>
-            <Heading as="h4" style={{ color: "#525252", marginBottom: "-10px" }}>
-              8. Tenho dificuldades em agir quando me sinto pressionado(a).
-            </Heading>
-            <Text>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi
-              nesciunt, voluptas odit voluptatem exercitationem harum eaque tenetur
-              ratione quia labore, non suscipit dolores explicabo deleniti
-              incidunt molestiae ut laborum placeat eligendi!
-            </Text>
+            {props.feedbacks.map((feedback, index) => (
+              <>
+                <Heading key={feedback.questionTitle} as="h4" style={{ color: "#525252", marginBottom: "-10px" }}>
+                  {feedback.questionId}. {feedback.questionTitle}
+                </Heading>
+                <Text>
+                  {feedback.questionFeedback}
+                </Text>
+              </>
+            ))}
           </Section>
         </Container>
       </Body>
