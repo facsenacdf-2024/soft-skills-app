@@ -12,6 +12,7 @@ interface Question {
   id: number
   question: string
   selected: number
+  feedback: string[]
   Options?: Options[]
 }
 

@@ -1,6 +1,6 @@
 import Github from "@/assets/icons/github";
 import Header from "@/components/header";
-import { Brain, Building2 } from "lucide-react";
+import { Brain } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
