@@ -31,7 +31,7 @@ npm run dev
 Isto irá abrir o website em http://localhost:3000. O fast refresh do Next atualizará o site assim que detectar mudanças feitas no código.
 
 ## Documentação
-A documentação estará disponível no pdf de [Documentação do Processo de Desenvolvimento de Software](https://drive.google.com/file/d/1vG3A7JzB1_rajPE6JeI-DY_B_YnF6D2M/view) deste projeto.
+A documentação estará disponível no pdf de [Documentação do Processo de Desenvolvimento de Software](https://drive.google.com/file/d/178JT90u7IODwCLHdNGcaURErA1XESJHP/view) deste projeto.
 
 **Versão atual**: 1.0
 \
