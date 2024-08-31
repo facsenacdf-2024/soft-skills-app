@@ -11,6 +11,8 @@ import { Form, FormField, FormItem, FormMessage, FormControl } from "@/component
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
+import { Carousel, CarouselContent } from "@/components/ui/carousel"
+import Items from "@/components/ui/Items";
 
 export default function Client({
   quiz,
@@ -20,6 +22,7 @@ export default function Client({
   const [message, setMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [feedbacks, setFeedbacks] = useState<{ [key: string]: string | number }[]>([]);
+  const [feedbackYes, setFeedbacksYes] = useState<{ [key: string]: string}[]>([]);
 
   const form = useForm({
     resolver: zodResolver(sendResultsSchema),
@@ -53,22 +56,30 @@ export default function Client({
       feedback.forEach((resp: number, id: any) => {
         const questionId = quiz.questions[id].id;
         const questionTitle = quiz.questions[id].question;
-        const questionFeedback =
-          resp === 1
-            ? quiz.questions[id].feedback[0] // Sim
-            : quiz.questions[id].feedback[1]; // Não
+        let feedYes: string[] | any[] = [];
+
+        if(resp === 1){
+          let feed: string | any = quiz.questions[id].feedback;
+          feedbackYes.push(feed)  
+        }
+
+        // const questionFeedback =
+        //   resp === 1
+        //->     ? quiz.questions[id].feedback[0] // Sim
+        //     : quiz.questions[id].feedback[1]; // Não
 
         setFeedbacks(prevFeedbacks => [
           ...prevFeedbacks,
           {
             ['questionId']: questionId,
-            ['questionTitle']: questionTitle,
-            ['questionFeedback']: questionFeedback
+            ['questionTitle']: questionTitle
+            
           },
         ]);
       });
     }
   }
+  console.log(feedbackYes);
 
   useEffect(() => {
     setMessage('') // Limpar mensagem ao alterar email
@@ -103,20 +114,32 @@ export default function Client({
           <h1 className="text-3xl font-bold text-violet-500 w-max ">{quiz.title}</h1>
           <h2 className="text-2xl font-semibold text-neutral-400">Autoavalição</h2>
         </div>
-        <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
-        <p className="text-sm font-medium text-neutral-600">
-          Quanto mais próximo de {quiz.questions.length}, melhor foi sua pontuação.
-        </p>
-        <p className="font-light text-violet-500 text-7xl my-4">
-          {points}
-        </p>
-        <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
-        <Link
-          href={`/quiz/` + quiz.slug + `/iniciar`}
-          className="text-violet-500 w-fit my-4 mb-10 flex items-center gap-1 hover:underline">
-          <Undo2 className="size-4" />
-          Refazer teste
-        </Link>
+        <div className="flex flex-col items-start">
+          <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
+          <p className="text-sm font-medium text-neutral-600">
+            Quanto mais próximo de {quiz.questions.length}, melhor foi sua pontuação.
+          </p>
+          <p className="font-light text-violet-500 text-7xl my-4">
+            {points}
+          </p>
+          <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
+          <Link
+            href={`/quiz/` + quiz.slug + `/iniciar`}
+            className="text-violet-500 w-fit my-4 mb-4 flex items-center gap-1 hover:underline">
+            <Undo2 className="size-4" />
+            Refazer teste
+          </Link>
+
+          <div className="flex items-center justify-center mb-4">
+            <Carousel className=" border-4 border-indigo-500 w-64 h-32 rounded-xl">
+              <CarouselContent className="h-32">
+
+                <Items title={"Onde melhorar?"} arr={feedbackYes} />
+
+              </CarouselContent>
+            </Carousel>
+          </div>
+        </div>
 
         {/*
           Pra entender como funciona o form do shadcn
