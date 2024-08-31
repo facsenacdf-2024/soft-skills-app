@@ -1,18 +1,26 @@
 "use client";
+//imports next e react
+import * as React from "react"
 import { redirect } from "next/navigation";
-import Anchor from "@/components/anchor";
-import Header from "@/components/header";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+
 import { Check, TriangleAlert, Undo2 } from "lucide-react";
+
+//imports para email
 import { sendResults } from "@/actions/results.action";
 import { sendResultsSchema, SendResultsValues } from "@/lib/validation";
-import { Form, FormField, FormItem, FormMessage, FormControl } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+
+//componentes
+import Anchor from "@/components/anchor";
+import Header from "@/components/header";
 import { Input } from "@/components/ui/input";
-import { Carousel, CarouselContent } from "@/components/ui/carousel"
 import Items from "@/components/ui/Items";
+import { Carousel, CarouselContent, type CarouselApi } from "@/components/ui/carousel"
+import { Form, FormField, FormItem, FormMessage, FormControl } from "@/components/ui/form";
+
 
 export default function Client({
   quiz,
@@ -22,7 +30,24 @@ export default function Client({
   const [message, setMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [feedbacks, setFeedbacks] = useState<{ [key: string]: string | number }[]>([]);
-  const [feedbackYes, setFeedbacksYes] = useState<{ [key: string]: string}[]>([]);
+  const [feedbackYes, setFeedbacksYes] = useState<{ [key: string]: string }[]>([]);
+
+  const [api, setApi] = React.useState<CarouselApi>()
+  const [current, setCurrent] = React.useState(0)
+  const [count, setCount] = React.useState(0)
+
+  React.useEffect(() => {
+    if (!api) {
+      return
+    }
+
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap() + 1)
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1)
+    })
+  }, [api])
 
   const form = useForm({
     resolver: zodResolver(sendResultsSchema),
@@ -56,16 +81,15 @@ export default function Client({
       feedback.forEach((resp: number, id: any) => {
         const questionId = quiz.questions[id].id;
         const questionTitle = quiz.questions[id].question;
-        let feedYes: string[] | any[] = [];
 
-        if(resp === 1){
+        if (resp === 1) {
           let feed: string | any = quiz.questions[id].feedback;
-          feedbackYes.push(feed)  
+          feedbackYes.push(feed)
         }
-
+        // Caso tenha que acessar multiplos feedbacks
         // const questionFeedback =
         //   resp === 1
-        //->     ? quiz.questions[id].feedback[0] // Sim
+        //     ? quiz.questions[id].feedback[0] // Sim
         //     : quiz.questions[id].feedback[1]; // Não
 
         setFeedbacks(prevFeedbacks => [
@@ -73,14 +97,11 @@ export default function Client({
           {
             ['questionId']: questionId,
             ['questionTitle']: questionTitle
-            
           },
         ]);
       });
     }
   }
-  console.log(feedbackYes);
-
   useEffect(() => {
     setMessage('') // Limpar mensagem ao alterar email
   }, [form.watch("email")]);
@@ -130,14 +151,26 @@ export default function Client({
             Refazer teste
           </Link>
 
-          <div className="flex items-center justify-center mb-4">
-            <Carousel className=" border-4 border-indigo-500 w-64 h-32 rounded-xl">
+          <div className="flex items-center justify-center mb-4 relative">
+            <Carousel className=" border-4 border-violet-600 w-64 h-36 rounded-xl"
+              opts={{ loop: true }}
+              setApi={setApi}
+            >
               <CarouselContent className="h-32">
 
                 <Items title={"Onde melhorar?"} arr={feedbackYes} />
 
               </CarouselContent>
             </Carousel>
+            
+            {/* Marcadores do feedback selecionado */}
+            <ul className="flex justify-center gap-2 absolute bottom-2 w-full z-1">
+              {
+                Array.from({ length: feedbackYes.length }).map((_, index) => (
+                  <li className={`w-2 h-2 ${index + 1 == current ? 'bg-violet-500' : 'bg-neutral-400'} rounded-xl`}></li>
+                ))
+              }
+            </ul>
           </div>
         </div>
 
