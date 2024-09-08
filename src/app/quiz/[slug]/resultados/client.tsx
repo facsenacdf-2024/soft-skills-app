@@ -78,6 +78,7 @@ export default function Client({
       feedback.forEach((resp: number, id: any) => {
         const questionId = quiz.questions[id].id;
         const questionTitle = quiz.questions[id].question;
+        const questionFeedback = quiz.questions[id].feedback;
         
         if (resp === 1) {
           let feed: string = quiz.questions[id].feedback;
@@ -88,19 +89,21 @@ export default function Client({
             questionFeedback,
           ])
         }
+        
+        setFeedbacks(prevFeedbacks => [
+          ...prevFeedbacks,
+          {
+            ['questionId']: questionId,
+            ['questionTitle']: questionTitle,
+            ['questionFeedback']: questionFeedback
+          },
+        ]);
+
         // Caso tenha que acessar multiplos feedbacks
         // const questionFeedback =
         //   resp === 1
         //     ? quiz.questions[id].feedback[0] // Sim
         //     : quiz.questions[id].feedback[1]; // Não
-
-        setFeedbacks(prevFeedbacks => [
-          ...prevFeedbacks,
-          {
-            ['questionId']: questionId,
-            ['questionTitle']: questionTitle
-          },
-        ]);
       });
     }
   }
