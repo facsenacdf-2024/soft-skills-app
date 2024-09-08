@@ -16,6 +16,7 @@ export default function Client({
       setHasResults(true)
     }
   }, [])
+
   return (
     <>
       <Header />
@@ -26,7 +27,7 @@ export default function Client({
           <div className="space-y-7">
             <div>
               <h1 className="text-3xl font-bold text-violet-500 w-max ">{quiz.title}</h1>
-              <h2 className="text-2xl font-semibold text-neutral-400">Autoavalição</h2>
+              <h2 className="text-2xl font-semibold text-neutral-400">Autoavaliação</h2>
             </div>
             <hr />
             <div className="max-w-sm space-y-4 text-neutral-800">
