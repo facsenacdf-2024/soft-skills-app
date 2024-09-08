@@ -1,18 +1,18 @@
 import { CarouselItem } from "./carousel"
-import Feedback from "./Feedback"
+import Feedback from "./feedback"
 import { Card, CardContent } from "@/components/ui/card"
 
 interface Props {
-    arr: string[] | any,
+    arr: string[],
     title: string,
 }
 
-export default function Items({ arr, title}: Props) {
+export default function Items({ arr, title}: Readonly<Props>) {
 
     return (
 
-        arr.map((item: string | any, index: number) => (
-            <CarouselItem key={index}>
+        arr.map((item: string) => (
+            <CarouselItem key={item}>
                 <Card>
                     <CardContent>
                         <Feedback title={title} text={item} />

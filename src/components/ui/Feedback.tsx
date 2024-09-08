@@ -3,7 +3,7 @@ interface Props {
     text: string,
 }
 
-export default function Feedback({ title, text }: Props) {
+export default function Feedback({ title, text }: Readonly<Props>) {
     return (
         <div className="max-h-32 h-28 pt-1 overflow-x-hidden no-scrollbar ">
             <div className="flex flex-col px-2 justify-start gap-2 z-0">

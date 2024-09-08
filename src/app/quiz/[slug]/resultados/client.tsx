@@ -17,10 +17,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Anchor from "@/components/anchor";
 import Header from "@/components/header";
 import { Input } from "@/components/ui/input";
-import Items from "@/components/ui/Items";
+import Items from "@/components/ui/items";
 import { Carousel, CarouselContent, type CarouselApi } from "@/components/ui/carousel"
 import { Form, FormField, FormItem, FormMessage, FormControl } from "@/components/ui/form";
-
 
 export default function Client({
   quiz,
@@ -30,18 +29,16 @@ export default function Client({
   const [message, setMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [feedbacks, setFeedbacks] = useState<{ [key: string]: string | number }[]>([]);
-  const [feedbackYes, setFeedbacksYes] = useState<{ [key: string]: string }[]>([]);
+  const [feedbackYes, setFeedbackYes] = useState<string[]>([]);
 
   const [api, setApi] = React.useState<CarouselApi>()
   const [current, setCurrent] = React.useState(0)
-  const [count, setCount] = React.useState(0)
 
   React.useEffect(() => {
     if (!api) {
       return
     }
 
-    setCount(api.scrollSnapList().length)
     setCurrent(api.selectedScrollSnap() + 1)
 
     api.on("select", () => {
@@ -81,10 +78,15 @@ export default function Client({
       feedback.forEach((resp: number, id: any) => {
         const questionId = quiz.questions[id].id;
         const questionTitle = quiz.questions[id].question;
-
+        
         if (resp === 1) {
           let feed: string | any = quiz.questions[id].feedback;
-          feedbackYes.push(feed)
+
+          const questionFeedback = feed;
+          setFeedbackYes(prevFeedbacksYes => [
+            ...prevFeedbacksYes,
+            questionFeedback,
+          ])
         }
         // Caso tenha que acessar multiplos feedbacks
         // const questionFeedback =
@@ -166,8 +168,8 @@ export default function Client({
             {/* Marcadores do feedback selecionado */}
             <ul className="flex justify-center gap-2 absolute bottom-2 w-full z-1">
               {
-                Array.from({ length: feedbackYes.length }).map((_, index) => (
-                  <li className={`w-2 h-2 ${index + 1 == current ? 'bg-violet-500' : 'bg-neutral-400'} rounded-xl`}></li>
+                feedbackYes.map((feedback, index) => (
+                  <li key={feedback} className={`w-2 h-2 ${index + 1 == current ? 'bg-violet-500' : 'bg-neutral-400'} rounded-xl`}></li>
                 ))
               }
             </ul>
