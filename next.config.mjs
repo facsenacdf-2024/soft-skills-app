@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Desabilitar StrictMode para testar envio de email sem duplicar
+  // Desabilitar StrictMode para testar sem duplicar
   // reactStrictMode: false,
 };
 

@@ -80,7 +80,7 @@ export default function Client({
         const questionTitle = quiz.questions[id].question;
         
         if (resp === 1) {
-          let feed: string | any = quiz.questions[id].feedback;
+          let feed: string = quiz.questions[id].feedback;
 
           const questionFeedback = feed;
           setFeedbackYes(prevFeedbacksYes => [
