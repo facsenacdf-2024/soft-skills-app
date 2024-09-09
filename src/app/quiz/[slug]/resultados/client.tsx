@@ -76,31 +76,31 @@ export default function Client({
       //Baseado no valor de cada feedback ele retorna alguma informação
       //A princípio armazenado em options no json
       feedback.forEach((resp: number, id: any) => {
-        const questionId = quiz.questions[id].id;
-        const questionTitle = quiz.questions[id].question;
         
+        //Conteúdo de feedbacks marcados com "Sim"
         if (resp === 1) {
-          let feed: string = quiz.questions[id].feedback;
+          const questionId = quiz.questions[id].id;
+          const questionTitle = quiz.questions[id].question;
+          const questionFeedback = quiz.questions[id].feedback;
 
-          const questionFeedback = feed;
+          //Defini os feedbacks que apareceram no carrossel
           setFeedbackYes(prevFeedbacksYes => [
             ...prevFeedbacksYes,
             questionFeedback,
           ])
-        }
-        // Caso tenha que acessar multiplos feedbacks
-        // const questionFeedback =
-        //   resp === 1
-        //     ? quiz.questions[id].feedback[0] // Sim
-        //     : quiz.questions[id].feedback[1]; // Não
 
-        setFeedbacks(prevFeedbacks => [
-          ...prevFeedbacks,
-          {
-            ['questionId']: questionId,
-            ['questionTitle']: questionTitle
-          },
-        ]);
+          //Defini conteúdo de feedbacks enviados por e-mail
+          setFeedbacks(prevFeedbacks => [
+            ...prevFeedbacks,
+            {
+              ['questionId']: questionId,
+              ['questionTitle']: questionTitle,
+              ['questionFeedback']: questionFeedback
+            },
+          ]);
+
+        }
+
       });
     }
   }
@@ -164,7 +164,6 @@ export default function Client({
 
               </CarouselContent>
             </Carousel>
-            
             {/* Marcadores do feedback selecionado */}
             <ul className="flex justify-center gap-2 absolute bottom-2 w-full z-1">
               {
