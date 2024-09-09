@@ -76,15 +76,12 @@ export default function Client({
       //Baseado no valor de cada feedback ele retorna alguma informação
       //A princípio armazenado em options no json
       feedback.forEach((resp: number, id: any) => {
-        let questionId = quiz.questions[id].id;
-        let questionTitle = quiz.questions[id].question;
-        let questionFeedback = quiz.questions[id].feedback;
-
+        
         //Conteúdo de feedbacks marcados com "Sim"
         if (resp === 1) {
-          questionId = quiz.questions[id].id;
-          questionTitle = quiz.questions[id].question;
-          questionFeedback = quiz.questions[id].feedback;
+          const questionId = quiz.questions[id].id;
+          const questionTitle = quiz.questions[id].question;
+          const questionFeedback = quiz.questions[id].feedback;
 
           //Defini os feedbacks que apareceram no carrossel
           setFeedbackYes(prevFeedbacksYes => [
@@ -103,7 +100,7 @@ export default function Client({
           ]);
 
         }
-        
+
       });
     }
   }
