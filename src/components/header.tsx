@@ -37,12 +37,11 @@ const Header = () => {
                   </Link>
                 </li>
                 <li className="flex items-center gap-2">
-                  {/* TODO: Adicionar quando for criado a autoavaliação de Lideranca
                   <Link href="/quiz/tipos-de-lideranca"
                     className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-blue-600 hover:bg-blue-100">
                     <Building2 className="size-4" />
                     <span>Tipos de Liderança</span>
-                  </Link> */}
+                  </Link>
                 </li>
               </ul>
             </div>
