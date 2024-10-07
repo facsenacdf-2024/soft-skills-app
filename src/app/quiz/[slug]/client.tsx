@@ -23,10 +23,10 @@ export default function Client({
 
       <main className="py-20 sm:py-44">
         <div className="flex flex-col sm:flex-row gap-10 max-w-xs sm:max-w-4xl mx-auto">
-          <Image src={'/mirror.svg'} alt="" width={400} height={400} className="w-72 min-w-72 sm:w-1/2" priority />
+          <Image src={'/connection.svg'} alt="" width={400} height={400} className="w-72 min-w-72 sm:w-1/2" priority />
           <div className="space-y-7">
             <div>
-              <h1 className="text-3xl font-bold text-violet-500 w-max ">{quiz.title}</h1>
+              <h1 className="text-3xl font-bold text-blue-700 w-max ">{quiz.title}</h1>
               <h2 className="text-2xl font-semibold text-neutral-400">Autoavaliação</h2>
             </div>
             <hr />
@@ -40,7 +40,7 @@ export default function Client({
               </p>
             </div>
             <Link href={`/quiz/${quiz.slug}/iniciar`}
-              className="bg-violet-500 hover:bg-violet-600 block text-center text-white font-bold py-3 px-6 rounded-full">
+              className="bg-blue-700 hover:bg-blue-600 block text-center text-white font-bold py-3 px-6 rounded-full">
               Começar
             </Link>
 

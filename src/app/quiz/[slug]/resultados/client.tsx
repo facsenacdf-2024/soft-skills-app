@@ -1,6 +1,5 @@
 "use client";
 //imports next e react
-import * as React from "react"
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -14,11 +13,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 //componentes
-import Anchor from "@/components/anchor";
 import Header from "@/components/header";
 import { Input } from "@/components/ui/input";
-import Items from "@/components/ui/items";
-import { Carousel, CarouselContent, type CarouselApi } from "@/components/ui/carousel"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel"
 import { Form, FormField, FormItem, FormMessage, FormControl } from "@/components/ui/form";
 
 export default function Client({
@@ -31,10 +28,10 @@ export default function Client({
   const [feedbacks, setFeedbacks] = useState<{ [key: string]: string | number }[]>([]);
   const [feedbackYes, setFeedbackYes] = useState<string[]>([]);
 
-  const [api, setApi] = React.useState<CarouselApi>()
-  const [current, setCurrent] = React.useState(0)
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!api) {
       return
     }
@@ -76,7 +73,7 @@ export default function Client({
       //Baseado no valor de cada feedback ele retorna alguma informação
       //A princípio armazenado em options no json
       feedback.forEach((resp: number, id: any) => {
-        
+
         //Conteúdo de feedbacks marcados com "Sim"
         if (resp === 1) {
           const questionId = quiz.questions[id].id;
@@ -134,53 +131,78 @@ export default function Client({
 
       <div className="mx-auto py-32 max-w-xs sm:max-w-4xl sm:px-5">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-violet-500 w-max ">{quiz.title}</h1>
+          <h1 className="text-3xl font-bold text-blue-700 w-max ">{quiz.title}</h1>
           <h2 className="text-2xl font-semibold text-neutral-400">Autoavalição</h2>
         </div>
         <div className="flex flex-col items-start">
           <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
-          <p className="text-sm font-medium text-neutral-600">
+          <p className="text-sm text-neutral-600">
             Quanto mais próximo de {quiz.questions.length}, melhor foi sua pontuação.
           </p>
-          <p className="font-light text-violet-500 text-7xl my-4">
+          <p className="font-light text-blue-700 text-7xl my-4">
             {points}
           </p>
           <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
           <Link
             href={`/quiz/` + quiz.slug + `/iniciar`}
-            className="text-violet-500 w-fit my-4 mb-4 flex items-center gap-1 hover:underline">
+            className="text-blue-700 w-fit my-4 mb-4 flex items-center gap-1 hover:underline">
             <Undo2 className="size-4" />
             Refazer teste
           </Link>
 
-          <div className="flex items-center justify-center mb-4 relative">
-            <Carousel className=" border-4 border-violet-600 w-64 h-36 rounded-xl"
-              opts={{ loop: true }}
-              setApi={setApi}
-            >
-              <CarouselContent className="h-32">
+          <hr className="my-4 w-full" />
 
-                <Items title={"Onde melhorar?"} arr={feedbackYes} />
+          <h1 className="text-xl font-medium text-neutral-800">Feedback</h1>
 
-              </CarouselContent>
-            </Carousel>
+          <p className="text-sm text-neutral-600">
+            Essas foram as situações que você respondeu sim e que precisa
+            desenvolver melhor para fortalecer sua Inteligência Emocional
+          </p>
+
+          <Carousel
+            className="
+              border border-blue-600 rounded-lg max-w-full
+              flex flex-col gap-4 mx-auto p-4 my-7
+            "
+            opts={{ loop: true }}
+            setApi={setApi}
+          >
+            <CarouselContent>
+              {feedbacks.map((feedback) => (
+                <CarouselItem key={feedback.questionId}>
+                  <p className="font-medium mb-2">
+                    {feedback.questionId + ". " + feedback.questionTitle}
+                  </p>
+                  <hr />
+                  <p className="text-sm mt-2">
+                    {feedback.questionFeedback}
+                  </p>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+
             {/* Marcadores do feedback selecionado */}
-            <ul className="flex justify-center gap-2 absolute bottom-2 w-full z-1">
-              {
-                feedbackYes.map((feedback, index) => (
-                  <li key={feedback} className={`w-2 h-2 ${index + 1 == current ? 'bg-violet-500' : 'bg-neutral-400'} rounded-xl`}></li>
-                ))
-              }
+            <ul className="flex justify-center gap-2">
+              {feedbackYes.map((feedback, index) => (
+                <li
+                  key={feedback}
+                  className={`w-2 h-2 ${index + 1 == current ? 'bg-blue-700' : 'bg-neutral-400'} rounded-xl`}
+                />
+              ))}
             </ul>
-          </div>
+          </Carousel>
         </div>
+
+        <hr />
 
         {/*
           Pra entender como funciona o form do shadcn
           https://ui.shadcn.com/docs/components/form
         */}
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="mb-20" noValidate>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="mb-20 mt-7" noValidate>
             <h1 className="leading-5 font-medium text-neutral-800">
               Deseja receber seus resultados?
             </h1>
@@ -193,7 +215,7 @@ export default function Client({
                   <FormMessage />
                   <FormControl >
                     <Input
-                      className="focus-visible:ring-violet-500"
+                      className="focus-visible:ring-blue-500"
                       type="email"
                       placeholder="Insira seu email aqui"
                       {...field}
@@ -203,11 +225,11 @@ export default function Client({
               )}
             />
             <button
-              className="bg-violet-500 hover:bg-violet-600 text-white font-medium py-2 px-7 min-w-32 mx-auto block my-5 w-fit rounded-full">
+              className="bg-blue-600 hover:bg-blue-600 text-white font-medium py-2 px-7 min-w-32 mx-auto block my-5 w-fit rounded-full">
               Enviar feedback
             </button>
             {loading &&
-              <div className="border-4 border-violet-500 border-r-transparent rounded-full size-9 mx-auto animate-spin"></div>
+              <div className="border-4 border-blue-500 border-r-transparent rounded-full size-9 mx-auto animate-spin"></div>
             }
             {!success && message && // Erro
               <p className="text-red-600 bg-red-100 font-medium py-2.5 px-5 rounded-md flex items-center justify-between flex-wrap">
@@ -223,20 +245,6 @@ export default function Client({
             }
           </form>
         </Form>
-
-        <div className="col-span-2 lg:mt-10">
-          <p className="my-10">
-            Inteligência emocional abrange o reconhecimento e controle das
-            emoções, a capacidade de automotivação, habilidades sociais e
-            empatia. Para desenvolver...
-          </p>
-          <Anchor
-            title="Ver sobre"
-            link="#"
-            className="text-center my-10 w-full block"
-          />
-        </div>
-
       </div >
     </>
   );

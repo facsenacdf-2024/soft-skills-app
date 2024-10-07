@@ -32,9 +32,10 @@ export const ResultsEmail = (props: Readonly<EmailTemplateProps>) => {
             </Heading>
             <Hr />
             <Text>
-              Nós da equipe do Soft Skills Check, agradecemos por responder
-              um dos nossos questionários de autoavaliação de soft skills!
-              Como solicitado, aqui estão os resultados da sua autoavaliação:
+              Nós da equipe do <span style={{ fontStyle: "italic" }}>Soft Skills Check</span>,
+              agradecemos por responder um dos nossos questionários de autoavaliação
+              de <span style={{ fontStyle: "italic" }}>soft skills</span>! Como solicitado, aqui
+              estão os resultados da sua autoavaliação:
             </Text>
             <Heading as="h3" style={subtitle}>
               Pontuação
