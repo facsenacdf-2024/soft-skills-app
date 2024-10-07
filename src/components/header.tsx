@@ -95,14 +95,13 @@ const Header = () => {
                 <span>Inteligência Emocional</span>
               </Link>
             </li>
-            {/* TODO: Adicionar quando for criado a autoavaliação de Lideranca
             <li className="flex items-center gap-2">
               <Link href="/quiz/tipos-de-lideranca"
                 className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-blue-600 hover:bg-blue-100">
                 <Building2 className="size-4" />
                 <span>Tipos de Liderança</span>
               </Link>
-            </li> */}
+            </li>
           </ul>
 
 

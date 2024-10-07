@@ -13,11 +13,11 @@ interface Question {
   question: string,
   selected: number,
   feedback: string,
-  Alternatives?: Alternatives[],
+  alternatives?: Alternatives[],
 }
 
 interface Alternatives {
   id: string,
   text: string,
-  leadershipStyle: "autocrat" | "liberal" | "democrat",
+  leadershipStyle: string,
 }
