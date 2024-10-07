@@ -9,7 +9,7 @@
     "questions": [
       {
         "id": 1,
-        "question": "Muitas vezes, tenho dificuldade em tomar decisões.",
+        "question": "Muitas vezes tenho dificuldade em tomar decisões.",
         "feedback": "Quando você tiver que tomar decisões  busque definir  prioridades claras e analise os prós e os contras, se preciso escreva em um papel/tela essa prioridades ou os prós e contras; peça conselhos a pessoas de confiança e pratique a tomada de decisões em situações menos críticas.",
         "selected": 0
       },
@@ -65,6 +65,246 @@
         "id": 10,
         "question": "Tenho pouco controle sobre meus sentimentos, perdendo a calma e o equilíbrio diante de situações difíceis ou indesejadas.",
         "feedback": "Pratique técnicas de regulação emocional, como a respiração controlada e a reflexão consciente, para melhorar o controle sobre seus sentimentos em momentos difíceis.",
+        "selected": 0
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Tipos de Liderança",
+    "description": "Imagine que você é líder de uma equipe de cerca de 8 pessoas que trabalham em um departamento técnico-administrativo, como finanças, recursos humanos ou tecnologia. Leia os itens a seguir e responda como você agiria, de acordo com seu estilo de liderança.",
+    "slug": "tipos-de-lideranca",
+    "duration": 2,
+    "type": 2,
+    "questions": [
+      {
+        "id": 1,
+        "question": "Como você agiria como líder de uma equipe na definição das atividades semanais?",
+        "alternatives": [
+          {
+            "id": "k07r8o",
+            "leadership-style": "autocrat",
+            "text": "Eu determinaria as tarefas de cada membro, pois acredito que assim é mais produtivo."
+          },
+          {
+            "id": "sy9hno",
+            "leadership-style": "liberal",
+            "text": "Eu deixaria a divisão de trabalho a critério de cada membro do grupo."
+          },
+          {
+            "id": "sg6vb0",
+            "leadership-style": "democrat",
+            "text": "Acredito que os membros do grupo devem reunir-se e decidir o que eles deverão fazer."
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 2,
+        "question": "Qual dessas frases você usaria se ocupasse o cargo de líder ou gerente de uma equipe?",
+        "alternatives": [
+          {
+            "id": "u1ey31",
+            "leadership-style": "autocrat",
+            "text": "“Os meus subordinados dependem mais de minha liderança que do próprio grupo, pois o(a) líder tem mais experiência de trabalho”."
+          },
+          {
+            "id": "hs0wlf",
+            "leadership-style": "liberal",
+            "text": "“Os meus subordinados não dependem de mim, e só me consultam quando necessário”."
+          },
+          {
+            "id": "6ssy8n",
+            "leadership-style": "democrat",
+            "text": "“As decisões devem ser tomadas pelos próprios membros do grupo ou equipe”."
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 3,
+        "question": "Como você reagiria se um problema entre os membros de uma equipe não fosse resolvido?",
+        "alternatives": [
+          {
+            "id": "unbs22",
+            "leadership-style": "autocrat",
+            "text": "Com rapidez e firmeza para mudar o curso dos acontecimentos."
+          },
+          {
+            "id": "do5m1t",
+            "leadership-style": "liberal",
+            "text": "Deixaria a resolução por conta dos subordinados."
+          },
+          {
+            "id": "7sn7i8",
+            "leadership-style": "democrat",
+            "text": "Envolveria os subordinados no problema e participaria da solução com eles."
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 4,
+        "question": "Sua equipe reduziu a produtividade. Ninguém se preocupa em cumprir metas. É hora de “cobrar” prazos. O que você faria como supervisor, gerente ou líder desse grupo?",
+        "alternatives": [
+          {
+            "id": "7iqhac",
+            "leadership-style": "autocrat",
+            "text": "Definiria punições para quem não cumpriu os prazos determinados."
+          },
+          {
+            "id": "ma67zs",
+            "leadership-style": "liberal",
+            "text": "Permitiria que a equipe definisse entre si ações que favorecessem o alcance das metas nos prazos."
+          },
+          {
+            "id": "ca67ng",
+            "leadership-style": "democrat",
+            "text": "Pediria à equipe sugestões de como melhorar a produtividade e a entrega de tarefas dentro do prazo."
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 5,
+        "question": "Qual dessas frases você usaria enquanto gerente ou líder de uma equipe, se seu subordinado lhe pedisse ajuda para resolver um problema?",
+        "alternatives": [
+          {
+            "id": "ga25oh",
+            "leadership-style": "autocrat",
+            "text": "“Deixa eu lhe mostrar como faz”."
+          },
+          {
+            "id": "pka4as",
+            "leadership-style": "liberal",
+            "text": "“Faça da forma que lhe parecer mais certo”."
+          },
+          {
+            "id": "j79dow",
+            "leadership-style": "democrat",
+            "text": "“Você já tentou fazer isso de outra maneira?”"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 6,
+        "question": "Como você agiria exercendo a função de líder na orientação das atividades a serem realizadas?",
+        "alternatives": [
+          {
+            "id": "vqil11",
+            "leadership-style": "autocrat",
+            "text": "Coordenaria as ações de forma diretiva para que a equipe funcione adequadamente."
+          },
+          {
+            "id": "0szfor",
+            "leadership-style": "liberal",
+            "text": "Na minha equipe, cada um faria o que acredita ser o melhor para a realização do seu trabalho."
+          },
+          {
+            "id": "in0c0g",
+            "leadership-style": "democrat",
+            "text": "Consultaria minha equipe para decidir como devo me orientar melhor."
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 7,
+        "question": "O que você faria se um dos membros de sua equipe precisasse realizar um trabalho difícil e complexo?",
+        "alternatives": [
+          {
+            "id": "gb2z7q",
+            "leadership-style": "autocrat",
+            "text": "Definiria com clareza o método e o tempo necessário para a realização do trabalho."
+          },
+          {
+            "id": "kg3n4y",
+            "leadership-style": "liberal",
+            "text": "Não interferiria, ao contrário, daria plena liberdade ao subordinado para que ele proceda como julgar melhor."
+          },
+          {
+            "id": "ts9u7a",
+            "leadership-style": "democrat",
+            "text": "Daria uma orientação geral ao subordinado, deixando ao seu critério a definição do processo e o tempo necessários para executar a tarefa."
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 8,
+        "question": "Sua equipe está enfrentando dificuldades para cumprir um projeto importante dentro do prazo devido a mudanças nas tarefas. Como você, como líder, abordaria a situação?",
+        "alternatives": [
+          {
+            "id": "bd9o2k",
+            "leadership-style": "autocrat",
+            "text": "Assumiria o controle total, redistribuindo as tarefas e impondo prazos rígidos com supervisão constante."
+          },
+          {
+            "id": "wd3s6h",
+            "leadership-style": "liberal",
+            "text": "Deixaria a equipe encontrar suas próprias soluções e se auto-organizar, oferecendo ajuda apenas quando solicitado."
+          },
+          {
+            "id": "mu4x7e",
+            "leadership-style": "democrat",
+            "text": "Convocaria uma reunião para discutir os desafios e ajustar tarefas e prazos com a colaboração da equipe."
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 9,
+        "question": "Sua equipe tem uma apresentação importante para a diretoria. Como você, como líder, agiria para garantir que a apresentação seja bem-sucedida?",
+        "alternatives": [
+          {
+            "id": "nt6b5x",
+            "leadership-style": "autocrat",
+            "text": "Definiria o conteúdo e tarefas, supervisionando de perto e tomando decisões finais."
+          },
+          {
+            "id": "as2c8y",
+            "leadership-style": "liberal",
+            "text": "Deixaria a equipe se auto-organizar e prepararia a apresentação com liberdade, oferecendo ajuda apenas se solicitado."
+          },
+          {
+            "id": "lr9m4p",
+            "leadership-style": "democrat",
+            "text": "Reuniria a equipe para discutir o conteúdo e colaborar na definição de responsabilidades e prazos."
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 10,
+        "question": "Há conflitos na equipe devido a fofocas e boatos que estão circulando no grupo. Como você, como líder, abordaria essa situação para resolver os conflitos e melhorar a comunicação?",
+        "alternatives": [
+          {
+            "id": "qx7n5t",
+            "leadership-style": "autocrat",
+            "text": "Imporia regras rígidas contra fofocas e tomaria medidas disciplinares contra os responsáveis."
+          },
+          {
+            "id": "de4j3h",
+            "leadership-style": "liberal",
+            "text": "Incentivaria a equipe a estabelecer suas próprias normas de comunicação e resolução de conflitos, apoiando as iniciativas surgidas."
+          },
+          {
+            "id": "fb8p2w",
+            "leadership-style": "democrat",
+            "text": "Convocaria uma reunião para discutir abertamente os problemas de comunicação e definir estratégias para melhorar a transparência."
+          }
+        ],
+        "feedback": "",
         "selected": 0
       }
     ]
