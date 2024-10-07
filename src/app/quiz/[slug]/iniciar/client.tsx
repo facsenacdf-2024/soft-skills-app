@@ -107,7 +107,7 @@ export default function Client({
             <Button
               className={
                 selectedQuestions[questionID] === 1
-                  ? "!bg-violet-500 !text-white"
+                  ? "!bg-blue-700 !text-white"
                   : " "
               }
               title="Sim"
@@ -116,16 +116,16 @@ export default function Client({
             <Button
               className={
                 selectedQuestions[questionID] === 2
-                  ? "!bg-violet-500 !text-white"
+                  ? "!bg-blue-700 !text-white"
                   : " "
               }
               title="Não"
               func={adjustPoints}
             />
           </div>
-          <div className="w-full h-2 bg-violet-100 rounded-full">
+          <div className="w-full h-2 bg-blue-100 rounded-full">
             <div
-              className="bg-violet-500 h-2 rounded-full duration-300"
+              className="bg-blue-700 h-2 rounded-full duration-300"
               // Calcula o percentual de completude das questões do valor total de questões
               style={{ width: `${(100 * questionID + 100) / quizLength}%` }}
             ></div>
