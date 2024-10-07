@@ -83,17 +83,17 @@
         "alternatives": [
           {
             "id": "k07r8o",
-            "leadership-style": "autocrat",
+            "leadershipStyle": "autocrat",
             "text": "Eu determinaria as tarefas de cada membro, pois acredito que assim é mais produtivo."
           },
           {
             "id": "sy9hno",
-            "leadership-style": "liberal",
+            "leadershipStyle": "liberal",
             "text": "Eu deixaria a divisão de trabalho a critério de cada membro do grupo."
           },
           {
             "id": "sg6vb0",
-            "leadership-style": "democrat",
+            "leadershipStyle": "democrat",
             "text": "Acredito que os membros do grupo devem reunir-se e decidir o que eles deverão fazer."
           }
         ],
@@ -106,17 +106,17 @@
         "alternatives": [
           {
             "id": "u1ey31",
-            "leadership-style": "autocrat",
+            "leadershipStyle": "autocrat",
             "text": "“Os meus subordinados dependem mais de minha liderança que do próprio grupo, pois o(a) líder tem mais experiência de trabalho”."
           },
           {
             "id": "hs0wlf",
-            "leadership-style": "liberal",
+            "leadershipStyle": "liberal",
             "text": "“Os meus subordinados não dependem de mim, e só me consultam quando necessário”."
           },
           {
             "id": "6ssy8n",
-            "leadership-style": "democrat",
+            "leadershipStyle": "democrat",
             "text": "“As decisões devem ser tomadas pelos próprios membros do grupo ou equipe”."
           }
         ],
@@ -129,17 +129,17 @@
         "alternatives": [
           {
             "id": "unbs22",
-            "leadership-style": "autocrat",
+            "leadershipStyle": "autocrat",
             "text": "Com rapidez e firmeza para mudar o curso dos acontecimentos."
           },
           {
             "id": "do5m1t",
-            "leadership-style": "liberal",
+            "leadershipStyle": "liberal",
             "text": "Deixaria a resolução por conta dos subordinados."
           },
           {
             "id": "7sn7i8",
-            "leadership-style": "democrat",
+            "leadershipStyle": "democrat",
             "text": "Envolveria os subordinados no problema e participaria da solução com eles."
           }
         ],
@@ -152,17 +152,17 @@
         "alternatives": [
           {
             "id": "7iqhac",
-            "leadership-style": "autocrat",
+            "leadershipStyle": "autocrat",
             "text": "Definiria punições para quem não cumpriu os prazos determinados."
           },
           {
             "id": "ma67zs",
-            "leadership-style": "liberal",
+            "leadershipStyle": "liberal",
             "text": "Permitiria que a equipe definisse entre si ações que favorecessem o alcance das metas nos prazos."
           },
           {
             "id": "ca67ng",
-            "leadership-style": "democrat",
+            "leadershipStyle": "democrat",
             "text": "Pediria à equipe sugestões de como melhorar a produtividade e a entrega de tarefas dentro do prazo."
           }
         ],
@@ -175,17 +175,17 @@
         "alternatives": [
           {
             "id": "ga25oh",
-            "leadership-style": "autocrat",
+            "leadershipStyle": "autocrat",
             "text": "“Deixa eu lhe mostrar como faz”."
           },
           {
             "id": "pka4as",
-            "leadership-style": "liberal",
+            "leadershipStyle": "liberal",
             "text": "“Faça da forma que lhe parecer mais certo”."
           },
           {
             "id": "j79dow",
-            "leadership-style": "democrat",
+            "leadershipStyle": "democrat",
             "text": "“Você já tentou fazer isso de outra maneira?”"
           }
         ],
@@ -198,17 +198,17 @@
         "alternatives": [
           {
             "id": "vqil11",
-            "leadership-style": "autocrat",
+            "leadershipStyle": "autocrat",
             "text": "Coordenaria as ações de forma diretiva para que a equipe funcione adequadamente."
           },
           {
             "id": "0szfor",
-            "leadership-style": "liberal",
+            "leadershipStyle": "liberal",
             "text": "Na minha equipe, cada um faria o que acredita ser o melhor para a realização do seu trabalho."
           },
           {
             "id": "in0c0g",
-            "leadership-style": "democrat",
+            "leadershipStyle": "democrat",
             "text": "Consultaria minha equipe para decidir como devo me orientar melhor."
           }
         ],
@@ -221,17 +221,17 @@
         "alternatives": [
           {
             "id": "gb2z7q",
-            "leadership-style": "autocrat",
+            "leadershipStyle": "autocrat",
             "text": "Definiria com clareza o método e o tempo necessário para a realização do trabalho."
           },
           {
             "id": "kg3n4y",
-            "leadership-style": "liberal",
+            "leadershipStyle": "liberal",
             "text": "Não interferiria, ao contrário, daria plena liberdade ao subordinado para que ele proceda como julgar melhor."
           },
           {
             "id": "ts9u7a",
-            "leadership-style": "democrat",
+            "leadershipStyle": "democrat",
             "text": "Daria uma orientação geral ao subordinado, deixando ao seu critério a definição do processo e o tempo necessários para executar a tarefa."
           }
         ],
@@ -244,17 +244,17 @@
         "alternatives": [
           {
             "id": "bd9o2k",
-            "leadership-style": "autocrat",
+            "leadershipStyle": "autocrat",
             "text": "Assumiria o controle total, redistribuindo as tarefas e impondo prazos rígidos com supervisão constante."
           },
           {
             "id": "wd3s6h",
-            "leadership-style": "liberal",
+            "leadershipStyle": "liberal",
             "text": "Deixaria a equipe encontrar suas próprias soluções e se auto-organizar, oferecendo ajuda apenas quando solicitado."
           },
           {
             "id": "mu4x7e",
-            "leadership-style": "democrat",
+            "leadershipStyle": "democrat",
             "text": "Convocaria uma reunião para discutir os desafios e ajustar tarefas e prazos com a colaboração da equipe."
           }
         ],
@@ -267,17 +267,17 @@
         "alternatives": [
           {
             "id": "nt6b5x",
-            "leadership-style": "autocrat",
+            "leadershipStyle": "autocrat",
             "text": "Definiria o conteúdo e tarefas, supervisionando de perto e tomando decisões finais."
           },
           {
             "id": "as2c8y",
-            "leadership-style": "liberal",
+            "leadershipStyle": "liberal",
             "text": "Deixaria a equipe se auto-organizar e prepararia a apresentação com liberdade, oferecendo ajuda apenas se solicitado."
           },
           {
             "id": "lr9m4p",
-            "leadership-style": "democrat",
+            "leadershipStyle": "democrat",
             "text": "Reuniria a equipe para discutir o conteúdo e colaborar na definição de responsabilidades e prazos."
           }
         ],
@@ -290,17 +290,17 @@
         "alternatives": [
           {
             "id": "qx7n5t",
-            "leadership-style": "autocrat",
+            "leadershipStyle": "autocrat",
             "text": "Imporia regras rígidas contra fofocas e tomaria medidas disciplinares contra os responsáveis."
           },
           {
             "id": "de4j3h",
-            "leadership-style": "liberal",
+            "leadershipStyle": "liberal",
             "text": "Incentivaria a equipe a estabelecer suas próprias normas de comunicação e resolução de conflitos, apoiando as iniciativas surgidas."
           },
           {
             "id": "fb8p2w",
-            "leadership-style": "democrat",
+            "leadershipStyle": "democrat",
             "text": "Convocaria uma reunião para discutir abertamente os problemas de comunicação e definir estratégias para melhorar a transparência."
           }
         ],
