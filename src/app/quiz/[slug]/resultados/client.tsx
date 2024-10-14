@@ -26,22 +26,13 @@ export default function Client({
   const [message, setMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [feedbacks, setFeedbacks] = useState<{ [key: string]: string | number }[]>([]);
-  const [feedbackYes, setFeedbackYes] = useState<string[]>([]);
+  const [higherPercentage, setHigherPercentage] = useState<string>('');
+  const [autocratPercentage, setAutocratPercentage] = useState<number>(0);
+  const [liberalPercentage, setLiberalPercentage] = useState<number>(0);
+  const [democratPercentage, setDemocratPercentage] = useState<number>(0);
 
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState(0)
-
-  useEffect(() => {
-    if (!api) {
-      return
-    }
-
-    setCurrent(api.selectedScrollSnap() + 1)
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1)
-    })
-  }, [api])
 
   const form = useForm({
     resolver: zodResolver(sendResultsSchema),
@@ -80,12 +71,6 @@ export default function Client({
           const questionTitle = quiz.questions[id].question;
           const questionFeedback = quiz.questions[id].feedback;
 
-          //Defini os feedbacks que apareceram no carrossel
-          setFeedbackYes(prevFeedbacksYes => [
-            ...prevFeedbacksYes,
-            questionFeedback,
-          ])
-
           //Defini conteúdo de feedbacks enviados por e-mail
           setFeedbacks(prevFeedbacks => [
             ...prevFeedbacks,
@@ -101,28 +86,62 @@ export default function Client({
       });
     }
   }
+
+  useEffect(() => {
+    if (!api) {
+      return
+    }
+
+    setCurrent(api.selectedScrollSnap() + 1)
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1)
+    })
+  }, [api])
+
   useEffect(() => {
     setMessage('') // Limpar mensagem ao alterar email
   }, [form.watch("email")]);
 
   useEffect(() => {
     const lastPoints = localStorage.getItem("lastPoints");
-    if (!lastPoints) {
-      redirect("/quiz/" + quiz?.slug + "/iniciar");
-    }
+    const lastResults = localStorage.getItem("lastResults");
+    if (!lastPoints && quiz.type === 1) redirect("/quiz/" + quiz?.slug + "/iniciar");
+    if (!lastResults && quiz.type === 2) redirect("/quiz/" + quiz?.slug + "/iniciar");
 
-    const parsedData = JSON.parse(lastPoints);
-    const quizResult = parsedData.find(
-      (result: LastPoints) => result.qID === quiz?.id
-    );
+    const parsedPoints = JSON.parse(lastPoints!);
+    const parsedResults = JSON.parse(lastResults!);
 
-    if (quizResult) {
-      setPoints(quizResult.lastPoints);
-    } else {
-      return redirect("/quiz/" + quiz?.slug + "/iniciar");
-    }
+    if (parsedPoints) {
+      const quizResultPoints = parsedPoints.find(
+        (result: LastPoints) => result.qID === quiz?.id
+      );
 
-    recoverFeedback();
+      if (quizResultPoints) setPoints(quizResultPoints.lastPoints);
+    };
+
+    if (parsedResults) {
+      const quizResults = parsedResults.find(
+        (result: LastResults) => result.qID === quiz?.id
+      );
+
+      if (quizResults) {
+        const autocrat = quizResults.lastResult?.autocrat || 0;
+        const liberal = quizResults.lastResult?.liberal || 0;
+        const democrat = quizResults.lastResult?.democrat || 0;
+        const higher = Math.max(autocrat, liberal, democrat);
+
+        if (higher === autocrat) setHigherPercentage('autocrat');
+        if (higher === liberal) setHigherPercentage('liberal');
+        if (higher === democrat) setHigherPercentage('democrat');
+
+        setAutocratPercentage(autocrat / quiz.questions.length * 100);
+        setLiberalPercentage(liberal / quiz.questions.length * 100);
+        setDemocratPercentage(democrat / quiz.questions.length * 100);
+      };
+    };
+
+    if (quiz.type === 1) recoverFeedback();
   }, [quiz?.id, quiz?.slug]);
 
   return (
@@ -135,14 +154,142 @@ export default function Client({
           <h2 className="text-2xl font-semibold text-neutral-400">Autoavalição</h2>
         </div>
         <div className="flex flex-col items-start">
-          <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
-          <p className="text-sm text-neutral-600">
-            Quanto mais próximo de {quiz.questions.length}, melhor foi sua pontuação.
-          </p>
-          <p className="font-light text-blue-700 text-7xl my-4">
-            {points}
-          </p>
-          <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
+          {quiz.type === 1 && (
+            <>
+              <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
+              <p className="text-sm text-neutral-600">
+                Quanto mais próximo de {quiz.questions.length}, melhor foi sua pontuação.
+              </p>
+              <p className="font-light text-blue-700 text-7xl my-4">
+                {points}
+              </p>
+              <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
+            </>
+          )}
+
+          {quiz.type === 2 && (
+            <>
+              <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
+              <div className="flex flex-col sm:flex-row justify-between w-full mt-4">
+                <div className="flex-1">
+                  <p className="text-neutral-600 text-lg">Autocrática</p>
+                  <p className="font-light text-blue-700 text-5xl my-2 mb-5">
+                    {autocratPercentage.toFixed(0)}%
+                  </p>
+
+                  <p className="text-neutral-600 text-lg">Liberal</p>
+                  <p className="font-light text-blue-700 text-5xl my-2 mb-5">
+                    {liberalPercentage.toFixed(0)}%
+                  </p>
+
+                  <p className="text-neutral-600 text-lg">Democrática</p>
+                  <p className="font-light text-blue-700 text-5xl my-2 mb-5">
+                    {democratPercentage.toFixed(0)}%
+                  </p>
+                </div>
+
+                <div className="flex-1">
+                  <p className="text-neutral-600 text-lg">Seu perfil de liderança</p>
+                  <p className="font-light text-blue-700 text-5xl my-2 mb-5">
+                    {higherPercentage === 'autocrat' && <>Autocrática</>}
+                    {higherPercentage === 'liberal' && <>Liberal</>}
+                    {higherPercentage === 'democrat' && <>Democrática</>}
+                  </p>
+
+                  <p className="my-4">
+                    {higherPercentage === 'autocrat' && (
+                      <>
+                        Caracteriza-se por um controle centralizado e unilateral, onde
+                        o líder toma todas as decisões importantes e define as direções
+                        sem consulta ou colaboração com a equipe. Embora esse estilo
+                        possa ser eficaz em situações em que a rapidez na tomada de
+                        decisões é crucial ou onde a disciplina é necessária, ele também
+                        apresenta desvantagens significativas.
+                      </>
+                    )}
+
+                    {higherPercentage === 'liberal' && (
+                      <>
+                        O líder liberal permite que a equipe trabalhe de forma autônoma,
+                        sem intervenção direta, confiando que os membros experientes e
+                        competentes possam tomar suas próprias decisões e se autogerenciar.
+                        Esse estilo de liderança funciona melhor com equipes qualificadas
+                        e independentes, mas pode ser inadequado onde os membros precisam
+                        de mais orientação e apoio.
+                      </>
+                    )}
+
+                    {higherPercentage === 'democrat' && (
+                      <>
+                        O líder democrático, também conhecido como participativo, envolve
+                        o grupo nas decisões e incentiva o debate, delegando responsabilidades
+                        e aceitando opiniões divergentes. Esse estilo promove alto engajamento
+                        e qualidade nos resultados, mas pode tornar a tomada de decisões
+                        e a execução das tarefas mais lentas devido à necessidade de considerar
+                        todas as opiniões.
+                      </>
+                    )}
+                  </p>
+
+                  <p className="font-semibold">
+                    Pontos fortes:
+                  </p>
+                  <p>
+                    {higherPercentage === 'autocrat' && (
+                      <>
+                        O líder autocrático apresenta foca nas atividades, conseguindo
+                        manter a equipe concentrada nas tarefas e nos objetivos,
+                        gerando alta produtividade.
+                      </>
+                    )}
+
+                    {higherPercentage === 'liberal' && (
+                      <>
+                        Estimula a autonomia, criatividade e desenvolvimento de habilidades,
+                        favorecendo profissionais qualificados.
+                      </>
+                    )}
+
+                    {higherPercentage === 'democrat' && (
+                      <>
+                        Foco nas pessoas e alto engajamento, resultando em produção de
+                        alta qualidade.
+                      </>
+                    )}
+                  </p>
+
+                  <p className="font-semibold mt-4">
+                    Pontos fracos:
+                  </p>
+                  <p>
+                    {higherPercentage === 'autocrat' && (
+                      <>
+                        A falta de participação nas decisões pode gerar insatisfação entre os
+                        membros da equipe, levando a um ambiente de trabalho pouco motivador
+                        e possivelmente até à resistência passiva. Embora a produtividade possa
+                        ser alta, a qualidade dos resultados pode ser comprometida pela falta
+                        de autonomia da equipe.
+                      </>
+                    )}
+
+                    {higherPercentage === 'liberal' && (
+                      <>
+                        Pode gerar sensação de abandono e permitir que erros passem despercebidos
+                        devido à falta de supervisão.
+                      </>
+                    )}
+
+                    {higherPercentage === 'democrat' && (
+                      <>
+                        Pode causar lentidão nas atividades devido à necessidade de discussão
+                        e consideração de todas as ideias.
+                      </>
+                    )}
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
           <Link
             href={`/quiz/` + quiz.slug + `/iniciar`}
             className="text-blue-700 w-fit my-4 mb-4 flex items-center gap-1 hover:underline">
@@ -185,9 +332,9 @@ export default function Client({
 
             {/* Marcadores do feedback selecionado */}
             <ul className="flex justify-center gap-2">
-              {feedbackYes.map((feedback, index) => (
+              {feedbacks.map((feedback, index) => (
                 <li
-                  key={feedback}
+                  key={feedback.questionId}
                   className={`w-2 h-2 ${index + 1 == current ? 'bg-blue-700' : 'bg-neutral-400'} rounded-xl`}
                 />
               ))}

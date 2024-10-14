@@ -1,18 +1,18 @@
 "use client"
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
   const quizLength = quiz.questions.length;
 
-  const router = useRouter();
-
   // Numero da questão, deve começar em 0
   const [questionID, setQuestionID] = useState<number>(0);
+  const [alternatives, setAlternatives] = useState<Alternatives[]>([]);
+  const [selectedAlternatives, setSelectedAlternatives] = useState<string[]>(Array(quizLength).fill(''));
 
-  const [selectedQuestions, setSelectedQuestions] = useState<number[]>(Array(quizLength).fill(0));
+  const router = useRouter();
 
   // Mostrar botão de confirmar apenas na ultima questão
   const allQuestionsSelected = questionID === quizLength - 1;
@@ -22,9 +22,55 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
     if (questionID < quizLength - 1 && value > 0) setQuestionID(questionID + 1); // Avança para a próxima questão
   }
 
+  function storeResult() {
+    // Armazena valor das respostas obtidas durante o questionário -> resgatar em resultados para conversão correspondente
+    const autocrat = selectedAlternatives?.filter((alternative) => alternative === 'autocrat').length;
+    const liberal = selectedAlternatives?.filter((alternative) => alternative === 'liberal').length;
+    const democrat = selectedAlternatives?.filter((alternative) => alternative === 'democrat').length;
+
+    let storedResults = JSON.parse(localStorage.getItem("lastResults") ?? "[]");
+    const quizResultIndex = storedResults.findIndex(
+      (result: LastResults) => result.qID === quiz?.id
+    );
+
+    // Se o quiz já tiver sido respondido, substitui os pontos
+    if (quizResultIndex >= 0) {
+      storedResults[quizResultIndex].lastResult = {
+        autocrat,
+        liberal,
+        democrat,
+      };
+    } else {
+      storedResults.push({
+        qID: quiz?.id, lastResult: {
+          autocrat,
+          liberal,
+          democrat,
+        },
+      });
+    };
+
+    localStorage.setItem("lastResults", JSON.stringify(storedResults));
+  };
+
+  function shuffle(array: Alternatives[]) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
   function confirmAnswers() {
+    storeResult();
     router.push(`/quiz/${quiz.slug}/resultados`);
   }
+
+  useEffect(() => {
+    const shuffledAlternatives = shuffle(quiz.questions[questionID].alternatives!);
+
+    setAlternatives(shuffledAlternatives);
+  }, [questionID])
 
   return (
     <section className="w-full py-24">
@@ -34,44 +80,46 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
         </p>
 
         <ul className="my-3 h-72 flex flex-col justify-center border-t border-b">
-          {quiz.questions[questionID].alternatives?.map((alternative, index) => (
+          {alternatives.map((alternative, index) => (
             <li
               key={alternative.id}
               className="py-2"
             >
-              <input
-                type="checkbox"
-                name="answer"
-                className="checked:accent-blue-700 cursor-pointer"
-                id={alternative.id}
-                value={alternative.id}
-                checked={selectedQuestions[questionID] === index}
-
-                onChange={() => {
-                  const newSelectedQuestions = [...selectedQuestions];
-                  newSelectedQuestions[questionID] = index;
-                  setSelectedQuestions(newSelectedQuestions);
-                  console.log(selectedQuestions)
-                }}
-              />
               <label
                 htmlFor={alternative.id}
-                className="ml-2 cursor-pointer"
+                className="flex gap-2 items-start cursor-pointer"
               >
-                {index === 0 && (<span>a&#41;{' '}</span>)}
-                {index === 1 && (<span>b&#41;{' '}</span>)}
-                {index === 2 && (<span>c&#41;{' '}</span>)}
-                {alternative.text}
+                <input
+                  type="checkbox"
+                  name="answer"
+                  className="checked:accent-blue-700 mt-1.5"
+                  id={alternative.id}
+                  value={alternative.id}
+                  checked={selectedAlternatives[questionID] === alternative.leadershipStyle}
+
+                  onChange={() => {
+                    const newSelectedAlternatives = [...selectedAlternatives];
+                    newSelectedAlternatives[questionID] = alternative.leadershipStyle;
+                    setSelectedAlternatives(newSelectedAlternatives);
+                  }}
+                />
+                <div>
+                  {index === 0 && (<span>a&#41;{' '}</span>)}
+                  {index === 1 && (<span>b&#41;{' '}</span>)}
+                  {index === 2 && (<span>c&#41;{' '}</span>)}
+                  {alternative.text}
+                </div>
               </label>
             </li>
           ))}
         </ul>
-
-        <div
-          className="bg-blue-700 h-2 rounded-full mt-6 duration-300"
-          // Calcula o percentual de completude das questões do valor total de questões
-          style={{ width: `${(100 * questionID + 100) / quizLength}%` }}
-        />
+        <div className="bg-blue-100 rounded-full">
+          <div
+            className="bg-blue-700 h-2 rounded-full mt-6 duration-300"
+            // Calcula o percentual de completude das questões do valor total de questões
+            style={{ width: `${(100 * questionID + 100) / quizLength}%` }}
+          />
+        </div>
         <Button
           title={"Confirmar respostas"}
           className={
@@ -80,6 +128,7 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
               ? `w-full mx-auto my-10`
               : "hidden"
           }
+          func={confirmAnswers}
         />
         <div className="max-w-xs mx-auto mt-10 flex justify-between">
           <Button
