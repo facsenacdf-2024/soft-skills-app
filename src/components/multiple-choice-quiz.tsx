@@ -75,11 +75,11 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
   return (
     <section className="w-full py-24">
       <div className="mx-3 mt-10 px-5 md:mx-auto md:w-[520px]">
-        <p className="h-44 mb-3 text-xl font-medium">
+        <p className="mb-3 text-xl font-medium">
           {(questionID + 1) + ". " + quiz.questions[questionID].question}
         </p>
 
-        <ul className="my-3 h-72 flex flex-col justify-center border-t border-b">
+        <ul className="my-3 flex flex-col justify-center border-t border-b">
           {alternatives.map((alternative, index) => (
             <li
               key={alternative.id}
@@ -96,11 +96,12 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
                   id={alternative.id}
                   value={alternative.id}
                   checked={selectedAlternatives[questionID] === alternative.leadershipStyle}
-
                   onChange={() => {
                     const newSelectedAlternatives = [...selectedAlternatives];
                     newSelectedAlternatives[questionID] = alternative.leadershipStyle;
                     setSelectedAlternatives(newSelectedAlternatives);
+                    navigateQuestion(1);
+                    console.log(selectedAlternatives);
                   }}
                 />
                 <div>
@@ -120,16 +121,18 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
             style={{ width: `${(100 * questionID + 100) / quizLength}%` }}
           />
         </div>
-        <Button
-          title={"Confirmar respostas"}
-          className={
-            // Se todas as questões tiverem sido respondidas, mostrar o botão
-            allQuestionsSelected
-              ? `w-full mx-auto my-10`
-              : "hidden"
-          }
-          func={confirmAnswers}
-        />
+        {selectedAlternatives.indexOf("") === -1 && (
+          <Button
+            title={"Confirmar respostas"}
+            className={
+              // Se todas as questões tiverem sido respondidas, mostrar o botão
+              allQuestionsSelected
+                ? `w-full mx-auto my-10`
+                : "hidden"
+            }
+            func={confirmAnswers}
+          />
+        )}
         <div className="max-w-xs mx-auto mt-10 flex justify-between">
           <Button
             title={<ChevronLeft size={60} strokeWidth={4} />}
