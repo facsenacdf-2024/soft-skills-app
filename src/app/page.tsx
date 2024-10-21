@@ -1,6 +1,6 @@
 import Github from "@/assets/icons/github";
 import Header from "@/components/header";
-import { Brain } from "lucide-react";
+import { Brain, Building2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -44,11 +44,10 @@ export default function Home() {
                 </p>
                 <p className="text-sm text-end text-blue-600 px-4 py-2.5">2min</p>
               </Link>
-              {/* TODO: Adicionar quando for criado a autoavaliação de Lideranca
 
               <Link href={"/quiz/tipos-de-lideranca"}
                 className="bg-blue-50 border block border-blue-100 rounded-md w-full hover:bg-blue-100 duration-300">
-                <div className="flex items-center gap-2 text-blue-600 px-4 py-2.5">
+                <div className="flex items-center gap-2 text-blue-700 px-4 py-2.5">
                   <Building2 className="size-4" />
                   <h3>
                     Tipos de Liderança
@@ -63,8 +62,8 @@ export default function Home() {
                   e autocrática. Assim, o estilo democrático enfatiza a participação, o liberal permite
                   autonomia e o autocrático centraliza o poder decisório.
                 </p>
-                <p className="text-sm text-end text-blue-400 px-4 py-2.5">2min</p>
-              </Link> */}
+                <p className="text-sm text-end text-blue-600 px-4 py-2.5">2min</p>
+              </Link>
             </div>
           </div>
 
