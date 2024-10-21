@@ -191,9 +191,9 @@ export default function Client({
                 <div className="flex-1">
                   <p className="text-neutral-600 text-lg">Seu perfil de liderança</p>
                   <p className="font-light text-blue-700 text-5xl my-2 mb-5">
-                    {higherPercentage === 'autocrat' && <>Autocrática</>}
+                    {higherPercentage === 'autocrat' && <>Autocrático</>}
                     {higherPercentage === 'liberal' && <>Liberal</>}
-                    {higherPercentage === 'democrat' && <>Democrática</>}
+                    {higherPercentage === 'democrat' && <>Democrático</>}
                   </p>
 
                   <p className="my-4">

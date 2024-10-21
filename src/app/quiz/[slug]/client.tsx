@@ -10,7 +10,7 @@ export default function Client({
 }: Readonly<{ quiz: Quiz }>) {
   const [hasResults, setHasResults] = useState<boolean>(false)
   useEffect(() => {
-    const lastResults = localStorage.getItem('lastPoints')
+    const lastResults = localStorage.getItem('lastPoints') ?? localStorage.getItem('lastResults');
 
     if (lastResults) {
       setHasResults(true)
