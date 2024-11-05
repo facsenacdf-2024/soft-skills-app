@@ -1,8 +1,8 @@
-"use client";
+
+"use client"
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Button from "@/components/button";
-import Header from "@/components/header";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 /*
@@ -17,9 +17,7 @@ Isso é porque o array começa em 0 e por isso é
 preciso usar o total de questões - 1
 */
 
-export default function Client({
-  quiz,
-}: Readonly<{ quiz: Quiz }>) {
+const YNQuiz = ({ quiz }: { quiz: Quiz }) => {
   const quizLength = quiz.questions.length;
 
   const router = useRouter();
@@ -81,79 +79,77 @@ export default function Client({
     localStorage.setItem("lastPoints", JSON.stringify(storedResults));
   }
 
-  function storeFeedback(){
+  function storeFeedback() {
     //Armazena valor das respostas obtidas durante o questionário -> resgatar em resultados para conversão correspondente
     let feedbacks = selectedQuestions;
-    localStorage.setItem("finalFeedback",JSON.stringify(feedbacks))
+    localStorage.setItem("finalFeedback", JSON.stringify(feedbacks))
   }
 
   // Ao terminar o quiz, salva os pontos e redireciona para o resultado
   function persistPoints() {
     storePoints();
     storeFeedback();
-    router.push(`/quiz/${quiz.slug}/resultados`);
+    router.push(`/autoavaliacao/${quiz.slug}/resultados`);
   }
 
   return (
-    <>
-      <Header />
-
-      <section className="w-full py-24">
-        <div className="mx-3 md:mx-auto md:w-[520px] text-center text-xl lg:text-2xl">
-          <p className="h-20 mt-10">
-            {(questionID + 1) + ". " + quiz.questions[questionID].question}
-          </p>
-          <div className="flex justify-evenly items-center my-20">
-            <Button
-              className={
-                selectedQuestions[questionID] === 1
-                  ? "!bg-violet-500 !text-white"
-                  : " "
-              }
-              title="Sim"
-              func={subtractPoints}
-            />
-            <Button
-              className={
-                selectedQuestions[questionID] === 2
-                  ? "!bg-violet-500 !text-white"
-                  : " "
-              }
-              title="Não"
-              func={adjustPoints}
-            />
-          </div>
-          <div className="w-full h-2 bg-violet-100 rounded-full">
-            <div
-              className="bg-violet-500 h-2 rounded-full duration-300"
-              // Calcula o percentual de completude das questões do valor total de questões
-              style={{ width: `${(100 * questionID + 100) / quizLength}%` }}
-            ></div>
-            <Button
-              title={"Confirmar respostas"}
-              className={
-                // Se todas as questões tiverem sido respondidas, mostrar o botão
-                allQuestionsSelected
-                  ? `w-9/12 mt-10`
-                  : "hidden"
-              }
-              func={persistPoints}
-            />
-          </div>
-          <div className="max-w-xs mx-auto mt-44 flex justify-between">
-            <Button
-              title={<ChevronLeft size={60} strokeWidth={4} />}
-              func={() => navigateQuestion(-1)}
-              className="rounded-2xl !min-w-20 w-20 flex justify-center"
-            />
-            <Button
-              title={<ChevronRight size={60} strokeWidth={4} />}
-              func={() => navigateQuestion(1)}
-              className="rounded-2xl !min-w-20 w-20 flex justify-center"
-            />
-          </div>
+    <section className="w-full py-24">
+      <div className="mx-3 md:mx-auto md:w-[520px] text-center text-xl lg:text-2xl">
+        <p className="h-20 mt-10">
+          {(questionID + 1) + ". " + quiz.questions[questionID].question}
+        </p>
+        <div className="flex justify-evenly items-center my-20">
+          <Button
+            className={
+              selectedQuestions[questionID] === 1
+                ? "!bg-blue-700 !text-white"
+                : " "
+            }
+            title="Sim"
+            func={subtractPoints}
+          />
+          <Button
+            className={
+              selectedQuestions[questionID] === 2
+                ? "!bg-blue-700 !text-white"
+                : " "
+            }
+            title="Não"
+            func={adjustPoints}
+          />
         </div>
-      </section>
-    </>
-  );
-}
+        <div className="w-full h-2 bg-blue-100 rounded-full">
+          <div
+            className="bg-blue-700 h-2 rounded-full duration-300"
+            // Calcula o percentual de completude das questões do valor total de questões
+            style={{ width: `${(100 * questionID + 100) / quizLength}%` }}
+          />
+          <Button
+            title={"Confirmar respostas"}
+            className={
+              // Se todas as questões tiverem sido respondidas, mostrar o botão
+              allQuestionsSelected
+                ? `w-9/12 mt-10`
+                : "hidden"
+            }
+            func={persistPoints}
+          />
+        </div>
+        <div className="max-w-xs mx-auto mt-44 flex justify-between">
+          <Button
+            title={<ChevronLeft size={60} strokeWidth={4} />}
+            func={() => navigateQuestion(-1)}
+            className="rounded-2xl !min-w-20 w-20 flex justify-center"
+          />
+          <Button
+            title={<ChevronRight size={60} strokeWidth={4} />}
+            func={() => navigateQuestion(1)}
+            className="rounded-2xl !min-w-20 w-20 flex justify-center"
+          />
+        </div>
+      </div>
+    </section>
+  )
+};
+
+export default YNQuiz;

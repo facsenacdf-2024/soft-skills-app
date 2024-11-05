@@ -1,5 +1,5 @@
 'use client'
-import { Brain, Building2, ChevronDown } from "lucide-react"
+import { Brain, ChevronDown, MenuIcon, Users } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -23,26 +23,25 @@ const Header = () => {
             </div>
             <div
               className="
-                absolute mt-3 w-max rounded-md bg-violet-50 border border-violet-100 p-5 space-y-3 -translate-x-7 translate-y-3 invisible opacity-0
+                absolute mt-3 w-max rounded-md bg-blue-50 border border-blue-100 p-5 space-y-3 -translate-x-7 translate-y-3 invisible opacity-0
                 group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible duration-300
               ">
-              <h3 className="font-medium text-violet-700">Quizzes disponíveis</h3>
-              <hr className="border-violet-100" />
+              <h3 className="font-medium text-blue-700">Autoavaliações disponíveis</h3>
+              <hr className="border-blue-100" />
               <ul className="space-y-2 text-sm">
                 <li className="flex items-center gap-2">
-                  <Link href="/quiz/inteligencia-emocional"
-                    className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-violet-600 hover:bg-violet-100">
+                  <Link href="/autoavaliacao/inteligencia-emocional"
+                    className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-blue-600 hover:bg-blue-100">
                     <Brain className="size-4" />
                     <span>Inteligência Emocional</span>
                   </Link>
                 </li>
                 <li className="flex items-center gap-2">
-                  {/* TODO: Adicionar quando for criado a autoavaliação de Lideranca
-                  <Link href="/quiz/tipos-de-lideranca"
-                    className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-violet-600 hover:bg-violet-100">
-                    <Building2 className="size-4" />
-                    <span>Tipos de Liderança</span>
-                  </Link> */}
+                  <Link href="/autoavaliacao/estilos-de-lideranca"
+                    className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-blue-600 hover:bg-blue-100">
+                    <Users className="size-4" />
+                    <span>Estilos de Liderança</span>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -56,7 +55,7 @@ const Header = () => {
           <li>
             {/* TODO: Adicionar quando for criado o login
             <Link href={"/login"}
-              className="px-6 py-2 ml-4 block bg-violet-500 text-white hover:bg-violet-600 rounded-full cursor-pointer">
+              className="px-6 py-2 ml-4 block bg-blue-500 text-white hover:bg-blue-600 rounded-full cursor-pointer">
               Entrar
             </Link> */}
           </li>
@@ -66,50 +65,49 @@ const Header = () => {
       {/* Mobile menu */}
       <div className="sm:hidden inline group absolute top-0 right-0">
         <div className="bg-white border rounded-md p-2 m-4 w-fit">
-          <Image src="/logo.svg" width={48} height={48} alt="Logo" className="min-w-12" />
+          <MenuIcon className="size-6" />
         </div>
         <div
           className="
-            absolute w-max rounded-md bg-violet-50 border border-violet-100 p-5 space-y-3 -translate-x-0 translate-y-0 invisible opacity-0
+            absolute w-max rounded-md bg-blue-50 border border-blue-100 p-5 space-y-3 -translate-x-0 translate-y-0 invisible opacity-0
             group-hover:opacity-100 group-hover:-translate-x-2/3 group-hover:visible duration-300 group-hover:z-50
           ">
           <Link href={"/"}
-            className="font-medium text-violet-700 block">
+            className="font-medium text-blue-700 block">
             Início
           </Link>
 
-          <hr className="border-violet-100" />
+          <hr className="border-blue-100" />
 
           <Link href={"/sobre"}
-            className="font-medium text-violet-700 block">
+            className="font-medium text-blue-700 block">
             Sobre
           </Link>
 
-          <hr className="border-violet-100" />
+          <hr className="border-blue-100" />
 
-          <h3 className="font-medium text-violet-700">Quizzes disponíveis</h3>
+          <h3 className="font-medium text-blue-700">Autoavaliações disponíveis</h3>
           <ul className="space-y-2 text-sm">
             <li className="flex items-center gap-2">
-              <Link href="/quiz/inteligencia-emocional"
-                className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-violet-600 hover:bg-violet-100">
+              <Link href="/autoavaliacao/inteligencia-emocional"
+                className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-blue-600 hover:bg-blue-100">
                 <Brain className="size-4" />
                 <span>Inteligência Emocional</span>
               </Link>
             </li>
-            {/* TODO: Adicionar quando for criado a autoavaliação de Lideranca
             <li className="flex items-center gap-2">
-              <Link href="/quiz/tipos-de-lideranca"
-                className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-violet-600 hover:bg-violet-100">
-                <Building2 className="size-4" />
-                <span>Tipos de Liderança</span>
+              <Link href="/autoavaliacao/estilos-de-lideranca"
+                className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-blue-600 hover:bg-blue-100">
+                <Users className="size-4" />
+                <span>Estilos de Liderança</span>
               </Link>
-            </li> */}
+            </li>
           </ul>
 
 
           {/* TODO: Adicionar quando for criado o login
           <Link href={"/login"}
-            className="px-6 py-2 ml-4 !mt-8 text-center block bg-violet-500 text-white hover:bg-violet-600 rounded-full cursor-pointer">
+            className="px-6 py-2 ml-4 !mt-8 text-center block bg-blue-500 text-white hover:bg-blue-600 rounded-full cursor-pointer">
             Entrar
           </Link> */}
         </div>

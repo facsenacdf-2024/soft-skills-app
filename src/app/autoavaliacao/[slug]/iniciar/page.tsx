@@ -25,7 +25,7 @@ export default function Page({
 }: Readonly<{ params: { slug: string } }>) {
   const quiz = quizzes.find((c: any) => c.slug === params.slug);
 
-  if (!quiz) return redirect("/")
+  if (!quiz) return redirect("/");
 
   return <Client quiz={quiz} />
 }
