@@ -1,5 +1,6 @@
 interface Quiz {
   id: number,
+  image: string,
   title: string,
   description: string,
   slug: string,

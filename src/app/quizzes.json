@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "image": "connection.svg",
     "title": "Inteligência Emocional",
     "description": "Serão apresentadas 10 situações. Leia com atenção e marque a alternativa que melhor descreve seu comportamento.",
     "slug": "inteligencia-emocional",
@@ -71,9 +72,10 @@
   },
   {
     "id": 2,
-    "title": "Tipos de Liderança",
+    "image": "team.svg",
+    "title": "Estilos de Liderança",
     "description": "Imagine que você é líder de uma equipe de cerca de 8 pessoas que trabalham em um departamento técnico-administrativo, como finanças, recursos humanos ou tecnologia. Leia os itens a seguir e responda como você agiria, de acordo com seu estilo de liderança.",
-    "slug": "tipos-de-lideranca",
+    "slug": "estilos-de-lideranca",
     "duration": 2,
     "type": 2,
     "questions": [
