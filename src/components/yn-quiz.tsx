@@ -89,7 +89,7 @@ const YNQuiz = ({ quiz }: { quiz: Quiz }) => {
   function persistPoints() {
     storePoints();
     storeFeedback();
-    router.push(`/quiz/${quiz.slug}/resultados`);
+    router.push(`/autoavaliacao/${quiz.slug}/resultados`);
   }
 
   return (

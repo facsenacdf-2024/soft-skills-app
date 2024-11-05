@@ -1,5 +1,5 @@
 'use client'
-import { Brain, Building2, ChevronDown } from "lucide-react"
+import { Brain, ChevronDown, MenuIcon, Users } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -26,21 +26,21 @@ const Header = () => {
                 absolute mt-3 w-max rounded-md bg-blue-50 border border-blue-100 p-5 space-y-3 -translate-x-7 translate-y-3 invisible opacity-0
                 group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible duration-300
               ">
-              <h3 className="font-medium text-blue-700">Quizzes disponíveis</h3>
+              <h3 className="font-medium text-blue-700">Autoavaliações disponíveis</h3>
               <hr className="border-blue-100" />
               <ul className="space-y-2 text-sm">
                 <li className="flex items-center gap-2">
-                  <Link href="/quiz/inteligencia-emocional"
+                  <Link href="/autoavaliacao/inteligencia-emocional"
                     className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-blue-600 hover:bg-blue-100">
                     <Brain className="size-4" />
                     <span>Inteligência Emocional</span>
                   </Link>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Link href="/quiz/tipos-de-lideranca"
+                  <Link href="/autoavaliacao/estilos-de-lideranca"
                     className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-blue-600 hover:bg-blue-100">
-                    <Building2 className="size-4" />
-                    <span>Tipos de Liderança</span>
+                    <Users className="size-4" />
+                    <span>Estilos de Liderança</span>
                   </Link>
                 </li>
               </ul>
@@ -65,7 +65,7 @@ const Header = () => {
       {/* Mobile menu */}
       <div className="sm:hidden inline group absolute top-0 right-0">
         <div className="bg-white border rounded-md p-2 m-4 w-fit">
-          <Image src="/logo.svg" width={48} height={48} alt="Logo" className="min-w-12" />
+          <MenuIcon className="size-6" />
         </div>
         <div
           className="
@@ -86,20 +86,20 @@ const Header = () => {
 
           <hr className="border-blue-100" />
 
-          <h3 className="font-medium text-blue-700">Quizzes disponíveis</h3>
+          <h3 className="font-medium text-blue-700">Autoavaliações disponíveis</h3>
           <ul className="space-y-2 text-sm">
             <li className="flex items-center gap-2">
-              <Link href="/quiz/inteligencia-emocional"
+              <Link href="/autoavaliacao/inteligencia-emocional"
                 className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-blue-600 hover:bg-blue-100">
                 <Brain className="size-4" />
                 <span>Inteligência Emocional</span>
               </Link>
             </li>
             <li className="flex items-center gap-2">
-              <Link href="/quiz/tipos-de-lideranca"
+              <Link href="/autoavaliacao/estilos-de-lideranca"
                 className="w-full flex items-center gap-2 px-5 py-2 rounded-sm text-blue-600 hover:bg-blue-100">
-                <Building2 className="size-4" />
-                <span>Tipos de Liderança</span>
+                <Users className="size-4" />
+                <span>Estilos de Liderança</span>
               </Link>
             </li>
           </ul>

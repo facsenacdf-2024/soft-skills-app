@@ -26,7 +26,7 @@ export default function Home() {
               <hr className="w-full border-blue-100" />
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href={"/quiz/inteligencia-emocional"}
+              <Link href={"/autoavaliacao/inteligencia-emocional"}
                 className="bg-blue-50 border block border-blue-100 rounded-md w-full hover:bg-blue-100 duration-300">
                 <div className="flex items-center gap-2 text-blue-700 px-4 py-2.5">
                   <Brain className="size-4" />
@@ -45,12 +45,12 @@ export default function Home() {
                 <p className="text-sm text-end text-blue-600 px-4 py-2.5">2min</p>
               </Link>
 
-              <Link href={"/quiz/tipos-de-lideranca"}
+              <Link href={"/autoavaliacao/estilos-de-lideranca"}
                 className="bg-blue-50 border block border-blue-100 rounded-md w-full hover:bg-blue-100 duration-300">
                 <div className="flex items-center gap-2 text-blue-700 px-4 py-2.5">
                   <Building2 className="size-4" />
                   <h3>
-                    Tipos de Liderança
+                    Estilos de Liderança
                   </h3>
                 </div>
 
@@ -58,7 +58,7 @@ export default function Home() {
 
                 <p className="text-sm px-4 py-2.5 text-neutral-700 h-36 overflow-y-auto">
                   Existem várias abordagens de liderança amplamente reconhecidas, mas de acordo com o
-                  autor Carl Lindberg, os estilos mais clássicos de liderança são: democrática, liberal
+                  autor Kurt Lewin, os estilos mais clássicos de liderança são: democrática, liberal
                   e autocrática. Assim, o estilo democrático enfatiza a participação, o liberal permite
                   autonomia e o autocrático centraliza o poder decisório.
                 </p>
@@ -67,12 +67,16 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="bg-white border rounded-full py-3 px-8 text-neutral-500 text-xs text-center sm:text-sm w-full mb-10">
+          <div className="text-neutral-600 text-xs text-center sm:text-sm w-full mb-10">
             <p>&copy; 2024 Soft Skills Check.</p>
-            <p>Faculdade Senac DF</p>
+            <p>Faculdade de Tecnologia e Inovação Senac DF</p>
           </div>
-          <Link href={'https://github.com/senac-volunteers/soft-skills-app'} target="_blank" referrerPolicy="no-referrer"
-            className="w-fit block mx-auto">
+          <Link
+            href={'https://github.com/senac-volunteers/soft-skills-app'}
+            target="_blank"
+            referrerPolicy="no-referrer"
+            className="w-fit block mx-auto"
+          >
             <Github className="size-5 text-neutral-700" />
           </Link>
         </div>

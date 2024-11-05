@@ -23,7 +23,7 @@ export default function Client({
 
       <main className="py-20 sm:py-44">
         <div className="flex flex-col sm:flex-row gap-10 max-w-xs sm:max-w-4xl mx-auto">
-          <Image src={'/connection.svg'} alt="" width={400} height={400} className="w-72 min-w-72 sm:w-1/2" priority />
+          <Image src={"/" + quiz.image} alt="" width={400} height={400} className="w-72 min-w-72 sm:w-1/2" priority />
           <div className="space-y-7">
             <div>
               <h1 className="text-3xl font-bold text-blue-700 w-max ">{quiz.title}</h1>
@@ -39,13 +39,13 @@ export default function Client({
                 Suas respostas são mantidas em sigilo.
               </p>
             </div>
-            <Link href={`/quiz/${quiz.slug}/iniciar`}
+            <Link href={`/autoavaliacao/${quiz.slug}/iniciar`}
               className="bg-blue-700 hover:bg-blue-600 block text-center text-white font-bold py-3 px-6 rounded-full">
               Começar
             </Link>
 
             {hasResults &&
-              <Link href={`/quiz/${quiz.slug}/resultados`}
+              <Link href={`/autoavaliacao/${quiz.slug}/resultados`}
                 className="flex justify-center items-center gap-2 text-neutral-600 font-medium hover:underline">
                 <ExternalLink className="size-4" />
                 Ver últimos resultados

@@ -63,7 +63,7 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
 
   function confirmAnswers() {
     storeResult();
-    router.push(`/quiz/${quiz.slug}/resultados`);
+    router.push(`/autoavaliacao/${quiz.slug}/resultados`);
   }
 
   useEffect(() => {

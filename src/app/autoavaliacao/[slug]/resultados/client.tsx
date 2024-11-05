@@ -94,7 +94,7 @@ export default function Client({
     if (quiz.type !== 2) return;
 
     const lastResults = localStorage.getItem("lastResults");
-    if (!lastResults) redirect("/quiz/" + quiz?.slug + "/iniciar");
+    if (!lastResults) redirect("/autoavaliacao/" + quiz?.slug + "/iniciar");
 
     // Transforma o plaintext armazenado no localStorage em JSON
     const parsedResults = JSON.parse(lastResults);
@@ -130,7 +130,7 @@ export default function Client({
     if (quiz.type !== 1) return;
 
     const lastPoints = localStorage.getItem("lastPoints");
-    if (!lastPoints) redirect("/quiz/" + quiz?.slug + "/iniciar");
+    if (!lastPoints) redirect("/autoavaliacao/" + quiz?.slug + "/iniciar");
 
     // Transforma o plaintext armazenado no localStorage em JSON
     const parsedPoints = JSON.parse(lastPoints);
@@ -312,7 +312,7 @@ export default function Client({
             </>
           )}
           <Link
-            href={`/quiz/` + quiz.slug + `/iniciar`}
+            href={`/autoavaliacao/` + quiz.slug + `/iniciar`}
             className="text-blue-700 w-fit my-4 mb-4 flex items-center gap-1 hover:underline">
             <Undo2 className="size-4" />
             Refazer teste
