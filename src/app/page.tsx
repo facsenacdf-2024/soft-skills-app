@@ -1,6 +1,6 @@
 import Github from "@/assets/icons/github";
 import Header from "@/components/header";
-import { Brain, Building2 } from "lucide-react";
+import { Brain, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -48,7 +48,7 @@ export default function Home() {
               <Link href={"/autoavaliacao/estilos-de-lideranca"}
                 className="bg-blue-50 border block border-blue-100 rounded-md w-full hover:bg-blue-100 duration-300">
                 <div className="flex items-center gap-2 text-blue-700 px-4 py-2.5">
-                  <Building2 className="size-4" />
+                  <Users className="size-4" />
                   <h3>
                     Estilos de Liderança
                   </h3>
@@ -68,7 +68,7 @@ export default function Home() {
           </div>
 
           <div className="text-neutral-600 text-xs text-center sm:text-sm w-full mb-10">
-            <p>&copy; 2024 Soft Skills Check.</p>
+            <p>&copy; 2024 Soft Skills Check. Todos os direitos reservados.</p>
             <p>Faculdade de Tecnologia e Inovação Senac DF</p>
           </div>
           <Link
