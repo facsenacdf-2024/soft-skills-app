@@ -86,15 +86,15 @@ const box = {
 };
 
 const title = {
-  color: "#7c3aed",
+  color: "#2563eb",
 }
 
 const subtitle = {
-  color: "#7c3aed",
+  color: "#2563eb",
 }
 
 const result = {
-  color: "#7c3aed",
+  color: "#2563eb",
   fontSize: "52px",
 }
 

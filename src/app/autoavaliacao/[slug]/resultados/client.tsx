@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel"
 import { Form, FormField, FormItem, FormMessage, FormControl } from "@/components/ui/form";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { ResultsEmail } from "@/components/results-email";
 
 export default function Client({
   quiz,
@@ -179,7 +180,7 @@ export default function Client({
             <>
               <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
               <p className="text-sm text-neutral-600">
-                Quanto mais próximo de {quiz.questions.length}, melhor foi sua pontuação.
+                Quanto mais próximo de {quiz.questions.length}, mais desenvolvida é sua Inteligência Emocional.
               </p>
               <p className="font-light text-blue-700 text-7xl my-4">
                 {points}

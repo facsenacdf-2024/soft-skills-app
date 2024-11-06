@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <Header />
       <main className="py-36">
-        <div className="fixed inset-0 -z-10 h-full w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#0064c3_100%)]"></div>
+        <div className="fixed inset-0 -z-10 h-screen w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#0064c3_100%)]"></div>
         <div className="max-w-xs sm:max-w-2xl mx-auto">
           <div className="text-center space-y-7 mb-72 sm:mt-20">
             <h1 className="text-4xl sm:text-5xl font-extrabold text-blue-700">
