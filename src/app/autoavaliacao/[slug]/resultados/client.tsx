@@ -49,7 +49,13 @@ export default function Client({
     setLoading(true);
 
     try {
-      const resp = await sendResults(data.email, quiz.title, points, totalPoints, feedbacks);
+      const resp = await sendResults(
+        data.email,
+        quiz.title,
+        points,
+        totalPoints,
+        feedbacks
+      );
       setLoading(false);
       setSuccess(resp.success);
       setMessage(resp.message);
@@ -472,50 +478,53 @@ export default function Client({
           Pra entender como funciona o form do shadcn
           https://ui.shadcn.com/docs/components/form
         */}
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="mb-20 mt-7" noValidate>
-            <h1 className="leading-5 font-medium text-neutral-800">
-              Deseja receber seus resultados?
-            </h1>
-            <p className="text-sm text-neutral-600 mb-3">Receba seu resultado por email</p>
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormMessage />
-                  <FormControl >
-                    <Input
-                      className="focus-visible:ring-blue-500"
-                      type="email"
-                      placeholder="Insira seu email aqui"
-                      {...field}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <button
-              className="bg-blue-600 hover:bg-blue-600 text-white font-medium py-2 px-7 min-w-32 mx-auto block my-5 w-fit rounded-full">
-              Enviar feedback
-            </button>
-            {loading &&
-              <div className="border-4 border-blue-500 border-r-transparent rounded-full size-9 mx-auto animate-spin"></div>
-            }
-            {!success && message && // Erro
-              <p className="text-red-600 bg-red-100 font-medium py-2.5 px-5 rounded-md flex items-center justify-between flex-wrap">
-                {message}
-                <TriangleAlert className="size-4 min-w-4" />
-              </p>
-            }
-            {success && message && // Sucesso
-              <p className="text-green-600 bg-green-100 font-medium py-2.5 px-5 rounded-md flex items-center justify-between flex-wrap">
-                {message}
-                <Check className="size-4 min-w-4" />
-              </p>
-            }
-          </form>
-        </Form>
+        {quiz.type === 1 && (
+
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="mb-20 mt-7" noValidate>
+              <h1 className="leading-5 font-medium text-neutral-800">
+                Deseja receber seus resultados?
+              </h1>
+              <p className="text-sm text-neutral-600 mb-3">Receba seu resultado por email</p>
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormMessage />
+                    <FormControl >
+                      <Input
+                        className="focus-visible:ring-blue-500"
+                        type="email"
+                        placeholder="Insira seu email aqui"
+                        {...field}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <button
+                className="bg-blue-600 hover:bg-blue-600 text-white font-medium py-2 px-7 min-w-32 mx-auto block my-5 w-fit rounded-full">
+                Enviar feedback
+              </button>
+              {loading &&
+                <div className="border-4 border-blue-500 border-r-transparent rounded-full size-9 mx-auto animate-spin"></div>
+              }
+              {!success && message && // Erro
+                <p className="text-red-600 bg-red-100 font-medium py-2.5 px-5 rounded-md flex items-center justify-between flex-wrap">
+                  {message}
+                  <TriangleAlert className="size-4 min-w-4" />
+                </p>
+              }
+              {success && message && // Sucesso
+                <p className="text-green-600 bg-green-100 font-medium py-2.5 px-5 rounded-md flex items-center justify-between flex-wrap">
+                  {message}
+                  <Check className="size-4 min-w-4" />
+                </p>
+              }
+            </form>
+          </Form>
+        )}
       </div >
     </>
   );
