@@ -1,4 +1,5 @@
 import Header from "@/components/header";
+import JustBack from "@/components/goBackButton";
 
 export const metadata = {
   title: 'Sobre | Soft Skills Check',

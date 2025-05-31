@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Button from "@/components/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import NavigateQuestion from "./navigableQuestion";
 
 /*
 NOTA: Em algumas partes do código é possível notar
@@ -135,18 +136,8 @@ const YNQuiz = ({ quiz }: { quiz: Quiz }) => {
             func={persistPoints}
           />
         </div>
-        <div className="max-w-xs mx-auto mt-44 flex justify-between">
-          <Button
-            title={<ChevronLeft size={60} strokeWidth={4} />}
-            func={() => navigateQuestion(-1)}
-            className="rounded-2xl !min-w-20 w-20 flex justify-center"
-          />
-          <Button
-            title={<ChevronRight size={60} strokeWidth={4} />}
-            func={() => navigateQuestion(1)}
-            className="rounded-2xl !min-w-20 w-20 flex justify-center"
-          />
-        </div>
+        <NavigateQuestion navigateQuestion={navigateQuestion} />
+        
       </div>
     </section>
   )

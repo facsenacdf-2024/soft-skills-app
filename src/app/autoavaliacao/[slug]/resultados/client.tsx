@@ -19,6 +19,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Form, FormField, FormItem, FormMessage, FormControl } from "@/components/ui/form";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ResultsEmail } from "@/components/results-email";
+import GoBackButton from "@/components/goBackButton";
 
 export default function Client({
   quiz,
@@ -32,7 +33,11 @@ export default function Client({
   const [autocratPercentage, setAutocratPercentage] = useState<number>(0);
   const [liberalPercentage, setLiberalPercentage] = useState<number>(0);
   const [democratPercentage, setDemocratPercentage] = useState<number>(0);
-
+  const [firstGroupPoints, setFirstGroupPoints] = useState<number>(0);
+  const [secondGroupPoints, setSecondGroupPoints] = useState<number>(0);
+  const [thirdGroupPoints, setThirdGroupPoints] = useState<number>(0);
+  const [fourthGroupPoints, setFourthGroupPoints] = useState<number>(0);
+  const [fifthGroupPoints, setFifthGroupPoints] = useState<number>(0);
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
@@ -89,9 +94,43 @@ export default function Client({
     };
   };
 
+  function getGroupPoints() {
+    // Verifica se o tipo do quiz é 3 (multiple group)
+    // para dar continuidade à função
+    if (quiz.type !== 3) return;
+
+    const lastResults = localStorage.getItem("lastResults");
+    if (!lastResults) redirect("/autoavaliacao/" + quiz?.slug + "/iniciar");
+
+    // Transforma o plaintext armazenado no localStorage em JSON
+    const parsedResults = JSON.parse(lastResults);
+
+    if (parsedResults) {
+      // Busca o quiz pelo ID armazenado no localStorage
+      const quizResults = parsedResults.find(
+        (result: GroupResults) => result.qID === quiz?.id
+      );
+
+      // Recuperando valor dos resultados
+      if (quizResults) {
+        const groupPoints1 = quizResults.lastResult?.group1 || 0;
+        const groupPoints2 = quizResults.lastResult?.group2 || 0;
+        const groupPoints3 = quizResults.lastResult?.group3 || 0;
+        const groupPoints4 = quizResults.lastResult?.group4 || 0;
+        const groupPoints5 = quizResults.lastResult?.group5 || 0;
+
+        setFirstGroupPoints(groupPoints1);
+        setSecondGroupPoints(groupPoints2);
+        setThirdGroupPoints(groupPoints3);
+        setFourthGroupPoints(groupPoints4);
+        setFifthGroupPoints(groupPoints5);
+      }
+    }
+  }
+
   function getLeadershipResults() {
     // Verifica se o tipo do quiz é 2 (multiple choice)
-    // para dar continuidade na função
+    // para dar continuidade à função
     if (quiz.type !== 2) return;
 
     const lastResults = localStorage.getItem("lastResults");
@@ -164,11 +203,13 @@ export default function Client({
   useEffect(() => {
     getPoints();
     getLeadershipResults();
+    getGroupPoints();
   }, [quiz?.id, quiz?.slug]);
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
+      <GoBackButton />
 
       <div className="mx-auto py-32 max-w-xs sm:max-w-4xl sm:px-5">
         <div className="mb-8">
@@ -312,6 +353,73 @@ export default function Client({
               </div>
             </>
           )}
+
+          {quiz.type === 3 && (
+            <>
+
+              {/* pontuação de habilidades de autoconhecimento */}
+              <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
+              <p className="text-sm text-neutral-600">
+                Quanto mais próximo de {quiz.questions.length}, mais desenvolvida é sua Inteligência Emocional.
+              </p>
+              <br />
+              <p className="text-sm text-neutral-600">
+                <span className="font-bold text-black">Habilidades de Autoconhecimento: </span>
+                Capacidade de reconhecer emoções, limites e qualidades pessoais com clareza.
+              </p>
+              <p className="font-light text-blue-700 text-7xl my-4">
+                {firstGroupPoints}
+              </p>
+              <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
+              <br />
+
+              {/* pontuação de habilidades de autocontrole */}
+              <p className="text-sm text-neutral-600">
+                <span className="font-bold text-black">Habilidades de Autocontrole: </span>
+                Capacidadede gerenciar impulsos, emoções e reações em situações desafiadoras.
+              </p>
+              <p className="font-light text-blue-700 text-7xl my-4">
+                {secondGroupPoints}
+              </p>
+              <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
+              <br />
+
+              {/* pontuação de habilidades de automotivação */}
+              <p className="text-sm text-neutral-600">
+                <span className="font-bold text-black">Habilidades de Automotivação: </span>
+                Capacidade de manter foco, iniciativa e otimismo diante de obstáculos.
+              </p>
+              <p className="font-light text-blue-700 text-7xl my-4">
+                {thirdGroupPoints}
+              </p>
+              <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
+              <br />
+
+              {/* pontuação de habilidades de empatia */}
+              <p className="text-sm text-neutral-600">
+                <span className="font-bold text-black">Habilidades de Empatia: </span>
+                Capacidade de compreender emoções alheias com sensibilidade e respeito.
+              </p>
+              <p className="font-light text-blue-700 text-7xl my-4">
+                {fourthGroupPoints}
+              </p>
+              <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
+              <br />
+
+              {/* pontuação de habilidades sociais */}
+              <p className="text-sm text-neutral-600">
+                <span className="font-bold text-black">Habilidades Sociais: </span>
+                Capacidade de contruir relacionamentos positivos com comunicação e colaboração.
+              </p>
+              <p className="font-light text-blue-700 text-7xl my-4">
+                {fifthGroupPoints}
+              </p>
+              <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
+              <br />
+
+            </>
+          )}
+
           <Link
             href={`/autoavaliacao/` + quiz.slug + `/iniciar`}
             className="text-blue-700 w-fit my-4 mb-4 flex items-center gap-1 hover:underline">
@@ -335,143 +443,13 @@ export default function Client({
             }
             {quiz.type === 2 && <>Curioso? Descubra mais sobre os outros estilos de liderança.</>}
           </p>
-
-          <Carousel
-            className="
-              border border-blue-600 rounded-lg max-w-full
-              flex flex-col gap-4 mx-auto p-4 my-7
-            "
-            opts={{ loop: true }}
-            setApi={setApi}
-          >
-            {quiz.type === 1 && (
-              <CarouselContent>
-                {feedbacks.map((feedback) => (
-                  <CarouselItem key={feedback.questionId}>
-                    <p className="font-medium mb-2">
-                      {feedback.questionId + ". " + feedback.questionTitle}
-                    </p>
-                    <hr />
-                    <p className="text-sm mt-2">
-                      {feedback.questionFeedback}
-                    </p>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            )}
-
-            {quiz.type === 2 && (
-              <CarouselContent>
-                <CarouselItem key={'autocrat'}>
-                  <p className="font-medium mb-2">
-                    Autocrático
-                  </p>
-                  <hr />
-                  <p className="text-sm my-4">
-                    Caracteriza-se por um controle centralizado e unilateral, onde
-                    o líder toma todas as decisões importantes e define as direções
-                    sem consulta ou colaboração com a equipe. Embora esse estilo
-                    possa ser eficaz em situações em que a rapidez na tomada de
-                    decisões é crucial ou onde a disciplina é necessária, ele também
-                    apresenta desvantagens significativas.
-                  </p>
-
-                  <p className="text-sm mt-2">
-                    <span className="font-semibold">Pontos fortes:</span>{' '}
-                    O líder autocrático apresenta foca nas atividades, conseguindo
-                    manter a equipe concentrada nas tarefas e nos objetivos,
-                    gerando alta produtividade.
-                  </p>
-
-                  <p className="text-sm mt-2">
-                    <span className="font-semibold">Pontos fracos:</span>{' '}
-                    A falta de participação nas decisões pode gerar insatisfação entre os
-                    membros da equipe, levando a um ambiente de trabalho pouco motivador
-                    e possivelmente até à resistência passiva. Embora a produtividade possa
-                    ser alta, a qualidade dos resultados pode ser comprometida pela falta
-                    de autonomia da equipe.
-                  </p>
-                </CarouselItem>
-                <CarouselItem key={'liberal'}>
-                  <p className="font-medium mb-2">
-                    Liberal
-                  </p>
-                  <hr />
-                  <p className="text-sm my-4">
-                    O líder liberal permite que a equipe trabalhe de forma autônoma,
-                    sem intervenção direta, confiando que os membros experientes e
-                    competentes possam tomar suas próprias decisões e se autogerenciar.
-                    Esse estilo de liderança funciona melhor com equipes qualificadas
-                    e independentes, mas pode ser inadequado onde os membros precisam
-                    de mais orientação e apoio.
-                  </p>
-
-                  <p className="text-sm mt-2">
-                    <span className="font-semibold">Pontos fortes:</span>{' '}
-                    Estimula a autonomia, criatividade e desenvolvimento de habilidades,
-                    favorecendo profissionais qualificados.
-                  </p>
-
-                  <p className="text-sm mt-2">
-                    <span className="font-semibold">Pontos fracos:</span>{' '}
-                    Pode gerar sensação de abandono e permitir que erros passem despercebidos
-                    devido à falta de supervisão.
-                  </p>
-                </CarouselItem>
-
-                <CarouselItem key={'democrat'}>
-                  <p className="font-medium mb-2">
-                    Democrático
-                  </p>
-                  <hr />
-                  <p className="text-sm my-4">
-                    O líder democrático, também conhecido como participativo, envolve
-                    o grupo nas decisões e incentiva o debate, delegando responsabilidades
-                    e aceitando opiniões divergentes. Esse estilo promove alto engajamento
-                    e qualidade nos resultados, mas pode tornar a tomada de decisões
-                    e a execução das tarefas mais lentas devido à necessidade de considerar
-                    todas as opiniões.
-                  </p>
-
-                  <p className="text-sm mt-2">
-                    <span className="font-semibold">Pontos fortes:</span>{' '}
-                    Foco nas pessoas e alto engajamento, resultando em produção de
-                    alta qualidade.
-                  </p>
-
-                  <p className="text-sm mt-2">
-                    <span className="font-semibold">Pontos fracos:</span>{' '}
-                    Pode causar lentidão nas atividades devido à necessidade de discussão
-                    e consideração de todas as ideias.
-                  </p>
-                </CarouselItem>
-              </CarouselContent>
-            )}
-            {!isMobile && (
-              <>
-                <CarouselPrevious />
-                <CarouselNext />
-              </>
-            )}
-
-            {/* Marcadores do feedback selecionado */}
-            <ul className="flex justify-center gap-2">
-              {feedbacks.map((feedback, index) => (
-                <li
-                  key={feedback.questionId}
-                  className={`w-2 h-2 ${index + 1 == current ? 'bg-blue-700' : 'bg-neutral-400'} rounded-xl`}
-                />
-              ))}
-            </ul>
-          </Carousel>
         </div>
-
-        <hr />
 
         {/*
           Pra entender como funciona o form do shadcn
           https://ui.shadcn.com/docs/components/form
         */}
+        {/*  
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="mb-20 mt-7" noValidate>
             <h1 className="leading-5 font-medium text-neutral-800">
@@ -516,6 +494,7 @@ export default function Client({
             }
           </form>
         </Form>
+        */}
       </div >
     </>
   );
