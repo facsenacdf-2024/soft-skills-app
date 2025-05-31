@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Button from "./button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import NavigateQuestion from "./navigableQuestion";
 
 const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
   const quizLength = quiz.questions.length;
@@ -97,7 +98,7 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
                   value={alternative.id}
                   checked={selectedAlternatives[questionID] === alternative.leadershipStyle}
                   onChange={() => {
-                    const newSelectedAlternatives = [...selectedAlternatives];
+                    const newSelectedAlternatives: any = [...selectedAlternatives];
                     newSelectedAlternatives[questionID] = alternative.leadershipStyle;
                     setSelectedAlternatives(newSelectedAlternatives);
                     navigateQuestion(1);
@@ -133,18 +134,7 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
             func={confirmAnswers}
           />
         )}
-        <div className="max-w-xs mx-auto mt-10 flex justify-between">
-          <Button
-            title={<ChevronLeft size={60} strokeWidth={4} />}
-            func={() => navigateQuestion(-1)}
-            className="rounded-2xl !min-w-20 w-20 flex justify-center"
-          />
-          <Button
-            title={<ChevronRight size={60} strokeWidth={4} />}
-            func={() => navigateQuestion(1)}
-            className="rounded-2xl !min-w-20 w-20 flex justify-center"
-          />
-        </div>
+        <NavigateQuestion navigateQuestion={navigateQuestion} />
       </div>
     </section>
   )

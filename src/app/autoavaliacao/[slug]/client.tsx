@@ -1,4 +1,5 @@
 'use client'
+import GoBackButton from "@/components/goBackButton";
 import Header from "@/components/header";
 import { Clock, ExternalLink } from "lucide-react";
 import Image from "next/image";
@@ -19,11 +20,12 @@ export default function Client({
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
+      <GoBackButton redirect="/"/>
 
       <main className="py-20 sm:py-44">
         <div className="flex flex-col sm:flex-row gap-10 max-w-xs sm:max-w-4xl mx-auto">
-          <Image src={"/" + quiz.image} alt="" width={400} height={400} className="w-72 min-w-72 sm:w-1/2" priority />
+          <Image src={"/" + quiz.image} alt={quiz.alt} width={400} height={400} className="w-72 min-w-72 sm:w-1/2" priority />
           <div className="space-y-7">
             <div>
               <h1 className="text-3xl font-bold text-blue-700 w-max ">{quiz.title}</h1>

@@ -1,6 +1,7 @@
 interface Quiz {
   id: number,
   image: string,
+  alt: string,
   title: string,
   description: string,
   slug: string,
@@ -20,5 +21,6 @@ interface Question {
 interface Alternatives {
   id: string,
   text: string,
-  leadershipStyle: string,
+  leadershipStyle?: string,
+  weigth?: number,
 }
