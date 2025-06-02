@@ -54,7 +54,13 @@ export default function Client({
     setLoading(true);
 
     try {
-      const resp = await sendResults(data.email, quiz.title, points, totalPoints, feedbacks);
+      const resp = await sendResults(
+        data.email,
+        quiz.title,
+        points,
+        totalPoints,
+        feedbacks
+      );
       setLoading(false);
       setSuccess(resp.success);
       setMessage(resp.message);
