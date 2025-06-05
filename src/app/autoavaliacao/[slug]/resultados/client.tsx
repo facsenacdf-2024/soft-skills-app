@@ -366,7 +366,7 @@ export default function Client({
               {/* pontuação de habilidades de autoconhecimento */}
               <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
               <p className="text-sm text-neutral-600">
-                Quanto mais próximo de {quiz.questions.length}, mais desenvolvida é sua Inteligência Emocional.
+                Quanto mais próximo de {quiz.questions.length}, mais desenvolvida é a habilidade da Inteligência Emocional descrita a seguir.
               </p>
               <br />
               <p className="text-sm text-neutral-600">

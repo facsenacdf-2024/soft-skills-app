@@ -25,7 +25,7 @@ const CardForm = ({ icon, title, description, url }: CardProps) => {
             <div className="relative mt-3">
                 <p className="absolute right-0 -bottom-5 text-sm text-blue-600 px-4 py-2.5">2min</p>
                 <Link href={url}
-                    className="block text-center bg-white border-2 border-black w-[140px] mx-auto mb-4 py-1">
+                    className="block text-center text-sm bg-white border-2 border-blue-700 w-[140px] mx-auto mb-4 py-1">
                     Começar teste</Link>
             </div>
         </div>
