@@ -2,9 +2,10 @@
   {
     "id": 1,
     "image": "connection.svg",
+    "alt": "Ilustração de duas pessoas tranquilamente sentadas, cada uma dentro de um círculo, segurando celulares. Ramos decorativos conectam os círculos, transmitindo calma e momentos de auto reflexão.",
     "title": "Inteligência Emocional",
-    "description": "Serão apresentadas 10 situações. Leia com atenção e marque a alternativa que melhor descreve seu comportamento.",
-    "slug": "inteligencia-emocional",
+    "description": "Serão apresentadas 20 situações. Leia com atenção e marque a alternativa que melhor descreve seu comportamento.",
+    "slug": "inteligencia-emocional-yn",
     "duration": 2,
     "type": 1,
     "questions": [
@@ -73,6 +74,7 @@
   {
     "id": 2,
     "image": "team.svg",
+    "alt": "",
     "title": "Estilos de Liderança",
     "description": "Imagine que você é líder de uma equipe de cerca de 8 pessoas que trabalham em um departamento técnico-administrativo, como finanças, recursos humanos ou tecnologia. Leia os itens a seguir e responda como você agiria, de acordo com seu estilo de liderança.",
     "slug": "estilos-de-lideranca",
@@ -304,6 +306,678 @@
             "id": "fb8p2w",
             "leadershipStyle": "democrat",
             "text": "Convocaria uma reunião para discutir abertamente os problemas de comunicação e definir estratégias para melhorar a transparência."
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "image": "connection.svg",
+    "alt": "Ilustração de duas pessoas tranquilamente sentadas, cada uma dentro de um círculo, segurando celulares. Ramos decorativos conectam os círculos, transmitindo calma e momentos de auto reflexão.",
+    "title": "Inteligência Emocional",
+    "description": "Serão apresentadas 20 situações. Leia com atenção e marque a alternativa que melhor descreve seu comportamento.",
+    "slug": "inteligencia-emocional",
+    "duration": 2,
+    "type": 3,
+    "questions": [
+      {
+        "id": 1,
+        "question": "Tenho clareza sobre o que me deixa desconfortável em determinadas situações.",
+        "alternatives": [
+          {
+            "id": "V7hFDG",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "DdoZ49",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "2Vv09P",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "n6bSkx",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "twMYlb",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 2,
+        "question": "Geralmente consigo identificar a emoção que estou sentindo quando ela surge.",
+        "alternatives": [
+          {
+            "id": "X5jSVg",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "e8cnxO",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "jcIM7W",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "V5N2yU",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "OGTxEn",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 3,
+        "question": "Entendo bem por que reajo de forma impulsiva em certas situações.",
+        "alternatives": [
+          {
+            "id": "qZcKtR",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "Hhxg9E",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "nV3PV5",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "rcXmdQ",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "jP0OAk",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 4,
+        "question": "Tenho consciência das minhas principais forças e limitações emocionais.",
+        "alternatives": [
+          {
+            "id": "EkB6Cm",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "eplnOx",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "e4AoAI",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "sUo3LT",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "ZAHHkW",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 5,
+        "question": "Consigo manter a calma mesmo quando estou sob pressão.",
+        "alternatives": [
+          {
+            "id": "6Q7dRJ",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "ThB0b1",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "Lxnk9v",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "Fh4Cz2",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "EuhsRJ",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 6,
+        "question": "Evito agir por impulso quando algo me frustra.",
+        "alternatives": [
+          {
+            "id": "sKR0dy",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "U9cRnx",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "rRYOKt",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "7pThWe",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "VZyyKf",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 7,
+        "question": "Tenho facilidade em lidar com mudanças inesperadas.",
+        "alternatives": [
+          {
+            "id": "2Kh7mS",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "V8mMd5",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "WGl9MP",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "rGmDyI",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "R0MlbK",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 8,
+        "question": "Se algo me incomoda, tento pensar antes de agir.",
+        "alternatives": [
+          {
+            "id": "g2OTL9",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "oMcFbG",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "5rC0ef",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "sv0Qwo",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "hKNZUd",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 9,
+        "question": "Mesmo desanimado(a), encontro razões para seguir em frente.",
+        "alternatives": [
+          {
+            "id": "EdWOGT",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "3a5UzQ",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "Mbt7RO",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "uKaKH5",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "AnKDS4",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 10,
+        "question": "Tenho facilidade em manter o foco nos meus objetivos pessoais.",
+        "alternatives": [
+          {
+            "id": "FrMnzk",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "kUPtJh",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "QjFiPm",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "f4CKro",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "P5tw0u",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 11,
+        "question": "Quando enfrento um obstáculo, costumo buscar alternativas para superá-lo.",
+        "alternatives": [
+          {
+            "id": "w3mcfN",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "J4pMbe",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "y5iC2O",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "zckUjV",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "l3xfJN",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 12,
+        "question": "Procuro me animar com pequenas conquistas do dia a dia.",
+        "alternatives": [
+          {
+            "id": "Omc8AI",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "NVZPsh",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "WX9Uol",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "kTCN74",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "p5zZMV",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 13,
+        "question": "Percebo quando alguém próximo está triste, mesmo que não diga nada.",
+        "alternatives": [
+          {
+            "id": "ATuhok",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "i0VaKM",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "F6rgYM",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "ZkoGJl",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "vP5TGL",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 14,
+        "question": "Busco entender o ponto de vista de pessoas que pensam diferente de mim.",
+        "alternatives": [
+          {
+            "id": "LjgF6u",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "g0MZhk",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "YBskno",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "8V1taL",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "ovbS7U",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 15,
+        "question": "Ao conversar com alguém, tento me colocar no lugar da pessoa.",
+        "alternatives": [
+          {
+            "id": "zXqroO",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "2kVaXT",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "k3oUli",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "KcOXsd",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "UtMGCI",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 16,
+        "question": "Entendo bem como minhas palavras podem afetar outras pessoas.",
+        "alternatives": [
+          {
+            "id": "Lb2xi7",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "tNgHVK",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "n7rbav",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "nPv0TQ",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "e6WfJd",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 17,
+        "question": "Consigo manter conversas mesmo com pessoas que acabei de conhecer.",
+        "alternatives": [
+          {
+            "id": "bRixZJ",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "RnTUpg",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "ZVyUl3",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "w09VZd",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "K6PeuB",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 18,
+        "question": "Tenho facilidade em trabalhar em grupo e colaborar com os outros.",
+        "alternatives": [
+          {
+            "id": "M6fZnH",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "W9JvMb",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "xKMuEX",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "p5uLNs",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "vF5Gnd",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 19,
+        "question": "Se noto um conflito entre colegas, tento ajudar a resolver com calma.",
+        "alternatives": [
+          {
+            "id": "chVMbs",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "Vp8EKF",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "hrGylb",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "XufHTy",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "9PLTDR",
+            "weigth": 5,
+            "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 20,
+        "question": "Consigo adaptar meu jeito de falar dependendo de quem está comigo.",
+        "alternatives": [
+          {
+            "id": "b67ZAg",
+            "weigth": 1,
+            "text": "Nunca"
+          },
+          {
+            "id": "NQJtMi",
+            "weigth": 2,
+            "text": "Raramente"
+          },
+          {
+            "id": "KLYmCE",
+            "weigth": 3,
+            "text": "Às vezes"
+          },
+          {
+            "id": "3cBkfQ",
+            "weigth": 4,
+            "text": "Frequentemente"
+          },
+          {
+            "id": "VGZxEK",
+            "weigth": 5,
+            "text": "Sempre"
           }
         ],
         "feedback": "",
