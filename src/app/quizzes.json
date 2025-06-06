@@ -325,7 +325,7 @@
     "questions": [
       {
         "id": 1,
-        "question": "Testando apenas por enquanto...",
+        "question": "Tenho clareza sobre o que me deixa desconfortável em determinadas situações.",
         "alternatives": [
           {
             "id": "V7hFDG",
@@ -358,7 +358,7 @@
       },
       {
         "id": 2,
-        "question": "Testando apenas por enquanto...",
+        "question": "Geralmente consigo identificar a emoção que estou sentindo quando ela surge.",
         "alternatives": [
           {
             "id": "X5jSVg",
@@ -391,7 +391,7 @@
       },
       {
         "id": 3,
-        "question": "Testando apenas por enquanto...",
+        "question": "Entendo bem por que reajo de forma impulsiva em certas situações.",
         "alternatives": [
           {
             "id": "qZcKtR",
@@ -424,7 +424,7 @@
       },
       {
         "id": 4,
-        "question": "Testando apenas por enquanto...",
+        "question": "Tenho consciência das minhas principais forças e limitações emocionais.",
         "alternatives": [
           {
             "id": "EkB6Cm",
@@ -457,7 +457,7 @@
       },
       {
         "id": 5,
-        "question": "Testando apenas por enquanto...",
+        "question": "Consigo manter a calma mesmo quando estou sob pressão.",
         "alternatives": [
           {
             "id": "6Q7dRJ",
@@ -490,7 +490,7 @@
       },
       {
         "id": 6,
-        "question": "Testando apenas por enquanto...",
+        "question": "Evito agir por impulso quando algo me frustra.",
         "alternatives": [
           {
             "id": "sKR0dy",
@@ -523,7 +523,7 @@
       },
       {
         "id": 7,
-        "question": "Testando apenas por enquanto...",
+        "question": "Tenho facilidade em lidar com mudanças inesperadas.",
         "alternatives": [
           {
             "id": "2Kh7mS",
@@ -556,7 +556,7 @@
       },
       {
         "id": 8,
-        "question": "Testando apenas por enquanto...",
+        "question": "Se algo me incomoda, tento pensar antes de agir.",
         "alternatives": [
           {
             "id": "g2OTL9",
@@ -589,7 +589,7 @@
       },
       {
         "id": 9,
-        "question": "Testando apenas por enquanto...",
+        "question": "Mesmo desanimado(a), encontro razões para seguir em frente.",
         "alternatives": [
           {
             "id": "EdWOGT",
@@ -622,7 +622,7 @@
       },
       {
         "id": 10,
-        "question": "Testando apenas por enquanto...",
+        "question": "Tenho facilidade em manter o foco nos meus objetivos pessoais.",
         "alternatives": [
           {
             "id": "FrMnzk",
@@ -655,7 +655,7 @@
       },
       {
         "id": 11,
-        "question": "Testando apenas por enquanto...",
+        "question": "Quando enfrento um obstáculo, costumo buscar alternativas para superá-lo.",
         "alternatives": [
           {
             "id": "w3mcfN",
@@ -688,7 +688,7 @@
       },
       {
         "id": 12,
-        "question": "Testando apenas por enquanto...",
+        "question": "Procuro me animar com pequenas conquistas do dia a dia.",
         "alternatives": [
           {
             "id": "Omc8AI",
@@ -721,7 +721,7 @@
       },
       {
         "id": 13,
-        "question": "Testando apenas por enquanto...",
+        "question": "Percebo quando alguém próximo está triste, mesmo que não diga nada.",
         "alternatives": [
           {
             "id": "ATuhok",
@@ -754,7 +754,7 @@
       },
       {
         "id": 14,
-        "question": "Testando apenas por enquanto...",
+        "question": "Busco entender o ponto de vista de pessoas que pensam diferente de mim.",
         "alternatives": [
           {
             "id": "LjgF6u",
@@ -787,7 +787,7 @@
       },
       {
         "id": 15,
-        "question": "Testando apenas por enquanto...",
+        "question": "Ao conversar com alguém, tento me colocar no lugar da pessoa.",
         "alternatives": [
           {
             "id": "zXqroO",
@@ -820,7 +820,7 @@
       },
       {
         "id": 16,
-        "question": "Testando apenas por enquanto...",
+        "question": "Entendo bem como minhas palavras podem afetar outras pessoas.",
         "alternatives": [
           {
             "id": "Lb2xi7",
@@ -853,7 +853,7 @@
       },
       {
         "id": 17,
-        "question": "Testando apenas por enquanto...",
+        "question": "Consigo manter conversas mesmo com pessoas que acabei de conhecer.",
         "alternatives": [
           {
             "id": "bRixZJ",
@@ -886,7 +886,7 @@
       },
       {
         "id": 18,
-        "question": "Testando apenas por enquanto...",
+        "question": "Tenho facilidade em trabalhar em grupo e colaborar com os outros.",
         "alternatives": [
           {
             "id": "M6fZnH",
@@ -919,7 +919,7 @@
       },
       {
         "id": 19,
-        "question": "Testando apenas por enquanto...",
+        "question": "Se noto um conflito entre colegas, tento ajudar a resolver com calma.",
         "alternatives": [
           {
             "id": "chVMbs",
@@ -952,7 +952,7 @@
       },
       {
         "id": 20,
-        "question": "Testando apenas por enquanto...",
+        "question": "Consigo adaptar meu jeito de falar dependendo de quem está comigo.",
         "alternatives": [
           {
             "id": "b67ZAg",

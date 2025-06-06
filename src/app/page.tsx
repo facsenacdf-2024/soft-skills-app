@@ -16,13 +16,13 @@ export default function Home() {
               Soft Skills Check
             </h1>
             <p className="text-lg sm:text-xl text-neutral-600 font-medium">
-              Questionários de autoavaliação para te ajudar a desenvolver suas habilidades interpessoais
+              Questionários de autoavaliação para ajudá-lo(a) a desenvolver suas habilidades comportamentais.
             </p>
           </div>
           <div className="px-6 py-4 pb-7 mb-20 bg-white border rounded-lg space-y-4 relative">
             <Image src={'/mountain.svg'} width={350} height={350} alt="Mulher com mochila caminha em direção a uma grande árvore, com montanhas suaves e sol ao fundo, representando a busca por seus objetivos pessoais" className="w-80 absolute top-0 right-0 -translate-y-full -z-10" />
             <div className="flex items-center gap-3">
-              <h2 className="font-semibold text-xl text-blue-600 sm:whitespace-nowrap whitespace-normal">Teste de Auto Avaliação de SoftSkills</h2>
+              <h2 className="font-semibold text-xl text-blue-600 sm:whitespace-nowrap whitespace-normal">Teste de Autoavaliação de SoftSkills</h2>
               <hr className="w-full border-blue-100" />
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
