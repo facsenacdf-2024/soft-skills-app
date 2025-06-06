@@ -176,7 +176,7 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
                   className="flex gap-2 items-start cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
                 >
                   <input
-                    ref={(el) => inputRef.current[index] = el}
+                    ref={(el) => {inputRef.current[index] = el}}
                     type="checkbox"
                     name={`question-${questionID}`}
                     className="checked:accent-blue-700 mt-1.5 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-2 focus:outline-blue-500 focus:outline-offset-2 rounded"
