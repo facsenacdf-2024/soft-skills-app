@@ -76,3 +76,12 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Estilização padrao para as outlines - acessibilidade */
+[tabindex]:focus {
+  outline-width: 3px;
+  outline-style: solid;
+  outline-color: #3b82f6; /* Tailwind blue-500 */
+  outline-offset: 2px;
+  border-radius: 0.25rem;  /* Tailwind rounded */
+}

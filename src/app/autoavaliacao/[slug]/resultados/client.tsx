@@ -215,21 +215,30 @@ export default function Client({
   return (
     <>
       {/* <Header /> */}
-      <GoBackButton />
+      <GoBackButton tabButton={1} redirect="/"/>
 
       <div className="mx-auto py-32 max-w-xs sm:max-w-4xl sm:px-5">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-blue-700 w-max ">{quiz.title}</h1>
+          <h1 
+          className="text-3xl font-bold text-blue-700 w-max "
+          aria-label={`${quiz.title} - Resultados obtidos`}
+          tabIndex={2}
+          >
+            {quiz.title}
+          </h1>
           <h2 className="text-2xl font-semibold text-neutral-400">Autoavaliação</h2>
         </div>
         <div className="flex flex-col items-start">
           {quiz.type === 1 && (
             <>
               <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
-              <p className="text-sm text-neutral-600">
+              <p className="text-sm text-neutral-600" tabIndex={3}>
                 Quanto mais próximo de {quiz.questions.length}, mais desenvolvida é sua Inteligência Emocional.
               </p>
-              <p className="font-light text-blue-700 text-7xl my-4">
+              <p className="font-light text-blue-700 text-7xl my-4"
+              tabIndex={4}
+              aria-label={`${points} pontos`}
+              >
                 {points}
               </p>
               <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
@@ -238,7 +247,12 @@ export default function Client({
 
           {quiz.type === 2 && (
             <>
-              <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
+              <h1 className="text-xl font-medium text-neutral-800"
+              tabIndex={3}
+              aria-label={`Sua pontuação: Autocrática ${autocratPercentage.toFixed(0)}% Liberal ${liberalPercentage.toFixed(0)}% Democrática ${democratPercentage.toFixed(0)}%`}
+              >
+                Sua pontuação
+              </h1>
               <div className="flex flex-col sm:flex-row justify-between w-full mt-4">
                 <div className="flex-1">
                   <p className="text-neutral-600 text-lg">Autocrática</p>
@@ -258,7 +272,13 @@ export default function Client({
                 </div>
 
                 <div className="flex-1">
-                  <p className="text-neutral-600 text-lg">Seu perfil de liderança</p>
+                  <p className="text-neutral-600 text-lg" 
+                  tabIndex={4}
+                  aria-label="Seu perfil de liderança:"
+                  aria-describedby={`${higherPercentage == 'autocrat'? "Autocrático" : higherPercentage == 'liberal'? "Liberal" : "Democrático"}`}
+                  >
+                    Seu perfil de liderança
+                  </p>
                   <p className="font-light text-blue-700 text-5xl my-2 mb-5">
                     {higherPercentage === 'autocrat' && <>Autocrático</>}
                     {higherPercentage === 'liberal' && <>Liberal</>}
@@ -267,92 +287,92 @@ export default function Client({
 
                   <p className="my-4">
                     {higherPercentage === 'autocrat' && (
-                      <>
+                      <p tabIndex={5}>
                         Caracteriza-se por um controle centralizado e unilateral, onde
                         o líder toma todas as decisões importantes e define as direções
                         sem consulta ou colaboração com a equipe. Embora esse estilo
                         possa ser eficaz em situações em que a rapidez na tomada de
                         decisões é crucial ou onde a disciplina é necessária, ele também
                         apresenta desvantagens significativas.
-                      </>
+                      </p>
                     )}
 
                     {higherPercentage === 'liberal' && (
-                      <>
+                      <p tabIndex={5}>
                         O líder liberal permite que a equipe trabalhe de forma autônoma,
                         sem intervenção direta, confiando que os membros experientes e
                         competentes possam tomar suas próprias decisões e se autogerenciar.
                         Esse estilo de liderança funciona melhor com equipes qualificadas
                         e independentes, mas pode ser inadequado onde os membros precisam
                         de mais orientação e apoio.
-                      </>
+                      </p>
                     )}
 
                     {higherPercentage === 'democrat' && (
-                      <>
+                      <p tabIndex={5}>
                         O líder democrático, também conhecido como participativo, envolve
                         o grupo nas decisões e incentiva o debate, delegando responsabilidades
                         e aceitando opiniões divergentes. Esse estilo promove alto engajamento
                         e qualidade nos resultados, mas pode tornar a tomada de decisões
                         e a execução das tarefas mais lentas devido à necessidade de considerar
                         todas as opiniões.
-                      </>
+                      </p>
                     )}
                   </p>
 
-                  <p className="font-semibold">
+                  <p className="font-semibold" tabIndex={6}>
                     Pontos fortes:
                   </p>
                   <p>
                     {higherPercentage === 'autocrat' && (
-                      <>
+                      <p tabIndex={7}>
                         O líder autocrático apresenta foca nas atividades, conseguindo
                         manter a equipe concentrada nas tarefas e nos objetivos,
                         gerando alta produtividade.
-                      </>
+                      </p>
                     )}
 
                     {higherPercentage === 'liberal' && (
-                      <>
+                      <p tabIndex={7}>
                         Estimula a autonomia, criatividade e desenvolvimento de habilidades,
                         favorecendo profissionais qualificados.
-                      </>
+                      </p>
                     )}
 
                     {higherPercentage === 'democrat' && (
-                      <>
+                      <p tabIndex={7}>
                         Foco nas pessoas e alto engajamento, resultando em produção de
                         alta qualidade.
-                      </>
+                      </p>
                     )}
                   </p>
 
-                  <p className="font-semibold mt-4">
+                  <p className="font-semibold mt-4" tabIndex={8}>
                     Pontos fracos:
                   </p>
                   <p>
                     {higherPercentage === 'autocrat' && (
-                      <>
+                      <p tabIndex={9}>
                         A falta de participação nas decisões pode gerar insatisfação entre os
                         membros da equipe, levando a um ambiente de trabalho pouco motivador
                         e possivelmente até à resistência passiva. Embora a produtividade possa
                         ser alta, a qualidade dos resultados pode ser comprometida pela falta
                         de autonomia da equipe.
-                      </>
+                      </p>
                     )}
 
                     {higherPercentage === 'liberal' && (
-                      <>
+                      <p tabIndex={9}>
                         Pode gerar sensação de abandono e permitir que erros passem despercebidos
                         devido à falta de supervisão.
-                      </>
+                      </p>
                     )}
 
                     {higherPercentage === 'democrat' && (
-                      <>
+                      <p tabIndex={9}>
                         Pode causar lentidão nas atividades devido à necessidade de discussão
                         e consideração de todas as ideias.
-                      </>
+                      </p>
                     )}
                   </p>
                 </div>
@@ -365,59 +385,91 @@ export default function Client({
 
               {/* pontuação de habilidades de autoconhecimento */}
               <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
-              <p className="text-sm text-neutral-600">
+              <p className="text-sm text-neutral-600" tabIndex={3}>
                 Quanto mais próximo de {quiz.questions.length}, mais desenvolvida é a habilidade da Inteligência Emocional descrita a seguir.
               </p>
               <br />
-              <p className="text-sm text-neutral-600">
+
+              {/* pontuação de habilidades de Autoconhecimento */}
+              <p className="text-sm text-neutral-600"
+              tabIndex={4}
+              aria-label="Habilidades de Autoconhecimento: Capacidade de reconhecer emoções, limites e qualidades pessoais com clareza."
+              >
                 <span className="font-bold text-black">Habilidades de Autoconhecimento: </span>
                 Capacidade de reconhecer emoções, limites e qualidades pessoais com clareza.
               </p>
-              <p className="font-light text-blue-700 text-7xl my-4">
+              <p className="font-light text-blue-700 text-7xl my-4"
+              tabIndex={5}
+              aria-label={`${firstGroupPoints} pontos`}
+              >
                 {firstGroupPoints}
               </p>
               <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
               <br />
 
               {/* pontuação de habilidades de autocontrole */}
-              <p className="text-sm text-neutral-600">
+              <p className="text-sm text-neutral-600"
+              tabIndex={6}
+              aria-label="Habilidades de Autocontrole: Capacidadede gerenciar impulsos, emoções e reações em situações desafiadoras."
+              >
                 <span className="font-bold text-black">Habilidades de Autocontrole: </span>
                 Capacidadede gerenciar impulsos, emoções e reações em situações desafiadoras.
               </p>
-              <p className="font-light text-blue-700 text-7xl my-4">
+              <p className="font-light text-blue-700 text-7xl my-4"
+              tabIndex={7}
+              aria-label={`${secondGroupPoints} pontos`}
+              >
                 {secondGroupPoints}
               </p>
               <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
               <br />
 
               {/* pontuação de habilidades de automotivação */}
-              <p className="text-sm text-neutral-600">
+              <p className="text-sm text-neutral-600"
+              tabIndex={8}
+              aria-label="Habilidades de Automotivação: Capacidade de manter foco, iniciativa e otimismo diante de obstáculos."
+              >
                 <span className="font-bold text-black">Habilidades de Automotivação: </span>
                 Capacidade de manter foco, iniciativa e otimismo diante de obstáculos.
               </p>
-              <p className="font-light text-blue-700 text-7xl my-4">
+              <p className="font-light text-blue-700 text-7xl my-4"
+              tabIndex={9}
+              aria-label={`${thirdGroupPoints} pontos`}
+              >
                 {thirdGroupPoints}
               </p>
               <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
               <br />
 
               {/* pontuação de habilidades de empatia */}
-              <p className="text-sm text-neutral-600">
+              <p className="text-sm text-neutral-600"
+              tabIndex={10}
+              aria-label="Habilidades de Empatia: Capacidade de compreender emoções alheias com sensibilidade e respeito."
+              >
                 <span className="font-bold text-black">Habilidades de Empatia: </span>
                 Capacidade de compreender emoções alheias com sensibilidade e respeito.
               </p>
-              <p className="font-light text-blue-700 text-7xl my-4">
+              <p className="font-light text-blue-700 text-7xl my-4"
+              tabIndex={11}
+              aria-label={`${fourthGroupPoints} pontos`}
+              >
                 {fourthGroupPoints}
               </p>
               <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
               <br />
 
               {/* pontuação de habilidades sociais */}
-              <p className="text-sm text-neutral-600">
+              <p className="text-sm text-neutral-600"
+              tabIndex={12}
+              aria-label="Habilidades Sociais: Capacidade de contruir relacionamentos positivos com comunicação e colaboração."
+              >
                 <span className="font-bold text-black">Habilidades Sociais: </span>
                 Capacidade de contruir relacionamentos positivos com comunicação e colaboração.
               </p>
-              <p className="font-light text-blue-700 text-7xl my-4">
+              <p className="font-light text-blue-700 text-7xl my-4"
+              tabIndex={13}
+              aria-label={`${fifthGroupPoints} pontos`}
+              >
                 {fifthGroupPoints}
               </p>
               <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
@@ -428,7 +480,7 @@ export default function Client({
 
           <Link
             href={`/autoavaliacao/` + quiz.slug + `/iniciar`}
-            className="text-blue-700 w-fit my-4 mb-4 flex items-center gap-1 hover:underline">
+            className="text-blue-700 w-fit my-4 mb-4 flex items-center gap-1 hover:underline focus:outline-2 focus:outline-blue-500 focus:outline-offset-2 rounded">
             <Undo2 className="size-4" />
             Refazer teste
           </Link>

@@ -12,13 +12,16 @@ export default function Client({
   return (
     <>
       {/* <Header /> */}
-      <GoBackButton />
+      
       {/* quiz.type = 1, renderiza o quiz de Sim ou Não*/}
       {quiz.type === 1 && <YNQuiz quiz={quiz} />}
       {/* quiz.type = 2, renderiza o quiz de multiplas escolhas*/}
       {quiz.type === 2 && <MultipleChoiceQuiz quiz={quiz} />}
       {/* quiz.type = 3, renderiza o quiz de multiplas escolhas por grupo*/}
       {quiz.type === 3 && <MultipleGroupQuiz quiz={quiz} />}
+
+      {/* Botão de goBack posicionado abaixo dos forms para manter acessibilidade ao navegar com TAB - hierarquia DOM HTML */}
+      <GoBackButton tabButton={0} style="absolute top-[7vh] left-[50vw]"/>
     </>
   );
 }
