@@ -20,7 +20,7 @@ const GoBackButton = ({ redirect, tabButton, style }: GoBack) => {
         }
     };
     return (
-        <header className={`${style? style : "relative top-8 left-1/2"} -translate-x-1/2 max-w-xl w-full z-50 `}>
+        <header className={`${style? style : "relative top-8 left-[60%] sm:left-1/2"} -translate-x-1/2 max-w-xl w-full z-50 `}>
             <button onClick={handleBack} tabIndex={tabButton}>
                 <ArrowLeftCircle size={40} color="rgb(37 99 235)" />
             </button>

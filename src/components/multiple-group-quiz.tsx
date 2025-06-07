@@ -12,6 +12,7 @@ const MultipleGroupQuiz = ({ quiz }: { quiz: Quiz }) => {
     const [questionID, setQuestionID] = useState<number>(0);
     const [alternatives, setAlternatives] = useState<Alternatives[]>([]);
     const [selectedAlternatives, setSelectedAlternatives] = useState<number[]>(Array(quizLength).fill(0));
+    const [accessibleMode, setAccessibleMode] = useState(false);
 
     const router = useRouter();
 
@@ -124,19 +125,30 @@ const MultipleGroupQuiz = ({ quiz }: { quiz: Quiz }) => {
     }, [questionID])
 
     useEffect(() => {
-        // Foca na questão atual quando muda
-        questionRef.current?.focus();
-
-        // Se já existe uma resposta selecionada, foca nela, senão foca na primeira opção
-        const selectedIndex = alternatives.findIndex(alt => alt.weigth === selectedAlternatives[questionID]);
-        const focusIndex = selectedIndex >= 0 ? selectedIndex : 0;
-
-        setTimeout(() => {
-            if (document.activeElement !== questionRef.current) {
-                inputRef.current[focusIndex]?.focus();
-            }
-        }, 100);
+        if (accessibleMode) {
+            // Foca na questão atual quando muda
+            questionRef.current?.focus();
+        }
     }, [questionID, alternatives, selectedAlternatives]);
+
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Tab" && !accessibleMode) {
+                setAccessibleMode(true);
+            }
+        };
+        const handleClick = (e: MouseEvent) => {
+            if (e.isTrusted) {
+                setAccessibleMode(false);
+            }
+        };
+        document.addEventListener("keydown", handleKeyDown);
+        document.addEventListener("click", handleClick);
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+            document.removeEventListener("click", handleClick);
+        };
+    }, [accessibleMode]);
 
     return (
         <section className="w-full py-24">
@@ -186,7 +198,7 @@ const MultipleGroupQuiz = ({ quiz }: { quiz: Quiz }) => {
                                     className="flex gap-2 items-start cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
                                 >
                                     <input
-                                        ref={(el) => {inputRef.current[index] = el}}
+                                        ref={(el) => { inputRef.current[index] = el }}
                                         type="radio"
                                         name={`question-${questionID}`}
                                         className="checked:accent-blue-700 mt-1.5 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-2 focus:outline-blue-500 focus:outline-offset-2 rounded"
@@ -250,7 +262,7 @@ const MultipleGroupQuiz = ({ quiz }: { quiz: Quiz }) => {
                         title="Confirmar respostas"
                         className={
                             allQuestionsSelected
-                                ? "w-full mx-auto my-10 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                                ? "w-full mx-auto mt-10 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                                 : "hidden"
                         }
                         func={confirmAnswers}

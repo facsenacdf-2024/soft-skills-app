@@ -9,7 +9,7 @@ interface Props {
 
 const NavigateQuestion = ({ navigateQuestion, tabNext, tabPrev }: Props) => {
     return (
-        <div className="max-w-xs mx-auto mt-44 flex justify-between">
+        <div className="max-w-xs mx-auto mt-20 flex justify-between">
             <Button
                 title= "Anterior"
                 func={() => navigateQuestion(-1)}
