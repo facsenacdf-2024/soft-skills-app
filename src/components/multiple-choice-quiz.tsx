@@ -12,6 +12,7 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
   const [questionID, setQuestionID] = useState<number>(0);
   const [alternatives, setAlternatives] = useState<Alternatives[]>([]);
   const [selectedAlternatives, setSelectedAlternatives] = useState<string[]>(Array(quizLength).fill(''));
+  const [accessibleMode, setAccessibleMode] = useState(false);
 
   const router = useRouter();
 
@@ -33,7 +34,7 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
   // Função para navegar apenas com as setas do teclado
   function handleKeyDown(event: React.KeyboardEvent, currentIndex: number) {
     const key = event.key;
-    
+
     if (key === 'ArrowDown' || key === 'ArrowRight') {
       event.preventDefault();
       const nextIndex = (currentIndex + 1) % alternatives.length;
@@ -48,7 +49,7 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
       const newSelectedAlternatives: any = [...selectedAlternatives];
       newSelectedAlternatives[questionID] = alternatives[currentIndex].leadershipStyle;
       setSelectedAlternatives(newSelectedAlternatives);
-      
+
       // Avança para próxima questão automaticamente
       setTimeout(() => {
         navigateQuestion(1);
@@ -76,7 +77,7 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
       };
     } else {
       storedResults.push({
-        qID: quiz?.id, 
+        qID: quiz?.id,
         lastResult: {
           autocrat,
           liberal,
@@ -102,8 +103,10 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
   }
 
   useEffect(() => {
-    // Sempre foca na pergunta primeiro quando muda de questão
-    questionRef.current?.focus();
+    if (accessibleMode) {
+      // Sempre foca na pergunta primeiro quando muda de questão
+      questionRef.current?.focus();
+    }
   }, [questionID]);
 
   useEffect(() => {
@@ -117,23 +120,42 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
       // Se já existe uma resposta selecionada, prepara para focar nela
       const selectedIndex = alternatives.findIndex(alt => alt.leadershipStyle === selectedAlternatives[questionID]);
       const focusIndex = selectedIndex >= 0 ? selectedIndex : 0;
-      
+
       // Pequeno delay para permitir que a pergunta seja focada primeiro
-      setTimeout(() => {
-        // Só foca na opção se não estivermos focando na pergunta
-        if (document.activeElement !== questionRef.current) {
-          inputRef.current[focusIndex]?.focus();
-        }
-      }, 200);
+      // setTimeout(() => {
+      //   // Só foca na opção se não estivermos focando na pergunta
+      //   if (document.activeElement !== questionRef.current) {
+      //     inputRef.current[focusIndex]?.focus();
+      //   }
+      // }, 200);
     }
   }, [alternatives, selectedAlternatives, questionID]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Tab" && !accessibleMode) {
+        setAccessibleMode(true);
+      }
+    };
+    const handleClick = (e: MouseEvent) => {
+      if (e.isTrusted) {
+        setAccessibleMode(false);
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("click", handleClick);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("click", handleClick);
+    };
+  }, [accessibleMode]);
 
   return (
     <section className="w-full py-24">
       <div className="mx-3 mt-10 px-5 md:mx-auto md:w-[520px]">
         {/* Cabeçalho da questão com foco para leitores de tela */}
         <div className="focus:outline-none">
-          <p 
+          <p
             ref={questionRef}
             tabIndex={0}
             className="mb-3 text-xl font-medium p-2"
@@ -143,12 +165,12 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
           >
             {(questionID + 1) + ". " + quiz.questions[questionID].question}
           </p>
-          
+
           {/* Informação adicional para leitores de tela */}
           <p className="sr-only">
-            Questão {questionID + 1} de {quizLength}. 
-            Use as setas do teclado para navegar entre as opções, 
-            Enter ou Espaço para selecionar, 
+            Questão {questionID + 1} de {quizLength}.
+            Use as setas do teclado para navegar entre as opções,
+            Enter ou Espaço para selecionar,
             Tab para navegar entre elementos.
           </p>
         </div>
@@ -158,8 +180,8 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
           <legend className="sr-only">
             Selecione uma alternativa para a questão {questionID + 1}
           </legend>
-          
-          <ul 
+
+          <ul
             className="flex flex-col justify-center"
             role="group"
             aria-labelledby={`question-${questionID}`}
@@ -176,7 +198,7 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
                   className="flex gap-2 items-start cursor-pointer hover:bg-gray-50 p-2 rounded transition-colors"
                 >
                   <input
-                    ref={(el) => {inputRef.current[index] = el}}
+                    ref={(el) => { inputRef.current[index] = el }}
                     type="checkbox"
                     name={`question-${questionID}`}
                     className="checked:accent-blue-700 mt-1.5 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-2 focus:outline-blue-500 focus:outline-offset-2 rounded"
@@ -187,7 +209,7 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
                       const newSelectedAlternatives: any = [...selectedAlternatives];
                       newSelectedAlternatives[questionID] = alternative.leadershipStyle;
                       setSelectedAlternatives(newSelectedAlternatives);
-                      
+
                       // Pequeno delay antes de navegar automaticamente
                       setTimeout(() => {
                         navigateQuestion(1);
@@ -213,7 +235,7 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
         </fieldset>
 
         {/* Barra de progresso com informação acessível */}
-        <div 
+        <div
           className="bg-blue-100 rounded-full"
           role="progressbar"
           aria-valuenow={((questionID + 1) / quizLength) * 100}
@@ -238,7 +260,7 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
             title="Confirmar respostas"
             className={
               allQuestionsSelected
-                ? "w-full mx-auto my-10 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                ? "w-full mx-auto mt-10 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 : "hidden"
             }
             func={confirmAnswers}
