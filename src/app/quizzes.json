@@ -87,17 +87,17 @@
         "alternatives": [
           {
             "id": "k07r8o",
-            "leadershipStyle": "autocrat",
+            "categoryValue": "autocrat",
             "text": "Eu determinaria as tarefas de cada membro, pois acredito que assim é mais produtivo."
           },
           {
             "id": "sy9hno",
-            "leadershipStyle": "liberal",
+            "categoryValue": "liberal",
             "text": "Eu deixaria a divisão de trabalho a critério de cada membro do grupo."
           },
           {
             "id": "sg6vb0",
-            "leadershipStyle": "democrat",
+            "categoryValue": "democrat",
             "text": "Acredito que os membros do grupo devem reunir-se e decidir o que eles deverão fazer."
           }
         ],
@@ -110,17 +110,17 @@
         "alternatives": [
           {
             "id": "u1ey31",
-            "leadershipStyle": "autocrat",
+            "categoryValue": "autocrat",
             "text": "“Os meus subordinados dependem mais de minha liderança que do próprio grupo, pois o(a) líder tem mais experiência de trabalho”."
           },
           {
             "id": "hs0wlf",
-            "leadershipStyle": "liberal",
+            "categoryValue": "liberal",
             "text": "“Os meus subordinados não dependem de mim, e só me consultam quando necessário”."
           },
           {
             "id": "6ssy8n",
-            "leadershipStyle": "democrat",
+            "categoryValue": "democrat",
             "text": "“As decisões devem ser tomadas pelos próprios membros do grupo ou equipe”."
           }
         ],
@@ -133,17 +133,17 @@
         "alternatives": [
           {
             "id": "unbs22",
-            "leadershipStyle": "autocrat",
+            "categoryValue": "autocrat",
             "text": "Com rapidez e firmeza para mudar o curso dos acontecimentos."
           },
           {
             "id": "do5m1t",
-            "leadershipStyle": "liberal",
+            "categoryValue": "liberal",
             "text": "Deixaria a resolução por conta dos subordinados."
           },
           {
             "id": "7sn7i8",
-            "leadershipStyle": "democrat",
+            "categoryValue": "democrat",
             "text": "Envolveria os subordinados no problema e participaria da solução com eles."
           }
         ],
@@ -156,17 +156,17 @@
         "alternatives": [
           {
             "id": "7iqhac",
-            "leadershipStyle": "autocrat",
+            "categoryValue": "autocrat",
             "text": "Definiria punições para quem não cumpriu os prazos determinados."
           },
           {
             "id": "ma67zs",
-            "leadershipStyle": "liberal",
+            "categoryValue": "liberal",
             "text": "Permitiria que a equipe definisse entre si ações que favorecessem o alcance das metas nos prazos."
           },
           {
             "id": "ca67ng",
-            "leadershipStyle": "democrat",
+            "categoryValue": "democrat",
             "text": "Pediria à equipe sugestões de como melhorar a produtividade e a entrega de tarefas dentro do prazo."
           }
         ],
@@ -179,17 +179,17 @@
         "alternatives": [
           {
             "id": "ga25oh",
-            "leadershipStyle": "autocrat",
+            "categoryValue": "autocrat",
             "text": "“Deixa eu lhe mostrar como faz”."
           },
           {
             "id": "pka4as",
-            "leadershipStyle": "liberal",
+            "categoryValue": "liberal",
             "text": "“Faça da forma que lhe parecer mais certo”."
           },
           {
             "id": "j79dow",
-            "leadershipStyle": "democrat",
+            "categoryValue": "democrat",
             "text": "“Você já tentou fazer isso de outra maneira?”"
           }
         ],
@@ -202,17 +202,17 @@
         "alternatives": [
           {
             "id": "vqil11",
-            "leadershipStyle": "autocrat",
+            "categoryValue": "autocrat",
             "text": "Coordenaria as ações de forma diretiva para que a equipe funcione adequadamente."
           },
           {
             "id": "0szfor",
-            "leadershipStyle": "liberal",
+            "categoryValue": "liberal",
             "text": "Na minha equipe, cada um faria o que acredita ser o melhor para a realização do seu trabalho."
           },
           {
             "id": "in0c0g",
-            "leadershipStyle": "democrat",
+            "categoryValue": "democrat",
             "text": "Consultaria minha equipe para decidir como devo me orientar melhor."
           }
         ],
@@ -225,17 +225,17 @@
         "alternatives": [
           {
             "id": "gb2z7q",
-            "leadershipStyle": "autocrat",
+            "categoryValue": "autocrat",
             "text": "Definiria com clareza o método e o tempo necessário para a realização do trabalho."
           },
           {
             "id": "kg3n4y",
-            "leadershipStyle": "liberal",
+            "categoryValue": "liberal",
             "text": "Não interferiria, ao contrário, daria plena liberdade ao subordinado para que ele proceda como julgar melhor."
           },
           {
             "id": "ts9u7a",
-            "leadershipStyle": "democrat",
+            "categoryValue": "democrat",
             "text": "Daria uma orientação geral ao subordinado, deixando ao seu critério a definição do processo e o tempo necessários para executar a tarefa."
           }
         ],
@@ -248,17 +248,17 @@
         "alternatives": [
           {
             "id": "bd9o2k",
-            "leadershipStyle": "autocrat",
+            "categoryValue": "autocrat",
             "text": "Assumiria o controle total, redistribuindo as tarefas e impondo prazos rígidos com supervisão constante."
           },
           {
             "id": "wd3s6h",
-            "leadershipStyle": "liberal",
+            "categoryValue": "liberal",
             "text": "Deixaria a equipe encontrar suas próprias soluções e se auto-organizar, oferecendo ajuda apenas quando solicitado."
           },
           {
             "id": "mu4x7e",
-            "leadershipStyle": "democrat",
+            "categoryValue": "democrat",
             "text": "Convocaria uma reunião para discutir os desafios e ajustar tarefas e prazos com a colaboração da equipe."
           }
         ],
@@ -271,17 +271,17 @@
         "alternatives": [
           {
             "id": "nt6b5x",
-            "leadershipStyle": "autocrat",
+            "categoryValue": "autocrat",
             "text": "Definiria o conteúdo e tarefas, supervisionando de perto e tomando decisões finais."
           },
           {
             "id": "as2c8y",
-            "leadershipStyle": "liberal",
+            "categoryValue": "liberal",
             "text": "Deixaria a equipe se auto-organizar e prepararia a apresentação com liberdade, oferecendo ajuda apenas se solicitado."
           },
           {
             "id": "lr9m4p",
-            "leadershipStyle": "democrat",
+            "categoryValue": "democrat",
             "text": "Reuniria a equipe para discutir o conteúdo e colaborar na definição de responsabilidades e prazos."
           }
         ],
@@ -294,17 +294,17 @@
         "alternatives": [
           {
             "id": "qx7n5t",
-            "leadershipStyle": "autocrat",
+            "categoryValue": "autocrat",
             "text": "Imporia regras rígidas contra fofocas e tomaria medidas disciplinares contra os responsáveis."
           },
           {
             "id": "de4j3h",
-            "leadershipStyle": "liberal",
+            "categoryValue": "liberal",
             "text": "Incentivaria a equipe a estabelecer suas próprias normas de comunicação e resolução de conflitos, apoiando as iniciativas surgidas."
           },
           {
             "id": "fb8p2w",
-            "leadershipStyle": "democrat",
+            "categoryValue": "democrat",
             "text": "Convocaria uma reunião para discutir abertamente os problemas de comunicação e definir estratégias para melhorar a transparência."
           }
         ],
@@ -978,6 +978,248 @@
             "id": "VGZxEK",
             "weigth": 5,
             "text": "Sempre"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "image": "connection.svg",
+    "alt": "Motivação no trabalho",
+    "title": "Motivação no trabalho",
+    "description": "Motivação no trabalho está relacionada às atividades que nos inspiram a fazer mais e melhor, promovendo maior identificação com a tarefa, engajamento e senso de realização.\nVocê encontrará 10 perguntas com 3 opções de resposta cada. Escolha a opção que melhor reflete o que é importante para você no trabalho.\nO questionário leva cerca de 2 minutos para ser concluído. Seus dados são totalmente confidenciais e não serão armazenados ou utilizados posteriormente.",
+    "slug": "motivacao-no-trabalho",
+    "duration": 2,
+    "type": 2,
+    "questions": [
+      {
+        "id": 1,
+        "question": "Em um trabalho ou profissão, o mais importante para mim é:",
+        "alternatives": [
+          {
+            "id": "ebQjEr",
+            "categoryValue": "RP-17",
+            "text": "Aprimorar habilidades e competências da minha profissão"
+          },
+          {
+            "id": "BYF8EY",
+            "categoryValue": "HB-17",
+            "text": "Realizar um trabalho que me preencha com propósito"
+          },
+          {
+            "id": "yNsTtn",
+            "categoryValue": "RS-17",
+            "text": "Trabalhar de forma colaborativa com colegas e equipes"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 2,
+        "question": "Em um trabalho ou profissão, o mais importante para mim é:",
+        "alternatives": [
+          {
+            "id": "yzDk5q",
+            "categoryValue": "P-17",
+            "text": "Ser visto(a) como referência ou especialista no meu campo"
+          },
+          {
+            "id": "2J0ZLm",
+            "categoryValue": "RS-17",
+            "text": "Ajudar outras pessoas a alcançarem seus objetivos"
+          },
+          {
+            "id": "BXVUCX",
+            "categoryValue": "RP-17",
+            "text": "Ter autonomia para decidir como executar minhas tarefas"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 3,
+        "question": "Em um trabalho ou profissão, o mais importante para mim é:",
+        "alternatives": [
+          {
+            "id": "RApN90",
+            "categoryValue": "HB-17",
+            "text": "Ter tempo para estar com família e amigos, além do trabalho"
+          },
+          {
+            "id": "X8M4zP",
+            "categoryValue": "RP-17",
+            "text": "Poder inovar e propor soluções criativas"
+          },
+          {
+            "id": "tqG3zy",
+            "categoryValue": "E-17",
+            "text": "Sentir tranquilidade em relação à segurança do meu emprego"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 4,
+        "question": "Em um trabalho ou profissão, o mais importante para mim é:",
+        "alternatives": [
+          {
+            "id": "lwcNGG",
+            "categoryValue": "RS-17",
+            "text": "Atuar em um ambiente de cooperação e ajuda mútua"
+          },
+          {
+            "id": "zEqUzo",
+            "categoryValue": "RP-17",
+            "text": "Tomar decisões de forma independente"
+          },
+          {
+            "id": "HWomPn",
+            "categoryValue": "P-17",
+            "text": "Influenciar positivamente outras pessoas com meu conhecimento e experiência"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 5,
+        "question": "Em um trabalho ou profissão, o mais importante para mim é:",
+        "alternatives": [
+          {
+            "id": "KbLyXH",
+            "categoryValue": "HB-16",
+            "text": "Sentir-me feliz e em paz no dia a dia do meu trabalho"
+          },
+          {
+            "id": "sB2wn8",
+            "categoryValue": "P-16",
+            "text": "Trabalhar em projetos ou empresas reconhecidos no mercado"
+          },
+          {
+            "id": "1yCiZx",
+            "categoryValue": "RP-16",
+            "text": "Trabalhar em atividades que representem um desafio intelectual"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 6,
+        "question": "Em um trabalho ou profissão, o mais importante para mim é:",
+        "alternatives": [
+          {
+            "id": "B8dmS8",
+            "categoryValue": "RP-16",
+            "text": "Ter autonomia para conduzir meu trabalho e minhas decisões"
+          },
+          {
+            "id": "jqbzPz",
+            "categoryValue": "HB-16",
+            "text": "Ter flexibilidade para adaptar minha rotina de trabalho às minhas necessidades pessoais"
+          },
+          {
+            "id": "AOnxD6",
+            "categoryValue": "P-16",
+            "text": "Atuar em projetos ou empresas de grande destaque e reputação no mercado"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 7,
+        "question": "Em um trabalho ou profissão, o mais importante para mim é:",
+        "alternatives": [
+          {
+            "id": "SxjG3G",
+            "categoryValue": "E-16",
+            "text": "Trabalhar em uma organização sólida e confiável"
+          },
+          {
+            "id": "fntdtU",
+            "categoryValue": "E-17",
+            "text": "Ser independente financeiramente"
+          },
+          {
+            "id": "WROLKf",
+            "categoryValue": "RS-16",
+            "text": "Dedicar-me a causas ou projetos que tenham valor social"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 8,
+        "question": "Em um trabalho ou profissão, o mais importante para mim é:",
+        "alternatives": [
+          {
+            "id": "bkv8Wx",
+            "categoryValue": "P-17",
+            "text": "Ter notoriedade e visibilidade profissional"
+          },
+          {
+            "id": "lT37UK",
+            "categoryValue": "HB-17",
+            "text": "Fazer algo que eu goste, mesmo sem grande retorno financeiro"
+          },
+          {
+            "id": "MaKbcD",
+            "categoryValue": "E-17",
+            "text": "Garantir um futuro seguro e previsível"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 9,
+        "question": "Em um trabalho ou profissão, o mais importante para mim é:",
+        "alternatives": [
+          {
+            "id": "moih7G",
+            "categoryValue": "RS-17",
+            "text": "Sentir que meu trabalho gera impacto positivo na sociedade"
+          },
+          {
+            "id": "bXaaY2",
+            "categoryValue": "E-17",
+            "text": "Ter condições de vida confortáveis e estáveis"
+          },
+          {
+            "id": "yL0XZb",
+            "categoryValue": "HB-17",
+            "text": "Conseguir equilibrar minha vida pessoal e profissional"
+          }
+        ],
+        "feedback": "",
+        "selected": 0
+      },
+      {
+        "id": 10,
+        "question": "Em um trabalho ou profissão, o mais importante para mim é:",
+        "alternatives": [
+          {
+            "id": "L1Skll",
+            "categoryValue": "E-16",
+            "text": "Contar com um plano de carreira que me traga segurança profissional"
+          },
+          {
+            "id": "tMp4FG",
+            "categoryValue": "P-17",
+            "text": "Obter uma posição de destaque na minha área de atuação"
+          },
+          {
+            "id": "7jCkEs",
+            "categoryValue": "RS-16",
+            "text": "Fazer parte de uma equipe que valoriza empatia, solidariedade e cooperação"
           }
         ],
         "feedback": "",

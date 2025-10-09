@@ -21,6 +21,6 @@ interface Question {
 interface Alternatives {
   id: string,
   text: string,
-  leadershipStyle?: string,
+  categoryValue?: string,
   weigth?: number,
 }
