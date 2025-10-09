@@ -1,7 +1,7 @@
 import Github from "@/assets/icons/github";
 import CardForm from "@/components/cardForm";
 import Header from "@/components/header";
-import { Brain, Users } from "lucide-react";
+import { Brain, Users, BarChart4 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -27,7 +27,7 @@ export default function Home() {
               <h2 className="font-semibold text-xl text-blue-600 sm:whitespace-nowrap whitespace-normal" tabIndex={4}>Teste de Autoavaliação de SoftSkills</h2>
               <hr className="w-full border-blue-100" />
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 flex-wrap align-middle justify-center">
 
               <CardForm
                 icon={<Brain className="size-4" />}
@@ -43,8 +43,17 @@ export default function Home() {
                 title="Estilos de Liderança"
                 description="Existem várias abordagens de liderança amplamente reconhecidas, mas de acordo com o autor Kurt Lewin, os estilos mais clássicos de liderança são: democrática, liberal e autocrática. Assim, o estilo democrático enfatiza a participação, o liberal permite autonomia e o autocrático centraliza o poder decisório."
                 url="/autoavaliacao/estilos-de-lideranca"
-                 tabTitle={7}
+                tabTitle={7}
                 tabLink={8}
+              />
+
+              <CardForm
+                icon={<BarChart4 className="size-4" />}
+                title="Motivação no Trabalho"
+                description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci veritatis libero reprehenderit accusamus neque, quasi animi voluptatibus itaque quidem commodi nihil, reiciendis a enim natus esse cum beatae eos quod."
+                url="/autoavaliacao/motivacao-no-trabalho"
+                tabTitle={9}
+                tabLink={10}
               />
             </div>
           </section>

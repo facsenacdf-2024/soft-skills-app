@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Button from "./button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import NavigateQuestion from "./navigableQuestion";
+import { LastResultEntry } from "@/types/lastResults";
 
 const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
   const quizLength = quiz.questions.length;
@@ -47,7 +48,7 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
       event.preventDefault();
       // Seleciona a alternativa atual
       const newSelectedAlternatives: any = [...selectedAlternatives];
-      newSelectedAlternatives[questionID] = alternatives[currentIndex].leadershipStyle;
+      newSelectedAlternatives[questionID] = alternatives[currentIndex].categoryValue;
       setSelectedAlternatives(newSelectedAlternatives);
 
       // Avança para próxima questão automaticamente
@@ -58,34 +59,40 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
   }
 
   function storeResult() {
-    // Armazena valor das respostas obtidas durante o questionário
-    const autocrat = selectedAlternatives?.filter((alternative) => alternative === 'autocrat').length;
-    const liberal = selectedAlternatives?.filter((alternative) => alternative === 'liberal').length;
-    const democrat = selectedAlternatives?.filter((alternative) => alternative === 'democrat').length;
+    // Define dinamicamente os possíveis tipos de resposta
+    const categories = ["autocrat", "liberal", "democrat",];
 
-    let storedResults = JSON.parse(localStorage.getItem("lastResults") ?? "[]");
+    // Conta e preenche automaticamente a pontuação respectiva de cada categoria
+    const resultCounts = selectedAlternatives[0]?.includes("-") ? 
+      (selectedAlternatives ?? []).reduce((acc, item) => {
+        const [category, valueStr] = item.split("-");
+        const value = parseFloat(valueStr) || 0;
+
+        acc[category] = (acc[category] || 0) + value;
+        return acc;
+      }, {} as Record<string, number>) : 
+      categories.reduce((acc, category) => {
+        acc[category] = selectedAlternatives?.filter(a => a === category).length || 0;
+        return acc;
+      }, {} as Record<string, number>);
+
+    // Lê resultados anteriores
+    const storedResults = JSON.parse(localStorage.getItem("lastResults") ?? "[]");
     const quizResultIndex = storedResults.findIndex(
-      (result: LastResults) => result.qID === quiz?.id
+      (result: LastResultEntry) => result.qID === quiz?.id
     );
 
-    // Se o quiz já tiver sido respondido, substitui os pontos
+    // Atualiza ou adiciona o resultado
     if (quizResultIndex >= 0) {
-      storedResults[quizResultIndex].lastResult = {
-        autocrat,
-        liberal,
-        democrat,
-      };
+      storedResults[quizResultIndex].lastResult = resultCounts;
     } else {
       storedResults.push({
         qID: quiz?.id,
-        lastResult: {
-          autocrat,
-          liberal,
-          democrat,
-        },
+        lastResult: resultCounts,
       });
     }
 
+    // Persiste no localStorage
     localStorage.setItem("lastResults", JSON.stringify(storedResults));
   }
 
@@ -118,7 +125,7 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
     // Após as alternativas serem definidas, define o foco inicial
     if (alternatives.length > 0) {
       // Se já existe uma resposta selecionada, prepara para focar nela
-      const selectedIndex = alternatives.findIndex(alt => alt.leadershipStyle === selectedAlternatives[questionID]);
+      const selectedIndex = alternatives.findIndex(alt => alt.categoryValue === selectedAlternatives[questionID]);
       const focusIndex = selectedIndex >= 0 ? selectedIndex : 0;
 
       // Pequeno delay para permitir que a pergunta seja focada primeiro
@@ -204,10 +211,10 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
                     className="checked:accent-blue-700 mt-1.5 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-2 focus:outline-blue-500 focus:outline-offset-2 rounded"
                     id={`${alternative.id}-${questionID}`}
                     value={alternative.id}
-                    checked={selectedAlternatives[questionID] === alternative.leadershipStyle}
+                    checked={selectedAlternatives[questionID] === alternative.categoryValue}
                     onChange={() => {
                       const newSelectedAlternatives: any = [...selectedAlternatives];
-                      newSelectedAlternatives[questionID] = alternative.leadershipStyle;
+                      newSelectedAlternatives[questionID] = alternative.categoryValue;
                       setSelectedAlternatives(newSelectedAlternatives);
 
                       // Pequeno delay antes de navegar automaticamente
@@ -223,6 +230,8 @@ const MultipleChoiceQuiz = ({ quiz }: { quiz: Quiz }) => {
                       {index === 0 && 'a) '}
                       {index === 1 && 'b) '}
                       {index === 2 && 'c) '}
+                      {index === 3 && 'd) '}
+                      {index === 4 && 'e) '}
                     </span>
                     <span id={`alternative-${index}-desc`}>
                       {alternative.text}
