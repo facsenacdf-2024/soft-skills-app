@@ -5,6 +5,17 @@ import Button from "./button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import NavigateQuestion from "./navigableQuestion";
 
+interface GroupResults {
+  qID: number,
+  groupResults: [
+    group1: number,
+    group2: number,
+    group3: number,
+    group4: number,
+    group5: number,
+  ],
+}
+
 const MultipleGroupQuiz = ({ quiz }: { quiz: Quiz }) => {
     const quizLength = quiz.questions.length;
 
