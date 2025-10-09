@@ -20,6 +20,15 @@ import { Form, FormField, FormItem, FormMessage, FormControl } from "@/component
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ResultsEmail } from "@/components/results-email";
 import GoBackButton from "@/components/goBackButton";
+import { LastResultEntry, LastResults } from "@/types/lastResults";
+
+interface MotivationFactors {
+  rs?: number;
+  rp?: number;
+  hb?: number;
+  e?: number;
+  p?: number;
+}
 
 export default function Client({
   quiz,
@@ -40,6 +49,7 @@ export default function Client({
   const [fifthGroupPoints, setFifthGroupPoints] = useState<number>(0);
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const [motivationFactors, setMotivationFactors] = useState<MotivationFactors>();
 
   const isMobile = useIsMobile();
 
@@ -100,75 +110,83 @@ export default function Client({
     };
   };
 
-  function getGroupPoints() {
-    // Verifica se o tipo do quiz é 3 (multiple group)
-    // para dar continuidade à função
-    if (quiz.type !== 3) return;
-
+  function getLastResults() {
     const lastResults = localStorage.getItem("lastResults");
     if (!lastResults) redirect("/autoavaliacao/" + quiz?.slug + "/iniciar");
 
     // Transforma o plaintext armazenado no localStorage em JSON
-    const parsedResults = JSON.parse(lastResults);
+    const parsedResults: LastResults = JSON.parse(lastResults);
 
     if (parsedResults) {
       // Busca o quiz pelo ID armazenado no localStorage
       const quizResults = parsedResults.find(
-        (result: GroupResults) => result.qID === quiz?.id
+        (result) => result.qID === quiz?.id
       );
 
-      // Recuperando valor dos resultados
       if (quizResults) {
-        const groupPoints1 = quizResults.lastResult?.group1 || 0;
-        const groupPoints2 = quizResults.lastResult?.group2 || 0;
-        const groupPoints3 = quizResults.lastResult?.group3 || 0;
-        const groupPoints4 = quizResults.lastResult?.group4 || 0;
-        const groupPoints5 = quizResults.lastResult?.group5 || 0;
-
-        setFirstGroupPoints(groupPoints1);
-        setSecondGroupPoints(groupPoints2);
-        setThirdGroupPoints(groupPoints3);
-        setFourthGroupPoints(groupPoints4);
-        setFifthGroupPoints(groupPoints5);
+        getGroupPoints(quizResults);
+        getLeadershipResults(quizResults);
+        getMotivationWorkResults(quizResults);
+      } else {
+        console.error("ERROR: quizResults não encontrado!");
       }
+    } else {
+      redirect("/autoavaliacao/" + quiz?.slug + "/iniciar");
     }
   }
 
-  function getLeadershipResults() {
+  function getGroupPoints(quizResults: LastResultEntry) {
+    // Verifica se o tipo do quiz é 3 (multiple group)
+    if (quiz.type !== 3) return;
+    
+    const groupPoints1 = quizResults.lastResult?.group1 || 0;
+    const groupPoints2 = quizResults.lastResult?.group2 || 0;
+    const groupPoints3 = quizResults.lastResult?.group3 || 0;
+    const groupPoints4 = quizResults.lastResult?.group4 || 0;
+    const groupPoints5 = quizResults.lastResult?.group5 || 0;
+
+    setFirstGroupPoints(groupPoints1);
+    setSecondGroupPoints(groupPoints2);
+    setThirdGroupPoints(groupPoints3);
+    setFourthGroupPoints(groupPoints4);
+    setFifthGroupPoints(groupPoints5);
+    
+  }
+
+  function getLeadershipResults(quizResults: LastResultEntry) {
     // Verifica se o tipo do quiz é 2 (multiple choice)
-    // para dar continuidade à função
     if (quiz.type !== 2) return;
 
-    const lastResults = localStorage.getItem("lastResults");
-    if (!lastResults) redirect("/autoavaliacao/" + quiz?.slug + "/iniciar");
+    const autocrat = quizResults.lastResult?.autocrat || 0;
+    const liberal = quizResults.lastResult?.liberal || 0;
+    const democrat = quizResults.lastResult?.democrat || 0;
 
-    // Transforma o plaintext armazenado no localStorage em JSON
-    const parsedResults = JSON.parse(lastResults);
+    // Define o estilo mais respondido
+    const higher = Math.max(autocrat, liberal, democrat);
+    if (higher === autocrat) setHigherPercentage('autocrat');
+    if (higher === liberal) setHigherPercentage('liberal');
+    if (higher === democrat) setHigherPercentage('democrat');
 
-    if (parsedResults) {
-      // Busca o quiz pelo ID armazenado no localStorage
-      const quizResults = parsedResults.find(
-        (result: LastResults) => result.qID === quiz?.id
-      );
-
-      if (quizResults) {
-        const autocrat = quizResults.lastResult?.autocrat || 0;
-        const liberal = quizResults.lastResult?.liberal || 0;
-        const democrat = quizResults.lastResult?.democrat || 0;
-
-        // Define o estilo mais respondido
-        const higher = Math.max(autocrat, liberal, democrat);
-        if (higher === autocrat) setHigherPercentage('autocrat');
-        if (higher === liberal) setHigherPercentage('liberal');
-        if (higher === democrat) setHigherPercentage('democrat');
-
-        // Setar os percentuais de cada estilo
-        setAutocratPercentage(autocrat / quiz.questions.length * 100);
-        setLiberalPercentage(liberal / quiz.questions.length * 100);
-        setDemocratPercentage(democrat / quiz.questions.length * 100);
-      };
-    };
+    // Setar os percentuais de cada estilo
+    setAutocratPercentage(autocrat / quiz.questions.length * 100);
+    setLiberalPercentage(liberal / quiz.questions.length * 100);
+    setDemocratPercentage(democrat / quiz.questions.length * 100);
   };
+
+  function getMotivationWorkResults(quizResults: LastResultEntry) {
+    if (quiz.type !== 2) return;
+
+    // Valor dos fatores de motivação
+    const motivationWorkFactors = {
+      rs: quizResults.lastResult?.RS !== undefined ? quizResults.lastResult?.RS : 0,
+      rp: quizResults.lastResult?.RP !== undefined ? quizResults.lastResult?.RP : 0,
+      hb: quizResults.lastResult?.HB !== undefined ? quizResults.lastResult?.HB : 0,
+      e: quizResults.lastResult?.E !== undefined ? quizResults.lastResult?.E : 0,
+      p: quizResults.lastResult?.P !== undefined ? quizResults.lastResult?.P : 0,
+    }
+
+    setMotivationFactors(motivationWorkFactors);
+  }
 
   function getPoints() {
     // Verifica se o tipo do quiz é 1 (sim ou não)
@@ -208,8 +226,7 @@ export default function Client({
 
   useEffect(() => {
     getPoints();
-    getLeadershipResults();
-    getGroupPoints();
+    getLastResults();
   }, [quiz?.id, quiz?.slug]);
 
   return (
@@ -229,7 +246,7 @@ export default function Client({
           <h2 className="text-2xl font-semibold text-neutral-400">Autoavaliação</h2>
         </div>
         <div className="flex flex-col items-start">
-          {quiz.type === 1 && (
+          {quiz.id === 1 && (
             <>
               <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
               <p className="text-sm text-neutral-600" tabIndex={3}>
@@ -245,7 +262,7 @@ export default function Client({
             </>
           )}
 
-          {quiz.type === 2 && (
+          {quiz.id === 2 && (
             <>
               <h1 className="text-xl font-medium text-neutral-800"
               tabIndex={3}
@@ -380,7 +397,7 @@ export default function Client({
             </>
           )}
 
-          {quiz.type === 3 && (
+          {quiz.id === 3 && (
             <>
 
               {/* pontuação de habilidades de autoconhecimento */}
@@ -475,6 +492,97 @@ export default function Client({
               <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
               <br />
 
+            </>
+          )}
+
+          {quiz.id === 4 && (
+            <>
+              {/* pontuação de habilidades de motivação no trabalho */}
+              <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
+              <p className="text-sm text-neutral-600" tabIndex={3}>
+                Quanto maior a porcentagem mais importante é este fator para você no trabalho que você realiza.
+              </p>
+              <br />
+
+              {/* RP - Relações Profissionais  */}
+              <h2 className="font-bold">RP - Relações Profissionais</h2>
+              <p className="text-sm text-neutral-600"
+              tabIndex={4}
+              aria-label="RP - Relações Profissionais: Valorização de situações no trabalho que envolvem o desenvolvimento intelectual, a independência de pensamento e a autonomia de decisão."
+              >
+                Valorização de situações no trabalho que envolvem o desenvolvimento intelectual, a independência de pensamento e a autonomia de decisão.
+              </p>
+              <p className="font-light text-blue-700 text-7xl my-4"
+              tabIndex={5}
+              aria-label={`${motivationFactors?.rp || 0}%`}
+              >
+                {`${motivationFactors?.rp || 0}%`}
+              </p>
+              <br />
+
+              {/* HB – Harmonia e bem-estar pessoal */}
+              <h2 className="font-bold">HB - Harmonia e bem-estar pessoal</h2>
+              <p className="text-sm text-neutral-600"
+              tabIndex={6}
+              aria-label="HB - Harmonia e bem-estar pessoal: Valorização de situações no trabalho que proporcionam equilíbrio entre vida pessoal e profissional, favorecem o bem-estar físico e emocional e contribuem para a satisfação no dia a dia."
+              >
+                Valorização de situações no trabalho que proporcionam equilíbrio entre vida pessoal e profissional, favorecem o bem-estar físico e emocional e contribuem para a satisfação no dia a dia.
+              </p>
+              <p className="font-light text-blue-700 text-7xl my-4"
+              tabIndex={7}
+              aria-label={`${motivationFactors?.hb || 0}%`}
+              >
+                {`${motivationFactors?.hb || 0}%`}
+              </p>
+              <br />
+
+              {/* RS – Relações sociais */}
+              <h2 className="font-bold">RS – Relações sociais</h2>
+              <p className="text-sm text-neutral-600"
+              tabIndex={8}
+              aria-label="RS – Relações sociais: Valorização de situações no trabalho que envolvam ajudar, colaborar, servir e contribuir com a sociedade ou os necessitados."
+              >
+                Valorização de situações no trabalho que envolvam ajudar, colaborar, servir e contribuir com a sociedade ou os necessitados.
+              </p>
+              <p className="font-light text-blue-700 text-7xl my-4"
+              tabIndex={9}
+              aria-label={`${motivationFactors?.rs || 0}%`}
+              >
+                {`${motivationFactors?.rs || 0}%`}
+              </p>
+              <br />
+
+              {/* E - Estabilidade */}
+              <h2 className="font-bold">E - Estabilidade</h2>
+              <p className="text-sm text-neutral-600"
+              tabIndex={10}
+              aria-label="E - Estabilidade: Valorização de situações no trabalho que garantem segurança, estabilidade financeira e tranquilidade em relação ao futuro."
+              >
+                Valorização de situações no trabalho que garantem segurança, estabilidade financeira e tranquilidade em relação ao futuro.
+              </p>
+              <p className="font-light text-blue-700 text-7xl my-4"
+              tabIndex={11}
+              aria-label={`${motivationFactors?.e || 0}%`}
+              >
+                {`${motivationFactors?.e || 0}%`}
+              </p>
+              <br />
+
+              {/* P – Prestígio */}
+              <h2 className="font-bold">P - Prestígio</h2>
+              <p className="text-sm text-neutral-600"
+              tabIndex={12}
+              aria-label="P - Prestígio: Valorização de situações no trabalho que envolvem admiração, status, reconhecimento e respeito por parte de colegas e sociedade."
+              >
+                Valorização de situações no trabalho que envolvem admiração, status, reconhecimento e respeito por parte de colegas e sociedade.
+              </p>
+              <p className="font-light text-blue-700 text-7xl my-4"
+              tabIndex={13}
+              aria-label={`${motivationFactors?.p || 0}%`}
+              >
+                {`${motivationFactors?.p || 0}%`}
+              </p>
+              <br />
             </>
           )}
 
