@@ -249,16 +249,15 @@ export default function Client({
           {quiz.id === 1 && (
             <>
               <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
-              <p className="text-sm text-neutral-600" tabIndex={3}>
-                Quanto mais próximo de {quiz.questions.length}, mais desenvolvida é sua Inteligência Emocional.
+              <p className="text-base text-neutral-600" tabIndex={3}>
+                Quanto mais alto o seu escore, maior é a sua percepção de ser uma pessoa criativa — alguém que gera ideias, busca soluções originais e aplica a criatividade no trabalho e na vida.
               </p>
               <p className="font-light text-blue-700 text-7xl my-4"
               tabIndex={4}
               aria-label={`${points} pontos`}
               >
-                {points}
+                {points}<span className="text-neutral-600 text-4xl">/{quiz.questions.length}</span>
               </p>
-              <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p>
             </>
           )}
 
@@ -596,17 +595,10 @@ export default function Client({
           <hr className="my-4 w-full" />
 
           <h1 className="text-xl font-medium text-neutral-800">
-            {quiz.type === 1 && <>Feedback</>}
             {quiz.type === 2 && <>Saiba Mais</>}
           </h1>
 
           <p className="text-sm text-neutral-600">
-            {quiz.type === 1 &&
-              <>
-                Essas foram as situações que você respondeu sim e que precisa
-                desenvolver melhor para fortalecer sua Inteligência Emocional
-              </>
-            }
             {quiz.type === 2 && <>Curioso? Descubra mais sobre os outros estilos de liderança.</>}
           </p>
         </div>

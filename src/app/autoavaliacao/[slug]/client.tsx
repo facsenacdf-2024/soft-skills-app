@@ -33,7 +33,12 @@ export default function Client({
             </div>
             <hr />
             <div className="max-w-sm space-y-4 text-neutral-800">
-              <p tabIndex={4}>{quiz.description}</p>
+              <p 
+              className="whitespace-pre-wrap break-words" 
+              tabIndex={4}
+              >
+                {quiz.description}
+              </p>
               <div className="flex items-center gap-2">
                 <Clock className="size-4" /> <span>{quiz.duration} min</span>
               </div>
