@@ -16,6 +16,15 @@ function nextQuestion() {
 
 Isso é porque o array começa em 0 e por isso é
 preciso usar o total de questões - 1
+
+-----------
+Obs: allQuestionsSelected define uma array onde serão armazenadas as respostas do quiz
+const allQuestionsSelected = selectedQuestions.every(selectedValue => selectedValue != 0);
+
+0 -> nenhuma opção selecionada
+1 -> reduz em um a pontuação final
+2 -> adiciona em um a pontuação final
+
 */
 
 const YNQuiz = ({ quiz }: { quiz: Quiz }) => {
@@ -39,7 +48,20 @@ const YNQuiz = ({ quiz }: { quiz: Quiz }) => {
   function subtractPoints() {
     if (points > 0 && selectedQuestions[questionID] != 1) setPoints(points - 1);
     const newSelectedQuestions = [...selectedQuestions];
-    newSelectedQuestions[questionID] = 1; // Marcar questão selecionada como "Sim" 
+    newSelectedQuestions[questionID] = 1; // Marca a opção selecionada
+    setSelectedQuestions(newSelectedQuestions);
+
+    nextQuestion();
+  }
+
+  function adjustPoints() {
+    // Se a questão já foi selecionada anteriormente devolve o ponto
+    if (selectedQuestions[questionID] === 1) {
+      setPoints(points + 1);
+    }
+
+    const newSelectedQuestions = [...selectedQuestions];
+    newSelectedQuestions[questionID] = 2; // Marca a opção selecionada 
     setSelectedQuestions(newSelectedQuestions);
 
     nextQuestion();
@@ -48,19 +70,6 @@ const YNQuiz = ({ quiz }: { quiz: Quiz }) => {
   function navigateQuestion(value: number) {
     if (questionID > 0 && value < 0) setQuestionID(questionID - 1); // Retorna para a questão anterior
     if (questionID < quizLength - 1 && value > 0) setQuestionID(questionID + 1); // Avança para a próxima questão
-  }
-
-  function adjustPoints() {
-    if (selectedQuestions[questionID] === 1) {
-      // Se a questão foi selecionada "Sim"
-      setPoints(points + 1);
-    }
-
-    const newSelectedQuestions = [...selectedQuestions];
-    newSelectedQuestions[questionID] = 2; // Marcar questão selecionada como "Não" 
-    setSelectedQuestions(newSelectedQuestions);
-
-    nextQuestion();
   }
 
   function storePoints() {
@@ -102,21 +111,21 @@ const YNQuiz = ({ quiz }: { quiz: Quiz }) => {
         <div className="flex justify-evenly items-center my-20">
           <Button
             className={
-              selectedQuestions[questionID] === 1
-                ? "!bg-blue-700 !text-white"
-                : " "
-            }
-            title="Sim"
-            func={subtractPoints}
-          />
-          <Button
-            className={
               selectedQuestions[questionID] === 2
                 ? "!bg-blue-700 !text-white"
                 : " "
             }
-            title="Não"
+            title="Sim"
             func={adjustPoints}
+          />
+          <Button
+            className={
+              selectedQuestions[questionID] === 1
+                ? "!bg-blue-700 !text-white"
+                : " "
+            }
+            title="Não"
+            func={subtractPoints}
           />
         </div>
         <div className="w-full h-2 bg-blue-100 rounded-full">
@@ -125,6 +134,8 @@ const YNQuiz = ({ quiz }: { quiz: Quiz }) => {
             // Calcula o percentual de completude das questões do valor total de questões
             style={{ width: `${(100 * questionID + 100) / quizLength}%` }}
           />
+        </div>
+        <div>
           <Button
             title={"Confirmar respostas"}
             className={

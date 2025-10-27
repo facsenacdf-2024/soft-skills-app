@@ -1,7 +1,7 @@
 import Github from "@/assets/icons/github";
 import CardForm from "@/components/cardForm";
 import Header from "@/components/header";
-import { Brain, Users, BarChart4 } from "lucide-react";
+import { Brain, Users, BarChart4, Puzzle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -54,6 +54,15 @@ export default function Home() {
                 url="/autoavaliacao/motivacao-no-trabalho"
                 tabTitle={9}
                 tabLink={10}
+              />
+
+              <CardForm
+                icon={<Puzzle className="size-4" />}
+                title="Escala de Criatividade"
+                description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci veritatis libero reprehenderit accusamus neque, quasi animi voluptatibus itaque quidem commodi nihil, reiciendis a enim natus esse cum beatae eos quod."
+                url="/autoavaliacao/escala-de-criatividade"
+                tabTitle={11}
+                tabLink={12}
               />
             </div>
           </section>
