@@ -258,7 +258,6 @@ export default function Client({
               >
                 {points}<span className="text-neutral-600 text-4xl">/{quiz.questions.length}</span>
               </p>
-              {/* <p className="text-neutral-600 text-lg">/ {quiz.questions.length}</p> */}
             </>
           )}
 
