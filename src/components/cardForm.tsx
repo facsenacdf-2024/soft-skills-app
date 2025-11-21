@@ -8,10 +8,11 @@ interface CardProps{
     tabTitle?: number,
     tabLink?: number,
     info?: boolean,
-    duration?:number,
+    duration?: number,
+    btnText?: string,
 }
 
-const CardForm = ({ icon, title, description, url, tabLink, tabTitle, info, duration }: CardProps) => {
+const CardForm = ({ icon, title, description, url, tabLink, tabTitle, info, duration, btnText }: CardProps) => {
     return (
         <article className="bg-blue-50 border block border-blue-100 rounded-md max-w-72 min-w-[300px] hover:bg-blue-100 duration-300">
             <div className="flex items-center gap-2 text-blue-700 pl-4 pr-2 py-2.5">
@@ -35,7 +36,8 @@ const CardForm = ({ icon, title, description, url, tabLink, tabTitle, info, dura
                     tabIndex={tabLink}
                     aria-label={`Começar teste sobre ${title}`}
                     >
-                    Começar teste</Link>
+                    {btnText ? btnText : "Começar teste"}
+                </Link>
             </div>
         </article>
     )

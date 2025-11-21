@@ -29,7 +29,7 @@ export default function Client({
           <section className="space-y-7">
             <div>
               <h1 className="text-3xl font-bold text-blue-700" tabIndex={3} aria-label={`${quiz.title}`}>{quiz.title}</h1>
-              <h2 className="text-2xl font-semibold text-neutral-400">Autoavaliação</h2>
+              <h2 className="text-2xl font-semibold text-neutral-400">{quiz.type === 0 ? "Curso" :"Autoavaliação"}</h2>
             </div>
             <hr />
             <div className="max-w-sm space-y-4 text-neutral-800">
