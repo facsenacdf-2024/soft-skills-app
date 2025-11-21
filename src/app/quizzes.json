@@ -6,6 +6,7 @@
     "title": "Escala de Criatividade",
     "description": "A criatividade no trabalho está ligada à capacidade de pensar de forma original, encontrar novas soluções e transformar ideias em algo útil e inspirador. \n\nA seguir, você encontrará 10 afirmações sobre comportamentos e atitudes criativas. \nLeia com atenção e marque “Sim” se a frase combina com você ou “Não” se não representa o que faz na maior parte do tempo. \n\nO questionário é rápido — leva cerca de 2 minutos — e suas respostas são totalmente confidenciais. \nAo final, você verá um escore de 1 a 10: quanto mais próximo de 10, maior é sua autoavaliação como uma pessoa criativa na vida e no trabalho.",
     "slug": "escala-de-criatividade",
+    "url": "",
     "duration": 2,
     "type": 1,
     "questions": [
@@ -78,6 +79,7 @@
     "title": "Estilos de Liderança",
     "description": "Imagine que você é líder de uma equipe de cerca de 8 pessoas que trabalham em um departamento técnico-administrativo, como finanças, recursos humanos ou tecnologia. Leia os itens a seguir e responda como você agiria, de acordo com seu estilo de liderança.",
     "slug": "estilos-de-lideranca",
+    "url": "",
     "duration": 2,
     "type": 2,
     "questions": [
@@ -320,6 +322,7 @@
     "title": "Inteligência Emocional",
     "description": "Serão apresentadas 20 situações. Leia com atenção e marque a alternativa que melhor descreve seu comportamento.",
     "slug": "inteligencia-emocional",
+    "url": "",
     "duration": 2,
     "type": 3,
     "questions": [
@@ -992,6 +995,7 @@
     "title": "Motivação no trabalho",
     "description": "Motivação no trabalho está relacionada às atividades que nos inspiram a fazer mais e melhor, promovendo maior identificação com a tarefa, engajamento e senso de realização.\nVocê encontrará 10 perguntas com 3 opções de resposta cada. Escolha a opção que melhor reflete o que é importante para você no trabalho.\nO questionário leva cerca de 2 minutos para ser concluído. Seus dados são totalmente confidenciais e não serão armazenados ou utilizados posteriormente.",
     "slug": "motivacao-no-trabalho",
+    "url": "",
     "duration": 2,
     "type": 2,
     "questions": [
@@ -1222,6 +1226,26 @@
             "text": "Fazer parte de uma equipe onde eu me sinta integrado(a)."
           }
         ],
+        "feedback": "",
+        "selected": 0
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "image": "connection.svg",
+    "alt": "Ilustração de duas pessoas tranquilamente sentadas, cada uma dentro de um círculo, segurando celulares. Ramos decorativos conectam os círculos, transmitindo calma e momentos de auto reflexão.",
+    "title": "Curso de Inteligência Emocional",
+    "description": "Agora que você já conhece melhor suas habilidades relacionadas à Inteligência Emocional, após responder ao teste disponível neste site, convidamos você a participar do nosso curso autoinstrucional sobre o tema. \n\nO curso é gratuito, totalmente online e tem carga horária de 1 hora. \n\nClique em Começar para iniciar. Bons estudos!",
+    "slug": "curso-inteligencia-emocional",
+    "url": "https://sites.google.com/view/inteligncia-emocional-curso-on/in%C3%ADcio",
+    "duration": 0,
+    "type": 3,
+    "questions": [
+      {
+        "id": 1,
+        "question": "",
+        "alternatives": [],
         "feedback": "",
         "selected": 0
       }

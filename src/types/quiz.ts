@@ -5,6 +5,7 @@ interface Quiz {
   title: string,
   description: string,
   slug: string,
+  url: string,
   duration: number,
   type: number,
   questions: Question[],

@@ -55,7 +55,7 @@ export default function Client({
 
   const form = useForm({
     resolver: zodResolver(sendResultsSchema),
-    defaultValues: { email: "" },
+    defaultValues: { email: "", message: "" },
   });
 
   async function onSubmit(data: SendResultsValues) {
@@ -138,7 +138,7 @@ export default function Client({
   function getGroupPoints(quizResults: LastResultEntry) {
     // Verifica se o tipo do quiz é 3 (multiple group)
     if (quiz.type !== 3) return;
-    
+
     const groupPoints1 = quizResults.lastResult?.group1 || 0;
     const groupPoints2 = quizResults.lastResult?.group2 || 0;
     const groupPoints3 = quizResults.lastResult?.group3 || 0;
@@ -150,7 +150,7 @@ export default function Client({
     setThirdGroupPoints(groupPoints3);
     setFourthGroupPoints(groupPoints4);
     setFifthGroupPoints(groupPoints5);
-    
+
   }
 
   function getLeadershipResults(quizResults: LastResultEntry) {
@@ -232,14 +232,14 @@ export default function Client({
   return (
     <>
       {/* <Header /> */}
-      <GoBackButton tabButton={1} redirect="/"/>
+      <GoBackButton tabButton={1} redirect="/" />
 
       <div className="mx-auto py-32 max-w-xs sm:max-w-4xl sm:px-5">
         <div className="mb-8">
-          <h1 
-          className="text-3xl font-bold text-blue-700 w-max "
-          aria-label={`${quiz.title} - Resultados obtidos`}
-          tabIndex={2}
+          <h1
+            className="text-3xl font-bold text-blue-700 w-max "
+            aria-label={`${quiz.title} - Resultados obtidos`}
+            tabIndex={2}
           >
             {quiz.title}
           </h1>
@@ -253,8 +253,8 @@ export default function Client({
                 Quanto mais alto o seu escore, maior é a sua percepção de ser uma pessoa criativa — alguém que gera ideias, busca soluções originais e aplica a criatividade no trabalho e na vida.
               </p>
               <p className="font-light text-blue-700 text-7xl my-4"
-              tabIndex={4}
-              aria-label={`${points} pontos`}
+                tabIndex={4}
+                aria-label={`${points} pontos`}
               >
                 {points}<span className="text-neutral-600 text-4xl">/{quiz.questions.length}</span>
               </p>
@@ -264,8 +264,8 @@ export default function Client({
           {quiz.id === 2 && (
             <>
               <h1 className="text-xl font-medium text-neutral-800"
-              tabIndex={3}
-              aria-label={`Sua pontuação: Autocrática ${autocratPercentage.toFixed(0)}% Liberal ${liberalPercentage.toFixed(0)}% Democrática ${democratPercentage.toFixed(0)}%`}
+                tabIndex={3}
+                aria-label={`Sua pontuação: Autocrática ${autocratPercentage.toFixed(0)}% Liberal ${liberalPercentage.toFixed(0)}% Democrática ${democratPercentage.toFixed(0)}%`}
               >
                 Sua pontuação
               </h1>
@@ -288,10 +288,10 @@ export default function Client({
                 </div>
 
                 <div className="flex-1">
-                  <p className="text-neutral-600 text-lg" 
-                  tabIndex={4}
-                  aria-label="Seu perfil de liderança:"
-                  aria-describedby={`${higherPercentage == 'autocrat'? "Autocrático" : higherPercentage == 'liberal'? "Liberal" : "Democrático"}`}
+                  <p className="text-neutral-600 text-lg"
+                    tabIndex={4}
+                    aria-label="Seu perfil de liderança:"
+                    aria-describedby={`${higherPercentage == 'autocrat' ? "Autocrático" : higherPercentage == 'liberal' ? "Liberal" : "Democrático"}`}
                   >
                     Seu perfil de liderança
                   </p>
@@ -401,22 +401,23 @@ export default function Client({
 
               {/* pontuação de habilidades de autoconhecimento */}
               <h1 className="text-xl font-medium text-neutral-800">Sua pontuação</h1>
-              <p className="text-sm text-neutral-600" tabIndex={3}>
-                Quanto mais próximo de {quiz.questions.length}, mais desenvolvida é a habilidade da Inteligência Emocional descrita a seguir.
-              </p>
+              <div tabIndex={3} className="text-sm text-neutral-600">
+                <p>A Inteligência Emocional é a combinação de 5 habilidades: Autoconhecimento, Autocontrole, Automotivação, Empatia e Habilidade Sociais. </p><br />
+                <p>Quanto mais próximo de {quiz.questions.length}, mais desenvolvida é a habilidade da Inteligência Emocional descrita a seguir.</p>
+              </div>
               <br />
 
               {/* pontuação de habilidades de Autoconhecimento */}
               <p className="text-sm text-neutral-600"
-              tabIndex={4}
-              aria-label="Habilidades de Autoconhecimento: Capacidade de reconhecer emoções, limites e qualidades pessoais com clareza."
+                tabIndex={4}
+                aria-label="Habilidades de Autoconhecimento: Capacidade de reconhecer emoções, limites e qualidades pessoais com clareza."
               >
                 <span className="font-bold text-black">Habilidades de Autoconhecimento: </span>
                 Capacidade de reconhecer emoções, limites e qualidades pessoais com clareza.
               </p>
               <p className="font-light text-blue-700 text-7xl my-4"
-              tabIndex={5}
-              aria-label={`${firstGroupPoints} pontos`}
+                tabIndex={5}
+                aria-label={`${firstGroupPoints} pontos`}
               >
                 {firstGroupPoints}
               </p>
@@ -425,15 +426,15 @@ export default function Client({
 
               {/* pontuação de habilidades de autocontrole */}
               <p className="text-sm text-neutral-600"
-              tabIndex={6}
-              aria-label="Habilidades de Autocontrole: Capacidadede gerenciar impulsos, emoções e reações em situações desafiadoras."
+                tabIndex={6}
+                aria-label="Habilidades de Autocontrole: Capacidadede gerenciar impulsos, emoções e reações em situações desafiadoras."
               >
                 <span className="font-bold text-black">Habilidades de Autocontrole: </span>
                 Capacidadede gerenciar impulsos, emoções e reações em situações desafiadoras.
               </p>
               <p className="font-light text-blue-700 text-7xl my-4"
-              tabIndex={7}
-              aria-label={`${secondGroupPoints} pontos`}
+                tabIndex={7}
+                aria-label={`${secondGroupPoints} pontos`}
               >
                 {secondGroupPoints}
               </p>
@@ -442,15 +443,15 @@ export default function Client({
 
               {/* pontuação de habilidades de automotivação */}
               <p className="text-sm text-neutral-600"
-              tabIndex={8}
-              aria-label="Habilidades de Automotivação: Capacidade de manter foco, iniciativa e otimismo diante de obstáculos."
+                tabIndex={8}
+                aria-label="Habilidades de Automotivação: Capacidade de manter foco, iniciativa e otimismo diante de obstáculos."
               >
                 <span className="font-bold text-black">Habilidades de Automotivação: </span>
                 Capacidade de manter foco, iniciativa e otimismo diante de obstáculos.
               </p>
               <p className="font-light text-blue-700 text-7xl my-4"
-              tabIndex={9}
-              aria-label={`${thirdGroupPoints} pontos`}
+                tabIndex={9}
+                aria-label={`${thirdGroupPoints} pontos`}
               >
                 {thirdGroupPoints}
               </p>
@@ -459,15 +460,15 @@ export default function Client({
 
               {/* pontuação de habilidades de empatia */}
               <p className="text-sm text-neutral-600"
-              tabIndex={10}
-              aria-label="Habilidades de Empatia: Capacidade de compreender emoções alheias com sensibilidade e respeito."
+                tabIndex={10}
+                aria-label="Habilidades de Empatia: Capacidade de compreender emoções alheias com sensibilidade e respeito."
               >
                 <span className="font-bold text-black">Habilidades de Empatia: </span>
                 Capacidade de compreender emoções alheias com sensibilidade e respeito.
               </p>
               <p className="font-light text-blue-700 text-7xl my-4"
-              tabIndex={11}
-              aria-label={`${fourthGroupPoints} pontos`}
+                tabIndex={11}
+                aria-label={`${fourthGroupPoints} pontos`}
               >
                 {fourthGroupPoints}
               </p>
@@ -476,15 +477,15 @@ export default function Client({
 
               {/* pontuação de habilidades sociais */}
               <p className="text-sm text-neutral-600"
-              tabIndex={12}
-              aria-label="Habilidades Sociais: Capacidade de contruir relacionamentos positivos com comunicação e colaboração."
+                tabIndex={12}
+                aria-label="Habilidades Sociais: Capacidade de contruir relacionamentos positivos com comunicação e colaboração."
               >
                 <span className="font-bold text-black">Habilidades Sociais: </span>
                 Capacidade de contruir relacionamentos positivos com comunicação e colaboração.
               </p>
               <p className="font-light text-blue-700 text-7xl my-4"
-              tabIndex={13}
-              aria-label={`${fifthGroupPoints} pontos`}
+                tabIndex={13}
+                aria-label={`${fifthGroupPoints} pontos`}
               >
                 {fifthGroupPoints}
               </p>
@@ -506,14 +507,14 @@ export default function Client({
               {/* RP - Relações Profissionais  */}
               <h2 className="font-bold">RP - Relações Profissionais</h2>
               <p className="text-sm text-neutral-600"
-              tabIndex={4}
-              aria-label="RP - Relações Profissionais: Valorização de situações no trabalho que envolvem o desenvolvimento intelectual, a independência de pensamento e a autonomia de decisão."
+                tabIndex={4}
+                aria-label="RP - Relações Profissionais: Valorização de situações no trabalho que envolvem o desenvolvimento intelectual, a independência de pensamento e a autonomia de decisão."
               >
                 Valorização de situações no trabalho que envolvem o desenvolvimento intelectual, a independência de pensamento e a autonomia de decisão.
               </p>
               <p className="font-light text-blue-700 text-7xl my-4"
-              tabIndex={5}
-              aria-label={`${motivationFactors?.rp || 0}%`}
+                tabIndex={5}
+                aria-label={`${motivationFactors?.rp || 0}%`}
               >
                 {`${motivationFactors?.rp || 0}%`}
               </p>
@@ -522,14 +523,14 @@ export default function Client({
               {/* HB – Harmonia e bem-estar pessoal */}
               <h2 className="font-bold">HB - Harmonia e bem-estar pessoal</h2>
               <p className="text-sm text-neutral-600"
-              tabIndex={6}
-              aria-label="HB - Harmonia e bem-estar pessoal: Valorização de situações no trabalho que proporcionam equilíbrio entre vida pessoal e profissional, favorecem o bem-estar físico e emocional e contribuem para a satisfação no dia a dia."
+                tabIndex={6}
+                aria-label="HB - Harmonia e bem-estar pessoal: Valorização de situações no trabalho que proporcionam equilíbrio entre vida pessoal e profissional, favorecem o bem-estar físico e emocional e contribuem para a satisfação no dia a dia."
               >
                 Valorização de situações no trabalho que proporcionam equilíbrio entre vida pessoal e profissional, favorecem o bem-estar físico e emocional e contribuem para a satisfação no dia a dia.
               </p>
               <p className="font-light text-blue-700 text-7xl my-4"
-              tabIndex={7}
-              aria-label={`${motivationFactors?.hb || 0}%`}
+                tabIndex={7}
+                aria-label={`${motivationFactors?.hb || 0}%`}
               >
                 {`${motivationFactors?.hb || 0}%`}
               </p>
@@ -538,14 +539,14 @@ export default function Client({
               {/* RS – Relações sociais */}
               <h2 className="font-bold">RS – Relações sociais</h2>
               <p className="text-sm text-neutral-600"
-              tabIndex={8}
-              aria-label="RS – Relações sociais: Valorização de situações no trabalho que envolvam ajudar, colaborar, servir e contribuir com a sociedade ou os necessitados."
+                tabIndex={8}
+                aria-label="RS – Relações sociais: Valorização de situações no trabalho que envolvam ajudar, colaborar, servir e contribuir com a sociedade ou os necessitados."
               >
                 Valorização de situações no trabalho que envolvam ajudar, colaborar, servir e contribuir com a sociedade ou os necessitados.
               </p>
               <p className="font-light text-blue-700 text-7xl my-4"
-              tabIndex={9}
-              aria-label={`${motivationFactors?.rs || 0}%`}
+                tabIndex={9}
+                aria-label={`${motivationFactors?.rs || 0}%`}
               >
                 {`${motivationFactors?.rs || 0}%`}
               </p>
@@ -554,14 +555,14 @@ export default function Client({
               {/* E - Estabilidade */}
               <h2 className="font-bold">E - Estabilidade</h2>
               <p className="text-sm text-neutral-600"
-              tabIndex={10}
-              aria-label="E - Estabilidade: Valorização de situações no trabalho que garantem segurança, estabilidade financeira e tranquilidade em relação ao futuro."
+                tabIndex={10}
+                aria-label="E - Estabilidade: Valorização de situações no trabalho que garantem segurança, estabilidade financeira e tranquilidade em relação ao futuro."
               >
                 Valorização de situações no trabalho que garantem segurança, estabilidade financeira e tranquilidade em relação ao futuro.
               </p>
               <p className="font-light text-blue-700 text-7xl my-4"
-              tabIndex={11}
-              aria-label={`${motivationFactors?.e || 0}%`}
+                tabIndex={11}
+                aria-label={`${motivationFactors?.e || 0}%`}
               >
                 {`${motivationFactors?.e || 0}%`}
               </p>
@@ -570,14 +571,14 @@ export default function Client({
               {/* P – Prestígio */}
               <h2 className="font-bold">P - Prestígio</h2>
               <p className="text-sm text-neutral-600"
-              tabIndex={12}
-              aria-label="P - Prestígio: Valorização de situações no trabalho que envolvem admiração, status, reconhecimento e respeito por parte de colegas e sociedade."
+                tabIndex={12}
+                aria-label="P - Prestígio: Valorização de situações no trabalho que envolvem admiração, status, reconhecimento e respeito por parte de colegas e sociedade."
               >
                 Valorização de situações no trabalho que envolvem admiração, status, reconhecimento e respeito por parte de colegas e sociedade.
               </p>
               <p className="font-light text-blue-700 text-7xl my-4"
-              tabIndex={13}
-              aria-label={`${motivationFactors?.p || 0}%`}
+                tabIndex={13}
+                aria-label={`${motivationFactors?.p || 0}%`}
               >
                 {`${motivationFactors?.p || 0}%`}
               </p>
@@ -594,13 +595,6 @@ export default function Client({
 
           <hr className="my-4 w-full" />
 
-          <h1 className="text-xl font-medium text-neutral-800">
-            {quiz.type === 2 && <>Saiba Mais</>}
-          </h1>
-
-          <p className="text-sm text-neutral-600">
-            {quiz.type === 2 && <>Curioso? Descubra mais sobre os outros estilos de liderança.</>}
-          </p>
         </div>
 
         {/*

@@ -10,10 +10,10 @@ export default function Home() {
     <>
       <main className="pt-20 pb-36 px-0">
         <div className="fixed inset-0 -z-10 h-screen w-full bg-white [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#0064c3_100%)]"></div>
-        <div className="max-w-xs sm:max-w-2xl mx-auto">
+        <div className="max-w-sm sm:max-w-2xl mx-auto">
           <header className="text-center space-y-7 mb-72 sm:mt-20">
             <h1 className="text-4xl sm:text-5xl font-extrabold text-blue-700" tabIndex={1}>
-              Soft Skills Check
+              Soft Skills Academy
             </h1>
             <p className="text-lg sm:text-xl text-neutral-600 font-medium" tabIndex={2}>
               Questionários de autoavaliação para ajudá-lo(a) a desenvolver suas habilidades comportamentais.
@@ -24,18 +24,28 @@ export default function Home() {
               <Image src={'/mountain.svg'} width={350} height={350} alt="Mulher com mochila caminha em direção a uma grande árvore, com montanhas suaves e sol ao fundo, representando a busca por seus objetivos pessoais" className="w-80 absolute top-0 right-0 -translate-y-full -z-10" tabIndex={3}/>
             </figure>
             <div className="flex items-center gap-3">
-              <h2 className="font-semibold text-xl text-blue-600 sm:whitespace-nowrap whitespace-normal" tabIndex={4}>Teste de Autoavaliação de SoftSkills</h2>
+              <h2 className="font-semibold text-xl text-blue-600 sm:whitespace-nowrap whitespace-normal" tabIndex={4}>Testes de Autoavaliação de SoftSkills</h2>
               <hr className="w-full border-blue-100" />
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 flex-wrap align-middle justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 flex-wrap justify-center items-center">
 
               <CardForm
                 icon={<Brain className="size-4" />}
                 title="Inteligência Emocional"
                 description="Inteligência emocional é um conceito em psicologia que descreve a capacidade de reconhecer e avaliar os seus próprios sentimentos e os dos outros, assim como a capacidade de lidar com eles."
                 url="/autoavaliacao/inteligencia-emocional"
+                duration={2}
                 tabTitle={5}
                 tabLink={6}
+              />
+              
+              <CardForm
+                icon={<Brain className="size-4" />}
+                title="Curso de Inteligência Emocional"
+                description=""
+                url="/autoavaliacao/curso-inteligencia-emocional"
+                tabTitle={7}
+                tabLink={8}
               />
 
               <CardForm
@@ -43,8 +53,9 @@ export default function Home() {
                 title="Estilos de Liderança"
                 description="Existem várias abordagens de liderança amplamente reconhecidas, mas de acordo com o autor Kurt Lewin, os estilos mais clássicos de liderança são: democrática, liberal e autocrática. Assim, o estilo democrático enfatiza a participação, o liberal permite autonomia e o autocrático centraliza o poder decisório."
                 url="/autoavaliacao/estilos-de-lideranca"
-                tabTitle={7}
-                tabLink={8}
+                duration={2}
+                tabTitle={9}
+                tabLink={10}
               />
 
               <CardForm
@@ -52,17 +63,19 @@ export default function Home() {
                 title="Motivação no Trabalho"
                 description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci veritatis libero reprehenderit accusamus neque, quasi animi voluptatibus itaque quidem commodi nihil, reiciendis a enim natus esse cum beatae eos quod."
                 url="/autoavaliacao/motivacao-no-trabalho"
-                tabTitle={9}
-                tabLink={10}
+                duration={2}
+                tabTitle={11}
+                tabLink={12}
               />
 
               <CardForm
                 icon={<Puzzle className="size-4" />}
-                title="Escala de Criatividade"
+                title="Criatividade"
                 description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci veritatis libero reprehenderit accusamus neque, quasi animi voluptatibus itaque quidem commodi nihil, reiciendis a enim natus esse cum beatae eos quod."
                 url="/autoavaliacao/escala-de-criatividade"
-                tabTitle={11}
-                tabLink={12}
+                duration={2}
+                tabTitle={13}
+                tabLink={14}
               />
             </div>
           </section>
