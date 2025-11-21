@@ -8,14 +8,15 @@ interface CardProps{
     tabTitle?: number,
     tabLink?: number,
     info?: boolean,
+    duration?:number,
 }
 
-const CardForm = ({ icon, title, description, url, tabLink, tabTitle, info }: CardProps) => {
+const CardForm = ({ icon, title, description, url, tabLink, tabTitle, info, duration }: CardProps) => {
     return (
-        <article className="bg-blue-50 border block border-blue-100 rounded-md max-w-72 hover:bg-blue-100 duration-300">
-            <div className="flex items-center gap-2 text-blue-700 px-4 py-2.5">
+        <article className="bg-blue-50 border block border-blue-100 rounded-md max-w-72 min-w-[300px] hover:bg-blue-100 duration-300">
+            <div className="flex items-center gap-2 text-blue-700 pl-4 pr-2 py-2.5">
                 {icon}
-                <h3 className="min-w-max"  tabIndex={tabTitle}>
+                <h3 tabIndex={tabTitle}>
                     {title}
                 </h3>
             </div>
@@ -26,7 +27,9 @@ const CardForm = ({ icon, title, description, url, tabLink, tabTitle, info }: Ca
                 {info ? description : ""}
             </p>
             <div className="relative mt-3 mb-6">
-                <p className="absolute right-0 -bottom-8 text-sm text-blue-600 px-4 py-2.5">2min</p>
+                {duration && 
+                    <p className="absolute right-0 -bottom-8 text-sm text-blue-600 px-4 py-2.5">{`${duration}min`}</p>
+                }
                 <Link href={url}
                     className="block text-center text-sm bg-white border-2 border-blue-700 w-[140px] mx-auto mb-4 py-1"
                     tabIndex={tabLink}

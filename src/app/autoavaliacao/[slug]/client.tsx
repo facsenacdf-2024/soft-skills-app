@@ -28,7 +28,7 @@ export default function Client({
           <Image src={"/" + quiz.image} alt={quiz.alt} width={400} height={400} className="w-72 min-w-72 sm:w-1/2" priority tabIndex={2}/>
           <section className="space-y-7">
             <div>
-              <h1 className="text-3xl font-bold text-blue-700 w-max " tabIndex={3} aria-label={`Teste de ${quiz.title}`}>{quiz.title}</h1>
+              <h1 className="text-3xl font-bold text-blue-700" tabIndex={3} aria-label={`${quiz.title}`}>{quiz.title}</h1>
               <h2 className="text-2xl font-semibold text-neutral-400">Autoavaliação</h2>
             </div>
             <hr />
@@ -39,14 +39,18 @@ export default function Client({
               >
                 {quiz.description}
               </p>
-              <div className="flex items-center gap-2">
-                <Clock className="size-4" /> <span>{quiz.duration} min</span>
-              </div>
-              <p className="text-base text-neutral-500">
-                Suas respostas são mantidas em sigilo.
-              </p>
+              {quiz.duration != 0 && 
+              <>
+                <div className="flex items-center gap-2">
+                  <Clock className="size-4" /> <span>{quiz.duration} min</span>
+                </div>
+                <p className="text-base text-neutral-500">
+                  Suas respostas são mantidas em sigilo.
+                </p>
+              </>
+              }
             </div>
-            <Link href={`/autoavaliacao/${quiz.slug}/iniciar`}
+            <Link href={quiz.url != "" ? quiz.url : `/autoavaliacao/${quiz.slug}/iniciar`}
               className="bg-blue-700 hover:bg-blue-600 block text-center text-white font-bold py-3 px-6 rounded-full"
               aria-label="Começar teste"
               tabIndex={5}
@@ -54,7 +58,7 @@ export default function Client({
               Começar
             </Link>
 
-            {hasResults &&
+            {(quiz.duration != 0 && hasResults) &&
               <Link href={`/autoavaliacao/${quiz.slug}/resultados`}
                 className="flex justify-center items-center gap-2 text-neutral-600 font-medium hover:underline"
                 aria-label="Consultar último resultado"
