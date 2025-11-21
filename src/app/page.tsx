@@ -44,6 +44,7 @@ export default function Home() {
                 title="Curso de Inteligência Emocional"
                 description=""
                 url="/autoavaliacao/curso-inteligencia-emocional"
+                btnText="Começar curso"
                 tabTitle={7}
                 tabLink={8}
               />
