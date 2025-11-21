@@ -13,6 +13,7 @@ export default function Client({
     <>
       {/* <Header /> */}
       
+      {/* Obs: quiz.type === 0 significa que não tem um formulário */}
       {/* quiz.type = 1, renderiza o quiz de Sim ou Não*/}
       {quiz.type === 1 && <YNQuiz quiz={quiz} />}
       {/* quiz.type = 2, renderiza o quiz de multiplas escolhas*/}
